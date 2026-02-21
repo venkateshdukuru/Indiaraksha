@@ -3,6 +3,7 @@ import {
     Get,
     Post,
     Patch,
+    Delete,
     Param,
     Body,
     Query,
@@ -153,5 +154,37 @@ export class AdminController {
         @Query('limit') limit?: number,
     ) {
         return this.adminService.getAllUsers(page, limit);
+    }
+
+    @Get('reports')
+    @ApiOperation({ summary: 'Get all reports', description: 'View all scam reports (admin)' })
+    @ApiQuery({ name: 'page', required: false })
+    @ApiQuery({ name: 'limit', required: false })
+    @ApiQuery({ name: 'status', required: false })
+    async getAllReports(
+        @Query('page') page?: number,
+        @Query('limit') limit?: number,
+        @Query('status') status?: string,
+    ) {
+        return this.adminService.getAllReports(page, limit, status);
+    }
+
+    @Delete('reports/:id')
+    @ApiOperation({ summary: 'Delete a scam report (Admin only)' })
+    @ApiResponse({ status: 200, description: 'Report deleted' })
+    async deleteReport(@Param('id') id: string) {
+        return this.adminService.deleteReport(id);
+    }
+
+    @Patch('users/:id/deactivate')
+    @ApiOperation({ summary: 'Deactivate a user account (Admin only)' })
+    async deactivateUser(@Param('id') id: string) {
+        return this.adminService.deactivateUser(id);
+    }
+
+    @Patch('users/:id/activate')
+    @ApiOperation({ summary: 'Activate a user account (Admin only)' })
+    async activateUser(@Param('id') id: string) {
+        return this.adminService.activateUser(id);
     }
 }

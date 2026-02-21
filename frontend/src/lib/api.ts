@@ -196,10 +196,18 @@ export const adminAPI = {
         return apiRequest(`/admin/reports/pending?page=${page}&limit=${limit}`);
     },
 
+    getAllReports: async (page: number = 1, limit: number = 50, status?: string) => {
+        const qs = new URLSearchParams({ page: String(page), limit: String(limit) });
+        if (status) qs.set('status', status);
+        return apiRequest(`/admin/reports?${qs.toString()}`);
+    },
+
+    deleteReport: async (id: string) => {
+        return apiRequest(`/admin/reports/${id}`, { method: 'DELETE' });
+    },
+
     verifyReport: async (id: string) => {
-        return apiRequest(`/admin/reports/${id}/verify`, {
-            method: 'POST',
-        });
+        return apiRequest(`/admin/reports/${id}/verify`, { method: 'POST' });
     },
 
     rejectReport: async (id: string, reason: string) => {
@@ -217,8 +225,16 @@ export const adminAPI = {
         return apiRequest(`/admin/analytics/trends?days=${days}`);
     },
 
-    getUsers: async (page: number = 1, limit: number = 20) => {
+    getUsers: async (page: number = 1, limit: number = 50) => {
         return apiRequest(`/admin/users?page=${page}&limit=${limit}`);
+    },
+
+    deactivateUser: async (id: string) => {
+        return apiRequest(`/admin/users/${id}/deactivate`, { method: 'PATCH' });
+    },
+
+    activateUser: async (id: string) => {
+        return apiRequest(`/admin/users/${id}/activate`, { method: 'PATCH' });
     },
 };
 

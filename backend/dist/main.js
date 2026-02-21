@@ -3079,6 +3079,18 @@ let AdminController = class AdminController {
     async getAllUsers(page, limit) {
         return this.adminService.getAllUsers(page, limit);
     }
+    async getAllReports(page, limit, status) {
+        return this.adminService.getAllReports(page, limit, status);
+    }
+    async deleteReport(id) {
+        return this.adminService.deleteReport(id);
+    }
+    async deactivateUser(id) {
+        return this.adminService.deactivateUser(id);
+    }
+    async activateUser(id) {
+        return this.adminService.activateUser(id);
+    }
 };
 exports.AdminController = AdminController;
 __decorate([
@@ -3216,6 +3228,48 @@ __decorate([
     __metadata("design:paramtypes", [Number, Number]),
     __metadata("design:returntype", Promise)
 ], AdminController.prototype, "getAllUsers", null);
+__decorate([
+    (0, common_1.Get)('reports'),
+    (0, swagger_1.ApiOperation)({ summary: 'Get all reports', description: 'View all scam reports (admin)' }),
+    (0, swagger_1.ApiQuery)({ name: 'page', required: false }),
+    (0, swagger_1.ApiQuery)({ name: 'limit', required: false }),
+    (0, swagger_1.ApiQuery)({ name: 'status', required: false }),
+    openapi.ApiResponse({ status: 200 }),
+    __param(0, (0, common_1.Query)('page')),
+    __param(1, (0, common_1.Query)('limit')),
+    __param(2, (0, common_1.Query)('status')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number, Number, String]),
+    __metadata("design:returntype", Promise)
+], AdminController.prototype, "getAllReports", null);
+__decorate([
+    (0, common_1.Delete)('reports/:id'),
+    (0, swagger_1.ApiOperation)({ summary: 'Delete a scam report (Admin only)' }),
+    (0, swagger_1.ApiResponse)({ status: 200, description: 'Report deleted' }),
+    openapi.ApiResponse({ status: 200 }),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], AdminController.prototype, "deleteReport", null);
+__decorate([
+    (0, common_1.Patch)('users/:id/deactivate'),
+    (0, swagger_1.ApiOperation)({ summary: 'Deactivate a user account (Admin only)' }),
+    openapi.ApiResponse({ status: 200 }),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], AdminController.prototype, "deactivateUser", null);
+__decorate([
+    (0, common_1.Patch)('users/:id/activate'),
+    (0, swagger_1.ApiOperation)({ summary: 'Activate a user account (Admin only)' }),
+    openapi.ApiResponse({ status: 200 }),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], AdminController.prototype, "activateUser", null);
 exports.AdminController = AdminController = __decorate([
     (0, swagger_1.ApiTags)('Admin'),
     (0, common_1.Controller)('admin'),
@@ -3365,13 +3419,40 @@ let AdminService = class AdminService {
         ]);
         return {
             users,
-            pagination: {
-                total,
-                page,
-                limit,
-                pages: Math.ceil(total / limit),
-            },
+            pagination: { total, page, limit, pages: Math.ceil(total / limit) },
         };
+    }
+    async getAllReports(page = 1, limit = 20, status) {
+        const skip = (page - 1) * limit;
+        const query = {};
+        if (status)
+            query.status = status;
+        const [reports, total] = await Promise.all([
+            this.scamReportModel
+                .find(query)
+                .populate('reportedBy', 'name email')
+                .sort({ createdAt: -1 })
+                .skip(skip)
+                .limit(limit)
+                .exec(),
+            this.scamReportModel.countDocuments(query),
+        ]);
+        return {
+            reports,
+            pagination: { total, page, limit, pages: Math.ceil(total / limit) },
+        };
+    }
+    async deleteReport(id) {
+        await this.scamReportModel.findByIdAndDelete(id);
+        return { message: 'Report deleted successfully' };
+    }
+    async deactivateUser(id) {
+        await this.userModel.findByIdAndUpdate(id, { isActive: false });
+        return { message: 'User deactivated' };
+    }
+    async activateUser(id) {
+        await this.userModel.findByIdAndUpdate(id, { isActive: true });
+        return { message: 'User activated' };
     }
 };
 exports.AdminService = AdminService;

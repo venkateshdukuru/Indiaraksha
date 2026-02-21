@@ -138,12 +138,44 @@ export class AdminService {
 
         return {
             users,
-            pagination: {
-                total,
-                page,
-                limit,
-                pages: Math.ceil(total / limit),
-            },
+            pagination: { total, page, limit, pages: Math.ceil(total / limit) },
         };
+    }
+
+    async getAllReports(page = 1, limit = 20, status?: string) {
+        const skip = (page - 1) * limit;
+        const query: any = {};
+        if (status) query.status = status;
+
+        const [reports, total] = await Promise.all([
+            this.scamReportModel
+                .find(query)
+                .populate('reportedBy', 'name email')
+                .sort({ createdAt: -1 })
+                .skip(skip)
+                .limit(limit)
+                .exec(),
+            this.scamReportModel.countDocuments(query),
+        ]);
+
+        return {
+            reports,
+            pagination: { total, page, limit, pages: Math.ceil(total / limit) },
+        };
+    }
+
+    async deleteReport(id: string) {
+        await this.scamReportModel.findByIdAndDelete(id);
+        return { message: 'Report deleted successfully' };
+    }
+
+    async deactivateUser(id: string) {
+        await this.userModel.findByIdAndUpdate(id, { isActive: false });
+        return { message: 'User deactivated' };
+    }
+
+    async activateUser(id: string) {
+        await this.userModel.findByIdAndUpdate(id, { isActive: true });
+        return { message: 'User activated' };
     }
 }
