@@ -1,13 +1,79 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Indiaraksha</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ── Favicon ── -->
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+
+  <!-- ── Primary SEO ── -->
+  <title>IndiaRaksha — Report Scams & Protect Yourself from Fraud in India</title>
+  <meta name="description"
+    content="IndiaRaksha helps Indian citizens report UPI scams, phishing websites, fake job offers, and online fraud. Check suspicious numbers, get real-time fraud alerts, and protect your family." />
+  <meta name="keywords"
+    content="scam report India, UPI fraud, online fraud India, phishing website check, fake job offer, cyber crime India, fraud alert, scam lookup, IndiaRaksha" />
+  <meta name="author" content="IndiaRaksha" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://indiaraksha.org/" />
+
+  <!-- ── Google Site Verification ── -->
+  <meta name="google-site-verification" content="4577d19d207f3591" />
+
+  <!-- ── Open Graph (Facebook, WhatsApp, LinkedIn) ── -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://indiaraksha.org/" />
+  <meta property="og:title" content="IndiaRaksha — Report Scams & Protect Yourself from Online Fraud" />
+  <meta property="og:description"
+    content="India's trusted platform to report and check online scams — UPI fraud, phishing, fake jobs, loan app harassment, and more. Free and anonymous." />
+  <meta property="og:image" content="https://indiaraksha.org/og-image.png" />
+  <meta property="og:site_name" content="IndiaRaksha" />
+  <meta property="og:locale" content="en_IN" />
+
+  <!-- ── Twitter / X Card ── -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@IndiaRaksha" />
+  <meta name="twitter:title" content="IndiaRaksha — Report & Check Online Scams in India" />
+  <meta name="twitter:description"
+    content="Report UPI scams, phishing websites, fake job offers and more. Check suspicious numbers instantly. Free & anonymous." />
+  <meta name="twitter:image" content="https://indiaraksha.org/og-image.png" />
+
+  <!-- ── Schema.org Structured Data ── -->
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "IndiaRaksha",
+      "url": "https://indiaraksha.org",
+      "description": "India's trusted platform for reporting and checking online fraud and scams.",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": {
+          "@type": "EntryPoint",
+          "urlTemplate": "https://indiaraksha.org/lookup?q={search_term_string}"
+        },
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+
+  <!-- ── Google Analytics (GA4) ── -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-4577D19D207"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-4577D19D207', {
+      page_path: window.location.pathname,
+      anonymize_ip: true
+    });
+  </script>
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/src/main.tsx"></script>
+</body>
+
 </html>

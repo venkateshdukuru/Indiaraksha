@@ -15,8 +15,14 @@ export default function Login() {
         e.preventDefault();
         setIsSubmitting(true); setError('');
         try {
-            await authAPI.login(formData.email, formData.password);
-            navigate('/');
+            const result = await authAPI.login(formData.email, formData.password);
+            // Redirect based on role
+            const role = result?.user?.role;
+            if (role === 'admin' || role === 'moderator') {
+                navigate('/admin');
+            } else {
+                navigate('/');
+            }
         } catch (err: any) {
             setError(err.message || 'Login failed. Please check your credentials.');
         } finally { setIsSubmitting(false); }

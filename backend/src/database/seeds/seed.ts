@@ -5,25 +5,55 @@ import { User, UserRole } from '../../modules/users/schemas/user.schema';
 import { getModelToken } from '@nestjs/mongoose';
 import * as bcrypt from 'bcrypt';
 
-async function seed() {
-    const app = await NestFactory.createApplicationContext(AppModule);
+/**
+ * All credentials come exclusively from environment variables.
+ * Never hardcode passwords in source code.
+ *
+ * Required env vars:
+ *   ADMIN_EMAIL     – admin account email
+ *   ADMIN_PASSWORD  – admin account password
+ *   ADMIN_MOBILE    – admin mobile number
+ *
+ * Optional env vars for sample users (dev only):
+ *   SEED_USER1_EMAIL    / SEED_USER1_PASSWORD / SEED_USER1_MOBILE
+ *   SEED_USER2_EMAIL    / SEED_USER2_PASSWORD / SEED_USER2_MOBILE
+ */
 
+function requireEnv(name: string): string {
+    const value = process.env[name];
+    if (!value) {
+        throw new Error(
+            `❌  Environment variable "${name}" is not set.\n` +
+            `    Set it in your .env file before running the seed script.`
+        );
+    }
+    return value;
+}
+
+async function seed() {
+    // ── Validate required env vars up-front ──────────────────────────
+    const adminEmail = requireEnv('ADMIN_EMAIL');
+    const adminPassword = requireEnv('ADMIN_PASSWORD');
+    const adminMobile = requireEnv('ADMIN_MOBILE');
+
+    const app = await NestFactory.createApplicationContext(AppModule);
     const userModel = app.get<Model<User>>(getModelToken(User.name));
 
-    console.log('🌱 Starting database seeding...\n');
+    console.log('🌱 Starting database seeding…\n');
+    console.log(`📧 Admin email  : ${adminEmail}`);
+    console.log(`📱 Admin mobile : ${adminMobile}`);
+    console.log(`🔑 Admin password: [read from ADMIN_PASSWORD env var]\n`);
 
-    // Create admin user
-    const adminExists = await userModel.findOne({
-        email: 'admin@indiaraksha.org',
-    });
+    // ── Admin user ────────────────────────────────────────────────────
+    const adminExists = await userModel.findOne({ email: adminEmail });
 
     if (!adminExists) {
-        const hashedPassword = await bcrypt.hash('Admin@123', 10);
+        const hashed = await bcrypt.hash(adminPassword, 10);
         await userModel.create({
-            email: 'admin@indiaraksha.org',
-            mobile: '+919999999999',
+            email: adminEmail,
+            mobile: adminMobile,
             name: 'Admin User',
-            password: hashedPassword,
+            password: hashed,
             role: UserRole.ADMIN,
             isActive: true,
             isEmailVerified: true,
@@ -32,48 +62,69 @@ async function seed() {
             state: 'Maharashtra',
         });
         console.log('✅ Admin user created');
-        console.log('   Email: admin@indiaraksha.org');
-        console.log('   Password: Admin@123');
-        console.log('   ⚠️  CHANGE THIS PASSWORD IMMEDIATELY!\n');
+        console.log(`   Email  : ${adminEmail}`);
+        console.log('   Password: [as set in ADMIN_PASSWORD]\n');
     } else {
-        console.log('ℹ️  Admin user already exists\n');
+        // Always sync password from env so env is the single source of truth
+        const hashed = await bcrypt.hash(adminPassword, 10);
+        await userModel.findByIdAndUpdate(adminExists._id, {
+            password: hashed,
+            role: UserRole.ADMIN,
+            isActive: true,
+            isEmailVerified: true,
+            isMobileVerified: true,
+        });
+        console.log('🔄 Admin already exists — password synced from env.\n');
     }
 
-    // Create sample users
-    const sampleUsers = [
+    // ── Sample users (dev / staging only) ────────────────────────────
+    // Passwords come from env; if not set the sample users are skipped.
+    const sampleDefs = [
         {
-            email: 'user1@example.com',
-            mobile: '+919876543210',
+            email: process.env.SEED_USER1_EMAIL,
+            password: process.env.SEED_USER1_PASSWORD,
+            mobile: process.env.SEED_USER1_MOBILE,
             name: 'Rajesh Kumar',
-            password: await bcrypt.hash('User@123', 10),
-            role: UserRole.USER,
             city: 'Delhi',
             state: 'Delhi',
         },
         {
-            email: 'user2@example.com',
-            mobile: '+919876543211',
+            email: process.env.SEED_USER2_EMAIL,
+            password: process.env.SEED_USER2_PASSWORD,
+            mobile: process.env.SEED_USER2_MOBILE,
             name: 'Priya Sharma',
-            password: await bcrypt.hash('User@123', 10),
-            role: UserRole.USER,
             city: 'Bangalore',
             state: 'Karnataka',
         },
     ];
 
-    for (const userData of sampleUsers) {
-        const exists = await userModel.findOne({ email: userData.email });
+    for (const def of sampleDefs) {
+        // Skip if any required field is missing
+        if (!def.email || !def.password || !def.mobile) continue;
+
+        const exists = await userModel.findOne({ email: def.email });
         if (!exists) {
-            await userModel.create(userData);
-            console.log(`✅ Created user: ${userData.name}`);
+            const hashed = await bcrypt.hash(def.password, 10);
+            await userModel.create({
+                email: def.email,
+                mobile: def.mobile,
+                name: def.name,
+                password: hashed,
+                role: UserRole.USER,
+                city: def.city,
+                state: def.state,
+            });
+            console.log(`✅ Created sample user: ${def.name} (${def.email})`);
+        } else {
+            console.log(`ℹ️  Sample user already exists: ${def.email}`);
         }
     }
 
     console.log('\n🎉 Database seeding completed!\n');
     console.log('📝 Next steps:');
-    console.log('   1. Start the server: npm run start:dev');
-    console.log('   2. Visit API docs: http://localhost:3000/api/docs');
-    console.log('   3. Login with admin credentials to start moderating\n');
+    console.log('   1. Start the server : npm run start:dev');
+    console.log('   2. API docs         : http://localhost:3000/api/docs');
+    console.log(`   3. Login as admin   : ${adminEmail}\n`);
 
     await app.close();
 }
@@ -84,6 +135,6 @@ seed()
         process.exit(0);
     })
     .catch((error) => {
-        console.error('❌ Seed script failed:', error);
+        console.error('❌ Seed script failed:', error.message);
         process.exit(1);
     });
