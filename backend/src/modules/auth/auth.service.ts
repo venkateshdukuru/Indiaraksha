@@ -35,8 +35,10 @@ export class AuthService {
             );
         }
 
-        // Hash password
-        const rounds = this.configService.get<number>('BCRYPT_ROUNDS') || 10;
+        // Hash password — parseInt() is mandatory: ConfigService returns env values
+        // as strings, and bcrypt.hash() requires a NUMBER for rounds (not a string).
+        // Passing the string "10" as the second arg causes "Invalid salt" error.
+        const rounds = parseInt(this.configService.get<string>('BCRYPT_ROUNDS') || '10', 10);
         const hashedPassword = await bcrypt.hash(password, rounds);
 
         // Create user
@@ -149,7 +151,10 @@ export class AuthService {
     async validateUser(email: string, password: string): Promise<any> {
         const user = await this.userModel.findOne({ email }).select('+password');
 
-        if (user && (await bcrypt.compare(password, user.password))) {
+        // Guard: if password field is somehow missing, avoid bcrypt "Invalid salt"
+        if (!user || !user.password) return null;
+
+        if (await bcrypt.compare(password, user.password)) {
             return this.sanitizeUser(user);
         }
 

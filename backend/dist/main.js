@@ -1,92 +1,44 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	"use strict";
-/******/ 	var __webpack_modules__ = ({
+/******/ 	var __webpack_modules__ = ([
+/* 0 */,
+/* 1 */
+/***/ ((module) => {
 
-/***/ "./src/app.controller.ts":
-/*!*******************************!*\
-  !*** ./src/app.controller.ts ***!
-  \*******************************/
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var _a;
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.AppController = void 0;
-const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
-const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ "@nestjs/swagger");
-const app_service_1 = __webpack_require__(/*! ./app.service */ "./src/app.service.ts");
-let AppController = class AppController {
-    constructor(appService) {
-        this.appService = appService;
-    }
-    getHealth() {
-        return this.appService.getHealth();
-    }
-    getStats() {
-        return this.appService.getStats();
-    }
-};
-exports.AppController = AppController;
-__decorate([
-    (0, common_1.Get)(),
-    (0, swagger_1.ApiOperation)({ summary: 'Health check endpoint' }),
-    (0, swagger_1.ApiResponse)({
-        status: 200,
-        description: 'API is healthy and running',
-        schema: {
-            example: {
-                status: 'success',
-                message: '🛡️ IndiaRaksha API is running',
-                version: '1.0.0',
-                timestamp: '2024-01-01T00:00:00.000Z',
-            },
-        },
-    }),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
-    __metadata("design:returntype", void 0)
-], AppController.prototype, "getHealth", null);
-__decorate([
-    (0, common_1.Get)('stats'),
-    (0, swagger_1.ApiOperation)({ summary: 'Get platform statistics' }),
-    (0, swagger_1.ApiResponse)({
-        status: 200,
-        description: 'Platform statistics',
-        schema: {
-            example: {
-                totalReports: 1250,
-                totalUsers: 5000,
-                reportsToday: 45,
-                activeAlerts: 3,
-            },
-        },
-    }),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
-    __metadata("design:returntype", void 0)
-], AppController.prototype, "getStats", null);
-exports.AppController = AppController = __decorate([
-    (0, swagger_1.ApiTags)('Health'),
-    (0, common_1.Controller)(),
-    __metadata("design:paramtypes", [typeof (_a = typeof app_service_1.AppService !== "undefined" && app_service_1.AppService) === "function" ? _a : Object])
-], AppController);
-
+module.exports = require("@nestjs/core");
 
 /***/ }),
+/* 2 */
+/***/ ((module) => {
 
-/***/ "./src/app.module.ts":
-/*!***************************!*\
-  !*** ./src/app.module.ts ***!
-  \***************************/
+module.exports = require("@nestjs/common");
+
+/***/ }),
+/* 3 */
+/***/ ((module) => {
+
+module.exports = require("@nestjs/swagger");
+
+/***/ }),
+/* 4 */
+/***/ ((module) => {
+
+module.exports = require("@nestjs/config");
+
+/***/ }),
+/* 5 */
+/***/ ((module) => {
+
+module.exports = require("helmet");
+
+/***/ }),
+/* 6 */
+/***/ ((module) => {
+
+module.exports = require("compression");
+
+/***/ }),
+/* 7 */
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -98,18 +50,18 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.AppModule = void 0;
-const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
-const config_1 = __webpack_require__(/*! @nestjs/config */ "@nestjs/config");
-const mongoose_1 = __webpack_require__(/*! @nestjs/mongoose */ "@nestjs/mongoose");
-const throttler_1 = __webpack_require__(/*! @nestjs/throttler */ "@nestjs/throttler");
-const auth_module_1 = __webpack_require__(/*! ./modules/auth/auth.module */ "./src/modules/auth/auth.module.ts");
-const users_module_1 = __webpack_require__(/*! ./modules/users/users.module */ "./src/modules/users/users.module.ts");
-const scam_reports_module_1 = __webpack_require__(/*! ./modules/scam-reports/scam-reports.module */ "./src/modules/scam-reports/scam-reports.module.ts");
-const scam_entities_module_1 = __webpack_require__(/*! ./modules/scam-entities/scam-entities.module */ "./src/modules/scam-entities/scam-entities.module.ts");
-const alerts_module_1 = __webpack_require__(/*! ./modules/alerts/alerts.module */ "./src/modules/alerts/alerts.module.ts");
-const admin_module_1 = __webpack_require__(/*! ./modules/admin/admin.module */ "./src/modules/admin/admin.module.ts");
-const app_controller_1 = __webpack_require__(/*! ./app.controller */ "./src/app.controller.ts");
-const app_service_1 = __webpack_require__(/*! ./app.service */ "./src/app.service.ts");
+const common_1 = __webpack_require__(2);
+const config_1 = __webpack_require__(4);
+const mongoose_1 = __webpack_require__(8);
+const throttler_1 = __webpack_require__(9);
+const auth_module_1 = __webpack_require__(10);
+const users_module_1 = __webpack_require__(27);
+const scam_reports_module_1 = __webpack_require__(31);
+const scam_entities_module_1 = __webpack_require__(39);
+const alerts_module_1 = __webpack_require__(43);
+const admin_module_1 = __webpack_require__(48);
+const app_controller_1 = __webpack_require__(51);
+const app_service_1 = __webpack_require__(52);
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -153,253 +105,19 @@ exports.AppModule = AppModule = __decorate([
 
 
 /***/ }),
+/* 8 */
+/***/ ((module) => {
 
-/***/ "./src/app.service.ts":
-/*!****************************!*\
-  !*** ./src/app.service.ts ***!
-  \****************************/
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.AppService = void 0;
-const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
-let AppService = class AppService {
-    getHealth() {
-        return {
-            status: 'success',
-            message: '🛡️ IndiaRaksha API is running',
-            version: '1.0.0',
-            timestamp: new Date().toISOString(),
-            mission: 'Protecting citizens from digital fraud',
-        };
-    }
-    getStats() {
-        return {
-            totalReports: 0,
-            totalUsers: 0,
-            reportsToday: 0,
-            activeAlerts: 0,
-            message: 'Platform statistics will be available once data is populated',
-        };
-    }
-};
-exports.AppService = AppService;
-exports.AppService = AppService = __decorate([
-    (0, common_1.Injectable)()
-], AppService);
-
+module.exports = require("@nestjs/mongoose");
 
 /***/ }),
+/* 9 */
+/***/ ((module) => {
 
-/***/ "./src/modules/admin/admin.controller.ts":
-/*!***********************************************!*\
-  !*** ./src/modules/admin/admin.controller.ts ***!
-  \***********************************************/
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
-var _a, _b;
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.AdminController = void 0;
-const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
-const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ "@nestjs/swagger");
-const admin_service_1 = __webpack_require__(/*! ./admin.service */ "./src/modules/admin/admin.service.ts");
-const scam_reports_service_1 = __webpack_require__(/*! ../scam-reports/scam-reports.service */ "./src/modules/scam-reports/scam-reports.service.ts");
-const jwt_auth_guard_1 = __webpack_require__(/*! ../auth/guards/jwt-auth.guard */ "./src/modules/auth/guards/jwt-auth.guard.ts");
-const roles_guard_1 = __webpack_require__(/*! ../auth/guards/roles.guard */ "./src/modules/auth/guards/roles.guard.ts");
-const roles_decorator_1 = __webpack_require__(/*! ../auth/decorators/roles.decorator */ "./src/modules/auth/decorators/roles.decorator.ts");
-const user_schema_1 = __webpack_require__(/*! ../users/schemas/user.schema */ "./src/modules/users/schemas/user.schema.ts");
-let AdminController = class AdminController {
-    constructor(adminService, scamReportsService) {
-        this.adminService = adminService;
-        this.scamReportsService = scamReportsService;
-    }
-    async getDashboard() {
-        return this.adminService.getDashboardStats();
-    }
-    async getPendingReports(page, limit) {
-        return this.adminService.getPendingReports(page, limit);
-    }
-    async verifyReport(id, req) {
-        return this.scamReportsService.verifyReport(id, req.user.userId);
-    }
-    async rejectReport(id, reason, req) {
-        return this.scamReportsService.rejectReport(id, req.user.userId, reason);
-    }
-    async getReportsByLocation() {
-        return this.adminService.getReportsByLocation();
-    }
-    async getScamTrends(days) {
-        return this.adminService.getScamTrends(days);
-    }
-    async getAllUsers(page, limit) {
-        return this.adminService.getAllUsers(page, limit);
-    }
-};
-exports.AdminController = AdminController;
-__decorate([
-    (0, common_1.Get)('dashboard'),
-    (0, swagger_1.ApiOperation)({
-        summary: 'Get dashboard statistics',
-        description: 'View comprehensive platform statistics',
-    }),
-    (0, swagger_1.ApiResponse)({
-        status: 200,
-        description: 'Dashboard statistics',
-        schema: {
-            example: {
-                users: {
-                    total: 5000,
-                    today: 45,
-                },
-                reports: {
-                    total: 1250,
-                    pending: 120,
-                    verified: 980,
-                    rejected: 150,
-                    today: 32,
-                },
-            },
-        },
-    }),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
-    __metadata("design:returntype", Promise)
-], AdminController.prototype, "getDashboard", null);
-__decorate([
-    (0, common_1.Get)('reports/pending'),
-    (0, swagger_1.ApiOperation)({
-        summary: 'Get pending reports',
-        description: 'View all reports awaiting moderation',
-    }),
-    (0, swagger_1.ApiQuery)({ name: 'page', required: false, example: 1 }),
-    (0, swagger_1.ApiQuery)({ name: 'limit', required: false, example: 20 }),
-    (0, swagger_1.ApiResponse)({
-        status: 200,
-        description: 'Pending reports',
-    }),
-    __param(0, (0, common_1.Query)('page')),
-    __param(1, (0, common_1.Query)('limit')),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Number, Number]),
-    __metadata("design:returntype", Promise)
-], AdminController.prototype, "getPendingReports", null);
-__decorate([
-    (0, common_1.Post)('reports/:id/verify'),
-    (0, swagger_1.ApiOperation)({
-        summary: 'Verify a scam report',
-        description: 'Mark a report as verified',
-    }),
-    (0, swagger_1.ApiResponse)({
-        status: 200,
-        description: 'Report verified successfully',
-    }),
-    __param(0, (0, common_1.Param)('id')),
-    __param(1, (0, common_1.Request)()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, Object]),
-    __metadata("design:returntype", Promise)
-], AdminController.prototype, "verifyReport", null);
-__decorate([
-    (0, common_1.Post)('reports/:id/reject'),
-    (0, swagger_1.ApiOperation)({
-        summary: 'Reject a scam report',
-        description: 'Mark a report as rejected with reason',
-    }),
-    (0, swagger_1.ApiResponse)({
-        status: 200,
-        description: 'Report rejected',
-    }),
-    __param(0, (0, common_1.Param)('id')),
-    __param(1, (0, common_1.Body)('reason')),
-    __param(2, (0, common_1.Request)()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, String, Object]),
-    __metadata("design:returntype", Promise)
-], AdminController.prototype, "rejectReport", null);
-__decorate([
-    (0, common_1.Get)('analytics/location'),
-    (0, swagger_1.ApiOperation)({
-        summary: 'Get reports by location',
-        description: 'View scam reports grouped by location',
-    }),
-    (0, swagger_1.ApiResponse)({
-        status: 200,
-        description: 'Location-based analytics',
-    }),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", []),
-    __metadata("design:returntype", Promise)
-], AdminController.prototype, "getReportsByLocation", null);
-__decorate([
-    (0, common_1.Get)('analytics/trends'),
-    (0, swagger_1.ApiOperation)({
-        summary: 'Get scam trends',
-        description: 'View scam trends over time',
-    }),
-    (0, swagger_1.ApiQuery)({ name: 'days', required: false, example: 30 }),
-    (0, swagger_1.ApiResponse)({
-        status: 200,
-        description: 'Scam trends',
-    }),
-    __param(0, (0, common_1.Query)('days')),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Number]),
-    __metadata("design:returntype", Promise)
-], AdminController.prototype, "getScamTrends", null);
-__decorate([
-    (0, common_1.Get)('users'),
-    (0, swagger_1.ApiOperation)({
-        summary: 'Get all users',
-        description: 'View all registered users',
-    }),
-    (0, swagger_1.ApiQuery)({ name: 'page', required: false, example: 1 }),
-    (0, swagger_1.ApiQuery)({ name: 'limit', required: false, example: 20 }),
-    (0, swagger_1.ApiResponse)({
-        status: 200,
-        description: 'List of users',
-    }),
-    __param(0, (0, common_1.Query)('page')),
-    __param(1, (0, common_1.Query)('limit')),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Number, Number]),
-    __metadata("design:returntype", Promise)
-], AdminController.prototype, "getAllUsers", null);
-exports.AdminController = AdminController = __decorate([
-    (0, swagger_1.ApiTags)('Admin'),
-    (0, common_1.Controller)('admin'),
-    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard, roles_guard_1.RolesGuard),
-    (0, roles_decorator_1.Roles)(user_schema_1.UserRole.ADMIN, user_schema_1.UserRole.MODERATOR),
-    (0, swagger_1.ApiBearerAuth)('JWT-auth'),
-    __metadata("design:paramtypes", [typeof (_a = typeof admin_service_1.AdminService !== "undefined" && admin_service_1.AdminService) === "function" ? _a : Object, typeof (_b = typeof scam_reports_service_1.ScamReportsService !== "undefined" && scam_reports_service_1.ScamReportsService) === "function" ? _b : Object])
-], AdminController);
-
+module.exports = require("@nestjs/throttler");
 
 /***/ }),
-
-/***/ "./src/modules/admin/admin.module.ts":
-/*!*******************************************!*\
-  !*** ./src/modules/admin/admin.module.ts ***!
-  \*******************************************/
+/* 10 */
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -410,398 +128,57 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.AdminModule = void 0;
-const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
-const mongoose_1 = __webpack_require__(/*! @nestjs/mongoose */ "@nestjs/mongoose");
-const admin_controller_1 = __webpack_require__(/*! ./admin.controller */ "./src/modules/admin/admin.controller.ts");
-const admin_service_1 = __webpack_require__(/*! ./admin.service */ "./src/modules/admin/admin.service.ts");
-const scam_reports_module_1 = __webpack_require__(/*! ../scam-reports/scam-reports.module */ "./src/modules/scam-reports/scam-reports.module.ts");
-const scam_entities_module_1 = __webpack_require__(/*! ../scam-entities/scam-entities.module */ "./src/modules/scam-entities/scam-entities.module.ts");
-const alerts_module_1 = __webpack_require__(/*! ../alerts/alerts.module */ "./src/modules/alerts/alerts.module.ts");
-const user_schema_1 = __webpack_require__(/*! ../users/schemas/user.schema */ "./src/modules/users/schemas/user.schema.ts");
-const scam_report_schema_1 = __webpack_require__(/*! ../scam-reports/schemas/scam-report.schema */ "./src/modules/scam-reports/schemas/scam-report.schema.ts");
-let AdminModule = class AdminModule {
+exports.AuthModule = void 0;
+const common_1 = __webpack_require__(2);
+const jwt_1 = __webpack_require__(11);
+const passport_1 = __webpack_require__(12);
+const config_1 = __webpack_require__(4);
+const mongoose_1 = __webpack_require__(8);
+const auth_controller_1 = __webpack_require__(13);
+const auth_service_1 = __webpack_require__(14);
+const jwt_strategy_1 = __webpack_require__(23);
+const local_strategy_1 = __webpack_require__(25);
+const user_schema_1 = __webpack_require__(17);
+let AuthModule = class AuthModule {
 };
-exports.AdminModule = AdminModule;
-exports.AdminModule = AdminModule = __decorate([
+exports.AuthModule = AuthModule;
+exports.AuthModule = AuthModule = __decorate([
     (0, common_1.Module)({
         imports: [
-            mongoose_1.MongooseModule.forFeature([
-                { name: user_schema_1.User.name, schema: user_schema_1.UserSchema },
-                { name: scam_report_schema_1.ScamReport.name, schema: scam_report_schema_1.ScamReportSchema },
-            ]),
-            scam_reports_module_1.ScamReportsModule,
-            scam_entities_module_1.ScamEntitiesModule,
-            alerts_module_1.AlertsModule,
-        ],
-        controllers: [admin_controller_1.AdminController],
-        providers: [admin_service_1.AdminService],
-    })
-], AdminModule);
-
-
-/***/ }),
-
-/***/ "./src/modules/admin/admin.service.ts":
-/*!********************************************!*\
-  !*** ./src/modules/admin/admin.service.ts ***!
-  \********************************************/
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
-var _a, _b;
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.AdminService = void 0;
-const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
-const mongoose_1 = __webpack_require__(/*! @nestjs/mongoose */ "@nestjs/mongoose");
-const mongoose_2 = __webpack_require__(/*! mongoose */ "mongoose");
-const user_schema_1 = __webpack_require__(/*! ../users/schemas/user.schema */ "./src/modules/users/schemas/user.schema.ts");
-const scam_report_schema_1 = __webpack_require__(/*! ../scam-reports/schemas/scam-report.schema */ "./src/modules/scam-reports/schemas/scam-report.schema.ts");
-let AdminService = class AdminService {
-    constructor(userModel, scamReportModel) {
-        this.userModel = userModel;
-        this.scamReportModel = scamReportModel;
-    }
-    async getDashboardStats() {
-        const [totalUsers, totalReports, pendingReports, verifiedReports, rejectedReports, reportsToday, usersToday,] = await Promise.all([
-            this.userModel.countDocuments(),
-            this.scamReportModel.countDocuments(),
-            this.scamReportModel.countDocuments({ status: scam_report_schema_1.ReportStatus.PENDING }),
-            this.scamReportModel.countDocuments({ status: scam_report_schema_1.ReportStatus.VERIFIED }),
-            this.scamReportModel.countDocuments({ status: scam_report_schema_1.ReportStatus.REJECTED }),
-            this.scamReportModel.countDocuments({
-                createdAt: { $gte: new Date(new Date().setHours(0, 0, 0, 0)) },
-            }),
-            this.userModel.countDocuments({
-                createdAt: { $gte: new Date(new Date().setHours(0, 0, 0, 0)) },
-            }),
-        ]);
-        return {
-            users: {
-                total: totalUsers,
-                today: usersToday,
-            },
-            reports: {
-                total: totalReports,
-                pending: pendingReports,
-                verified: verifiedReports,
-                rejected: rejectedReports,
-                today: reportsToday,
-            },
-        };
-    }
-    async getReportsByLocation() {
-        return this.scamReportModel.aggregate([
-            {
-                $match: {
-                    state: { $exists: true, $ne: null },
-                },
-            },
-            {
-                $group: {
-                    _id: { state: '$state', city: '$city' },
-                    count: { $sum: 1 },
-                    totalLoss: { $sum: '$amountLost' },
-                },
-            },
-            {
-                $sort: { count: -1 },
-            },
-            {
-                $limit: 50,
-            },
-        ]);
-    }
-    async getScamTrends(days = 30) {
-        const startDate = new Date();
-        startDate.setDate(startDate.getDate() - days);
-        return this.scamReportModel.aggregate([
-            {
-                $match: {
-                    createdAt: { $gte: startDate },
-                },
-            },
-            {
-                $group: {
-                    _id: {
-                        date: { $dateToString: { format: '%Y-%m-%d', date: '$createdAt' } },
-                        scamType: '$scamType',
+            passport_1.PassportModule,
+            jwt_1.JwtModule.registerAsync({
+                imports: [config_1.ConfigModule],
+                useFactory: async (configService) => ({
+                    secret: configService.get('JWT_SECRET'),
+                    signOptions: {
+                        expiresIn: configService.get('JWT_EXPIRATION') || '15m',
                     },
-                    count: { $sum: 1 },
-                },
-            },
-            {
-                $sort: { '_id.date': 1 },
-            },
-        ]);
-    }
-    async getPendingReports(page = 1, limit = 20) {
-        const skip = (page - 1) * limit;
-        const [reports, total] = await Promise.all([
-            this.scamReportModel
-                .find({ status: scam_report_schema_1.ReportStatus.PENDING })
-                .populate('reportedBy', 'name email city state')
-                .sort({ createdAt: -1 })
-                .skip(skip)
-                .limit(limit)
-                .exec(),
-            this.scamReportModel.countDocuments({ status: scam_report_schema_1.ReportStatus.PENDING }),
-        ]);
-        return {
-            reports,
-            pagination: {
-                total,
-                page,
-                limit,
-                pages: Math.ceil(total / limit),
-            },
-        };
-    }
-    async getAllUsers(page = 1, limit = 20) {
-        const skip = (page - 1) * limit;
-        const [users, total] = await Promise.all([
-            this.userModel
-                .find()
-                .select('-password -refreshTokens')
-                .sort({ createdAt: -1 })
-                .skip(skip)
-                .limit(limit)
-                .exec(),
-            this.userModel.countDocuments(),
-        ]);
-        return {
-            users,
-            pagination: {
-                total,
-                page,
-                limit,
-                pages: Math.ceil(total / limit),
-            },
-        };
-    }
-};
-exports.AdminService = AdminService;
-exports.AdminService = AdminService = __decorate([
-    (0, common_1.Injectable)(),
-    __param(0, (0, mongoose_1.InjectModel)(user_schema_1.User.name)),
-    __param(1, (0, mongoose_1.InjectModel)(scam_report_schema_1.ScamReport.name)),
-    __metadata("design:paramtypes", [typeof (_a = typeof mongoose_2.Model !== "undefined" && mongoose_2.Model) === "function" ? _a : Object, typeof (_b = typeof mongoose_2.Model !== "undefined" && mongoose_2.Model) === "function" ? _b : Object])
-], AdminService);
-
-
-/***/ }),
-
-/***/ "./src/modules/alerts/alerts.controller.ts":
-/*!*************************************************!*\
-  !*** ./src/modules/alerts/alerts.controller.ts ***!
-  \*************************************************/
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
-var _a, _b, _c, _d;
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.AlertsController = void 0;
-const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
-const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ "@nestjs/swagger");
-const alerts_service_1 = __webpack_require__(/*! ./alerts.service */ "./src/modules/alerts/alerts.service.ts");
-const create_alert_dto_1 = __webpack_require__(/*! ./dto/create-alert.dto */ "./src/modules/alerts/dto/create-alert.dto.ts");
-const jwt_auth_guard_1 = __webpack_require__(/*! ../auth/guards/jwt-auth.guard */ "./src/modules/auth/guards/jwt-auth.guard.ts");
-const roles_guard_1 = __webpack_require__(/*! ../auth/guards/roles.guard */ "./src/modules/auth/guards/roles.guard.ts");
-const roles_decorator_1 = __webpack_require__(/*! ../auth/decorators/roles.decorator */ "./src/modules/auth/decorators/roles.decorator.ts");
-const user_schema_1 = __webpack_require__(/*! ../users/schemas/user.schema */ "./src/modules/users/schemas/user.schema.ts");
-const alert_schema_1 = __webpack_require__(/*! ./schemas/alert.schema */ "./src/modules/alerts/schemas/alert.schema.ts");
-let AlertsController = class AlertsController {
-    constructor(alertsService) {
-        this.alertsService = alertsService;
-    }
-    async findAll(page, limit, city, state, alertType, severity) {
-        const filters = { city, state, alertType, severity };
-        return this.alertsService.findAll(filters, page, limit);
-    }
-    async getActiveAlerts(city, state) {
-        return this.alertsService.getActiveAlerts(city, state);
-    }
-    async findOne(id) {
-        return this.alertsService.findOne(id);
-    }
-    async create(createAlertDto, req) {
-        return this.alertsService.create(createAlertDto, req.user.userId);
-    }
-    async deactivate(id) {
-        return this.alertsService.deactivateAlert(id);
-    }
-};
-exports.AlertsController = AlertsController;
-__decorate([
-    (0, common_1.Get)(),
-    (0, swagger_1.ApiOperation)({
-        summary: 'Get all alerts',
-        description: '📢 View all fraud alerts in your area',
-    }),
-    (0, swagger_1.ApiQuery)({ name: 'page', required: false, example: 1 }),
-    (0, swagger_1.ApiQuery)({ name: 'limit', required: false, example: 20 }),
-    (0, swagger_1.ApiQuery)({ name: 'city', required: false }),
-    (0, swagger_1.ApiQuery)({ name: 'state', required: false }),
-    (0, swagger_1.ApiQuery)({ name: 'alertType', required: false, enum: alert_schema_1.AlertType }),
-    (0, swagger_1.ApiQuery)({ name: 'severity', required: false, enum: alert_schema_1.AlertSeverity }),
-    (0, swagger_1.ApiResponse)({
-        status: 200,
-        description: 'List of alerts',
-    }),
-    __param(0, (0, common_1.Query)('page')),
-    __param(1, (0, common_1.Query)('limit')),
-    __param(2, (0, common_1.Query)('city')),
-    __param(3, (0, common_1.Query)('state')),
-    __param(4, (0, common_1.Query)('alertType')),
-    __param(5, (0, common_1.Query)('severity')),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Number, Number, String, String, typeof (_b = typeof alert_schema_1.AlertType !== "undefined" && alert_schema_1.AlertType) === "function" ? _b : Object, typeof (_c = typeof alert_schema_1.AlertSeverity !== "undefined" && alert_schema_1.AlertSeverity) === "function" ? _c : Object]),
-    __metadata("design:returntype", Promise)
-], AlertsController.prototype, "findAll", null);
-__decorate([
-    (0, common_1.Get)('active'),
-    (0, swagger_1.ApiOperation)({
-        summary: 'Get active alerts',
-        description: '🚨 Get currently active fraud alerts for your location',
-    }),
-    (0, swagger_1.ApiQuery)({ name: 'city', required: false }),
-    (0, swagger_1.ApiQuery)({ name: 'state', required: false }),
-    (0, swagger_1.ApiResponse)({
-        status: 200,
-        description: 'Active alerts',
-    }),
-    __param(0, (0, common_1.Query)('city')),
-    __param(1, (0, common_1.Query)('state')),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, String]),
-    __metadata("design:returntype", Promise)
-], AlertsController.prototype, "getActiveAlerts", null);
-__decorate([
-    (0, common_1.Get)(':id'),
-    (0, swagger_1.ApiOperation)({
-        summary: 'Get alert details',
-        description: 'View detailed information about a specific alert',
-    }),
-    (0, swagger_1.ApiResponse)({
-        status: 200,
-        description: 'Alert details',
-    }),
-    __param(0, (0, common_1.Param)('id')),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
-    __metadata("design:returntype", Promise)
-], AlertsController.prototype, "findOne", null);
-__decorate([
-    (0, common_1.Post)(),
-    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard, roles_guard_1.RolesGuard),
-    (0, roles_decorator_1.Roles)(user_schema_1.UserRole.ADMIN, user_schema_1.UserRole.MODERATOR),
-    (0, swagger_1.ApiBearerAuth)('JWT-auth'),
-    (0, swagger_1.ApiOperation)({
-        summary: 'Create a new alert (Admin only)',
-        description: 'Create a fraud alert to warn the community',
-    }),
-    (0, swagger_1.ApiResponse)({
-        status: 201,
-        description: 'Alert created successfully',
-    }),
-    __param(0, (0, common_1.Body)()),
-    __param(1, (0, common_1.Request)()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [typeof (_d = typeof create_alert_dto_1.CreateAlertDto !== "undefined" && create_alert_dto_1.CreateAlertDto) === "function" ? _d : Object, Object]),
-    __metadata("design:returntype", Promise)
-], AlertsController.prototype, "create", null);
-__decorate([
-    (0, common_1.Patch)(':id/deactivate'),
-    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard, roles_guard_1.RolesGuard),
-    (0, roles_decorator_1.Roles)(user_schema_1.UserRole.ADMIN, user_schema_1.UserRole.MODERATOR),
-    (0, swagger_1.ApiBearerAuth)('JWT-auth'),
-    (0, swagger_1.ApiOperation)({
-        summary: 'Deactivate an alert (Admin only)',
-        description: 'Deactivate an alert when it is no longer relevant',
-    }),
-    (0, swagger_1.ApiResponse)({
-        status: 200,
-        description: 'Alert deactivated successfully',
-    }),
-    __param(0, (0, common_1.Param)('id')),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
-    __metadata("design:returntype", Promise)
-], AlertsController.prototype, "deactivate", null);
-exports.AlertsController = AlertsController = __decorate([
-    (0, swagger_1.ApiTags)('Alerts'),
-    (0, common_1.Controller)('alerts'),
-    __metadata("design:paramtypes", [typeof (_a = typeof alerts_service_1.AlertsService !== "undefined" && alerts_service_1.AlertsService) === "function" ? _a : Object])
-], AlertsController);
-
-
-/***/ }),
-
-/***/ "./src/modules/alerts/alerts.module.ts":
-/*!*********************************************!*\
-  !*** ./src/modules/alerts/alerts.module.ts ***!
-  \*********************************************/
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.AlertsModule = void 0;
-const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
-const mongoose_1 = __webpack_require__(/*! @nestjs/mongoose */ "@nestjs/mongoose");
-const alerts_controller_1 = __webpack_require__(/*! ./alerts.controller */ "./src/modules/alerts/alerts.controller.ts");
-const alerts_service_1 = __webpack_require__(/*! ./alerts.service */ "./src/modules/alerts/alerts.service.ts");
-const alert_schema_1 = __webpack_require__(/*! ./schemas/alert.schema */ "./src/modules/alerts/schemas/alert.schema.ts");
-let AlertsModule = class AlertsModule {
-};
-exports.AlertsModule = AlertsModule;
-exports.AlertsModule = AlertsModule = __decorate([
-    (0, common_1.Module)({
-        imports: [
-            mongoose_1.MongooseModule.forFeature([{ name: alert_schema_1.Alert.name, schema: alert_schema_1.AlertSchema }]),
+                }),
+                inject: [config_1.ConfigService],
+            }),
+            mongoose_1.MongooseModule.forFeature([{ name: user_schema_1.User.name, schema: user_schema_1.UserSchema }]),
         ],
-        controllers: [alerts_controller_1.AlertsController],
-        providers: [alerts_service_1.AlertsService],
-        exports: [alerts_service_1.AlertsService],
+        controllers: [auth_controller_1.AuthController],
+        providers: [auth_service_1.AuthService, jwt_strategy_1.JwtStrategy, local_strategy_1.LocalStrategy],
+        exports: [auth_service_1.AuthService],
     })
-], AlertsModule);
+], AuthModule);
 
 
 /***/ }),
+/* 11 */
+/***/ ((module) => {
 
-/***/ "./src/modules/alerts/alerts.service.ts":
-/*!**********************************************!*\
-  !*** ./src/modules/alerts/alerts.service.ts ***!
-  \**********************************************/
+module.exports = require("@nestjs/jwt");
+
+/***/ }),
+/* 12 */
+/***/ ((module) => {
+
+module.exports = require("@nestjs/passport");
+
+/***/ }),
+/* 13 */
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -817,368 +194,16 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-var _a;
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.AlertsService = void 0;
-const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
-const mongoose_1 = __webpack_require__(/*! @nestjs/mongoose */ "@nestjs/mongoose");
-const mongoose_2 = __webpack_require__(/*! mongoose */ "mongoose");
-const alert_schema_1 = __webpack_require__(/*! ./schemas/alert.schema */ "./src/modules/alerts/schemas/alert.schema.ts");
-let AlertsService = class AlertsService {
-    constructor(alertModel) {
-        this.alertModel = alertModel;
-    }
-    async create(createAlertDto, adminId) {
-        const alert = await this.alertModel.create({
-            ...createAlertDto,
-            createdBy: new mongoose_2.Types.ObjectId(adminId),
-        });
-        return {
-            message: 'Alert created successfully',
-            alert,
-        };
-    }
-    async findAll(filters = {}, page = 1, limit = 20) {
-        const skip = (page - 1) * limit;
-        const query = { isActive: true };
-        if (filters.city) {
-            query.city = new RegExp(filters.city, 'i');
-        }
-        if (filters.state) {
-            query.state = new RegExp(filters.state, 'i');
-        }
-        if (filters.alertType) {
-            query.alertType = filters.alertType;
-        }
-        if (filters.severity) {
-            query.severity = filters.severity;
-        }
-        const [alerts, total] = await Promise.all([
-            this.alertModel
-                .find(query)
-                .populate('createdBy', 'name')
-                .sort({ createdAt: -1 })
-                .skip(skip)
-                .limit(limit)
-                .exec(),
-            this.alertModel.countDocuments(query),
-        ]);
-        return {
-            alerts,
-            pagination: {
-                total,
-                page,
-                limit,
-                pages: Math.ceil(total / limit),
-            },
-        };
-    }
-    async findOne(id) {
-        const alert = await this.alertModel
-            .findById(id)
-            .populate('createdBy', 'name email');
-        if (!alert) {
-            throw new common_1.NotFoundException('Alert not found');
-        }
-        return alert;
-    }
-    async getActiveAlerts(city, state) {
-        const query = {
-            isActive: true,
-            $or: [{ expiresAt: { $exists: false } }, { expiresAt: { $gte: new Date() } }],
-        };
-        if (city) {
-            query.city = new RegExp(city, 'i');
-        }
-        if (state) {
-            query.state = new RegExp(state, 'i');
-        }
-        return this.alertModel
-            .find(query)
-            .populate('createdBy', 'name')
-            .sort({ severity: -1, createdAt: -1 })
-            .exec();
-    }
-    async deactivateAlert(id) {
-        const alert = await this.alertModel.findByIdAndUpdate(id, { isActive: false }, { new: true });
-        if (!alert) {
-            throw new common_1.NotFoundException('Alert not found');
-        }
-        return {
-            message: 'Alert deactivated successfully',
-            alert,
-        };
-    }
-    async deleteExpiredAlerts() {
-        const result = await this.alertModel.deleteMany({
-            expiresAt: { $lt: new Date() },
-        });
-        return {
-            message: `Deleted ${result.deletedCount} expired alerts`,
-            deletedCount: result.deletedCount,
-        };
-    }
-};
-exports.AlertsService = AlertsService;
-exports.AlertsService = AlertsService = __decorate([
-    (0, common_1.Injectable)(),
-    __param(0, (0, mongoose_1.InjectModel)(alert_schema_1.Alert.name)),
-    __metadata("design:paramtypes", [typeof (_a = typeof mongoose_2.Model !== "undefined" && mongoose_2.Model) === "function" ? _a : Object])
-], AlertsService);
-
-
-/***/ }),
-
-/***/ "./src/modules/alerts/dto/create-alert.dto.ts":
-/*!****************************************************!*\
-  !*** ./src/modules/alerts/dto/create-alert.dto.ts ***!
-  \****************************************************/
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var _a, _b, _c;
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.CreateAlertDto = void 0;
-const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ "@nestjs/swagger");
-const class_validator_1 = __webpack_require__(/*! class-validator */ "class-validator");
-const class_transformer_1 = __webpack_require__(/*! class-transformer */ "class-transformer");
-const alert_schema_1 = __webpack_require__(/*! ../schemas/alert.schema */ "./src/modules/alerts/schemas/alert.schema.ts");
-class CreateAlertDto {
-}
-exports.CreateAlertDto = CreateAlertDto;
-__decorate([
-    (0, swagger_1.ApiProperty)({
-        example: 'New UPI Scam Alert in Mumbai',
-        description: 'Alert title',
-    }),
-    (0, class_validator_1.IsString)(),
-    (0, class_validator_1.IsNotEmpty)(),
-    (0, class_validator_1.MaxLength)(200),
-    __metadata("design:type", String)
-], CreateAlertDto.prototype, "title", void 0);
-__decorate([
-    (0, swagger_1.ApiProperty)({
-        example: 'Multiple reports of fake payment links targeting senior citizens',
-        description: 'Alert message',
-    }),
-    (0, class_validator_1.IsString)(),
-    (0, class_validator_1.IsNotEmpty)(),
-    (0, class_validator_1.MaxLength)(1000),
-    __metadata("design:type", String)
-], CreateAlertDto.prototype, "message", void 0);
-__decorate([
-    (0, swagger_1.ApiProperty)({
-        enum: alert_schema_1.AlertType,
-        example: alert_schema_1.AlertType.AREA_ALERT,
-        description: 'Type of alert',
-    }),
-    (0, class_validator_1.IsEnum)(alert_schema_1.AlertType),
-    (0, class_validator_1.IsNotEmpty)(),
-    __metadata("design:type", typeof (_a = typeof alert_schema_1.AlertType !== "undefined" && alert_schema_1.AlertType) === "function" ? _a : Object)
-], CreateAlertDto.prototype, "alertType", void 0);
-__decorate([
-    (0, swagger_1.ApiProperty)({
-        enum: alert_schema_1.AlertSeverity,
-        example: alert_schema_1.AlertSeverity.WARNING,
-        description: 'Severity level',
-    }),
-    (0, class_validator_1.IsEnum)(alert_schema_1.AlertSeverity),
-    (0, class_validator_1.IsNotEmpty)(),
-    __metadata("design:type", typeof (_b = typeof alert_schema_1.AlertSeverity !== "undefined" && alert_schema_1.AlertSeverity) === "function" ? _b : Object)
-], CreateAlertDto.prototype, "severity", void 0);
-__decorate([
-    (0, swagger_1.ApiProperty)({
-        example: 'Mumbai',
-        description: 'City (optional)',
-        required: false,
-    }),
-    (0, class_validator_1.IsOptional)(),
-    (0, class_validator_1.IsString)(),
-    __metadata("design:type", String)
-], CreateAlertDto.prototype, "city", void 0);
-__decorate([
-    (0, swagger_1.ApiProperty)({
-        example: 'Maharashtra',
-        description: 'State (optional)',
-        required: false,
-    }),
-    (0, class_validator_1.IsOptional)(),
-    (0, class_validator_1.IsString)(),
-    __metadata("design:type", String)
-], CreateAlertDto.prototype, "state", void 0);
-__decorate([
-    (0, swagger_1.ApiProperty)({
-        example: ['upi_scam'],
-        description: 'Related scam types',
-        required: false,
-    }),
-    (0, class_validator_1.IsOptional)(),
-    __metadata("design:type", Array)
-], CreateAlertDto.prototype, "relatedScamTypes", void 0);
-__decorate([
-    (0, swagger_1.ApiProperty)({
-        example: '2024-12-31T23:59:59Z',
-        description: 'Alert expiration date (optional)',
-        required: false,
-    }),
-    (0, class_validator_1.IsOptional)(),
-    (0, class_transformer_1.Type)(() => Date),
-    (0, class_validator_1.IsDate)(),
-    __metadata("design:type", typeof (_c = typeof Date !== "undefined" && Date) === "function" ? _c : Object)
-], CreateAlertDto.prototype, "expiresAt", void 0);
-
-
-/***/ }),
-
-/***/ "./src/modules/alerts/schemas/alert.schema.ts":
-/*!****************************************************!*\
-  !*** ./src/modules/alerts/schemas/alert.schema.ts ***!
-  \****************************************************/
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var _a, _b, _c, _d;
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.AlertSchema = exports.Alert = exports.AlertSeverity = exports.AlertType = void 0;
-const mongoose_1 = __webpack_require__(/*! @nestjs/mongoose */ "@nestjs/mongoose");
-const mongoose_2 = __webpack_require__(/*! mongoose */ "mongoose");
-const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ "@nestjs/swagger");
-var AlertType;
-(function (AlertType) {
-    AlertType["TRENDING_SCAM"] = "trending_scam";
-    AlertType["NEW_SCAM_PATTERN"] = "new_scam_pattern";
-    AlertType["AREA_ALERT"] = "area_alert";
-    AlertType["CRITICAL_THREAT"] = "critical_threat";
-})(AlertType || (exports.AlertType = AlertType = {}));
-var AlertSeverity;
-(function (AlertSeverity) {
-    AlertSeverity["INFO"] = "info";
-    AlertSeverity["WARNING"] = "warning";
-    AlertSeverity["CRITICAL"] = "critical";
-})(AlertSeverity || (exports.AlertSeverity = AlertSeverity = {}));
-let Alert = class Alert extends mongoose_2.Document {
-};
-exports.Alert = Alert;
-__decorate([
-    (0, swagger_1.ApiProperty)({ example: 'New UPI Scam Alert in Mumbai' }),
-    (0, mongoose_1.Prop)({ required: true }),
-    __metadata("design:type", String)
-], Alert.prototype, "title", void 0);
-__decorate([
-    (0, swagger_1.ApiProperty)({ example: 'Multiple reports of fake payment links in Mumbai area' }),
-    (0, mongoose_1.Prop)({ required: true }),
-    __metadata("design:type", String)
-], Alert.prototype, "message", void 0);
-__decorate([
-    (0, swagger_1.ApiProperty)({ enum: AlertType }),
-    (0, mongoose_1.Prop)({ type: String, enum: AlertType, required: true }),
-    __metadata("design:type", String)
-], Alert.prototype, "alertType", void 0);
-__decorate([
-    (0, swagger_1.ApiProperty)({ enum: AlertSeverity }),
-    (0, mongoose_1.Prop)({ type: String, enum: AlertSeverity, default: AlertSeverity.INFO }),
-    __metadata("design:type", String)
-], Alert.prototype, "severity", void 0);
-__decorate([
-    (0, swagger_1.ApiProperty)({ example: 'Mumbai' }),
-    (0, mongoose_1.Prop)(),
-    __metadata("design:type", String)
-], Alert.prototype, "city", void 0);
-__decorate([
-    (0, swagger_1.ApiProperty)({ example: 'Maharashtra' }),
-    (0, mongoose_1.Prop)(),
-    __metadata("design:type", String)
-], Alert.prototype, "state", void 0);
-__decorate([
-    (0, swagger_1.ApiProperty)({ example: ['upi_scam'] }),
-    (0, mongoose_1.Prop)({ type: [String], default: [] }),
-    __metadata("design:type", Array)
-], Alert.prototype, "relatedScamTypes", void 0);
-__decorate([
-    (0, swagger_1.ApiProperty)({ example: true }),
-    (0, mongoose_1.Prop)({ default: true }),
-    __metadata("design:type", Boolean)
-], Alert.prototype, "isActive", void 0);
-__decorate([
-    (0, mongoose_1.Prop)({ type: mongoose_2.Types.ObjectId, ref: 'User', required: true }),
-    __metadata("design:type", typeof (_a = typeof mongoose_2.Types !== "undefined" && mongoose_2.Types.ObjectId) === "function" ? _a : Object)
-], Alert.prototype, "createdBy", void 0);
-__decorate([
-    (0, swagger_1.ApiProperty)(),
-    (0, mongoose_1.Prop)(),
-    __metadata("design:type", typeof (_b = typeof Date !== "undefined" && Date) === "function" ? _b : Object)
-], Alert.prototype, "expiresAt", void 0);
-__decorate([
-    (0, swagger_1.ApiProperty)(),
-    (0, mongoose_1.Prop)(),
-    __metadata("design:type", typeof (_c = typeof Date !== "undefined" && Date) === "function" ? _c : Object)
-], Alert.prototype, "createdAt", void 0);
-__decorate([
-    (0, swagger_1.ApiProperty)(),
-    (0, mongoose_1.Prop)(),
-    __metadata("design:type", typeof (_d = typeof Date !== "undefined" && Date) === "function" ? _d : Object)
-], Alert.prototype, "updatedAt", void 0);
-exports.Alert = Alert = __decorate([
-    (0, mongoose_1.Schema)({ timestamps: true })
-], Alert);
-exports.AlertSchema = mongoose_1.SchemaFactory.createForClass(Alert);
-exports.AlertSchema.index({ isActive: 1 });
-exports.AlertSchema.index({ alertType: 1 });
-exports.AlertSchema.index({ severity: 1 });
-exports.AlertSchema.index({ city: 1, state: 1 });
-exports.AlertSchema.index({ createdAt: -1 });
-exports.AlertSchema.index({ expiresAt: 1 });
-
-
-/***/ }),
-
-/***/ "./src/modules/auth/auth.controller.ts":
-/*!*********************************************!*\
-  !*** ./src/modules/auth/auth.controller.ts ***!
-  \*********************************************/
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
-var _a, _b, _c, _d, _e;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.AuthController = void 0;
-const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
-const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ "@nestjs/swagger");
-const auth_service_1 = __webpack_require__(/*! ./auth.service */ "./src/modules/auth/auth.service.ts");
-const register_dto_1 = __webpack_require__(/*! ./dto/register.dto */ "./src/modules/auth/dto/register.dto.ts");
-const login_dto_1 = __webpack_require__(/*! ./dto/login.dto */ "./src/modules/auth/dto/login.dto.ts");
-const refresh_token_dto_1 = __webpack_require__(/*! ./dto/refresh-token.dto */ "./src/modules/auth/dto/refresh-token.dto.ts");
-const jwt_auth_guard_1 = __webpack_require__(/*! ./guards/jwt-auth.guard */ "./src/modules/auth/guards/jwt-auth.guard.ts");
+const openapi = __webpack_require__(3);
+const common_1 = __webpack_require__(2);
+const swagger_1 = __webpack_require__(3);
+const auth_service_1 = __webpack_require__(14);
+const register_dto_1 = __webpack_require__(18);
+const login_dto_1 = __webpack_require__(20);
+const refresh_token_dto_1 = __webpack_require__(21);
+const jwt_auth_guard_1 = __webpack_require__(22);
 let AuthController = class AuthController {
     constructor(authService) {
         this.authService = authService;
@@ -1224,10 +249,11 @@ __decorate([
         },
     }),
     (0, swagger_1.ApiResponse)({ status: 409, description: 'User already exists' }),
+    openapi.ApiResponse({ status: 201 }),
     __param(0, (0, common_1.Body)()),
     __param(1, (0, common_1.Ip)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [typeof (_b = typeof register_dto_1.RegisterDto !== "undefined" && register_dto_1.RegisterDto) === "function" ? _b : Object, String]),
+    __metadata("design:paramtypes", [register_dto_1.RegisterDto, String]),
     __metadata("design:returntype", Promise)
 ], AuthController.prototype, "register", null);
 __decorate([
@@ -1255,10 +281,11 @@ __decorate([
         },
     }),
     (0, swagger_1.ApiResponse)({ status: 401, description: 'Invalid credentials' }),
+    openapi.ApiResponse({ status: common_1.HttpStatus.OK }),
     __param(0, (0, common_1.Body)()),
     __param(1, (0, common_1.Ip)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [typeof (_c = typeof login_dto_1.LoginDto !== "undefined" && login_dto_1.LoginDto) === "function" ? _c : Object, String]),
+    __metadata("design:paramtypes", [login_dto_1.LoginDto, String]),
     __metadata("design:returntype", Promise)
 ], AuthController.prototype, "login", null);
 __decorate([
@@ -1280,9 +307,10 @@ __decorate([
         },
     }),
     (0, swagger_1.ApiResponse)({ status: 401, description: 'Invalid refresh token' }),
+    openapi.ApiResponse({ status: common_1.HttpStatus.OK }),
     __param(0, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [typeof (_d = typeof refresh_token_dto_1.RefreshTokenDto !== "undefined" && refresh_token_dto_1.RefreshTokenDto) === "function" ? _d : Object]),
+    __metadata("design:paramtypes", [refresh_token_dto_1.RefreshTokenDto]),
     __metadata("design:returntype", Promise)
 ], AuthController.prototype, "refresh", null);
 __decorate([
@@ -1303,78 +331,22 @@ __decorate([
             },
         },
     }),
+    openapi.ApiResponse({ status: common_1.HttpStatus.OK }),
     __param(0, (0, common_1.Request)()),
     __param(1, (0, common_1.Body)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object, typeof (_e = typeof refresh_token_dto_1.RefreshTokenDto !== "undefined" && refresh_token_dto_1.RefreshTokenDto) === "function" ? _e : Object]),
+    __metadata("design:paramtypes", [Object, refresh_token_dto_1.RefreshTokenDto]),
     __metadata("design:returntype", Promise)
 ], AuthController.prototype, "logout", null);
 exports.AuthController = AuthController = __decorate([
     (0, swagger_1.ApiTags)('Authentication'),
     (0, common_1.Controller)('auth'),
-    __metadata("design:paramtypes", [typeof (_a = typeof auth_service_1.AuthService !== "undefined" && auth_service_1.AuthService) === "function" ? _a : Object])
+    __metadata("design:paramtypes", [auth_service_1.AuthService])
 ], AuthController);
 
 
 /***/ }),
-
-/***/ "./src/modules/auth/auth.module.ts":
-/*!*****************************************!*\
-  !*** ./src/modules/auth/auth.module.ts ***!
-  \*****************************************/
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.AuthModule = void 0;
-const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
-const jwt_1 = __webpack_require__(/*! @nestjs/jwt */ "@nestjs/jwt");
-const passport_1 = __webpack_require__(/*! @nestjs/passport */ "@nestjs/passport");
-const config_1 = __webpack_require__(/*! @nestjs/config */ "@nestjs/config");
-const mongoose_1 = __webpack_require__(/*! @nestjs/mongoose */ "@nestjs/mongoose");
-const auth_controller_1 = __webpack_require__(/*! ./auth.controller */ "./src/modules/auth/auth.controller.ts");
-const auth_service_1 = __webpack_require__(/*! ./auth.service */ "./src/modules/auth/auth.service.ts");
-const jwt_strategy_1 = __webpack_require__(/*! ./strategies/jwt.strategy */ "./src/modules/auth/strategies/jwt.strategy.ts");
-const local_strategy_1 = __webpack_require__(/*! ./strategies/local.strategy */ "./src/modules/auth/strategies/local.strategy.ts");
-const user_schema_1 = __webpack_require__(/*! ../users/schemas/user.schema */ "./src/modules/users/schemas/user.schema.ts");
-let AuthModule = class AuthModule {
-};
-exports.AuthModule = AuthModule;
-exports.AuthModule = AuthModule = __decorate([
-    (0, common_1.Module)({
-        imports: [
-            passport_1.PassportModule,
-            jwt_1.JwtModule.registerAsync({
-                imports: [config_1.ConfigModule],
-                useFactory: async (configService) => ({
-                    secret: configService.get('JWT_SECRET'),
-                    signOptions: {
-                        expiresIn: configService.get('JWT_EXPIRATION') || '15m',
-                    },
-                }),
-                inject: [config_1.ConfigService],
-            }),
-            mongoose_1.MongooseModule.forFeature([{ name: user_schema_1.User.name, schema: user_schema_1.UserSchema }]),
-        ],
-        controllers: [auth_controller_1.AuthController],
-        providers: [auth_service_1.AuthService, jwt_strategy_1.JwtStrategy, local_strategy_1.LocalStrategy],
-        exports: [auth_service_1.AuthService],
-    })
-], AuthModule);
-
-
-/***/ }),
-
-/***/ "./src/modules/auth/auth.service.ts":
-/*!******************************************!*\
-  !*** ./src/modules/auth/auth.service.ts ***!
-  \******************************************/
+/* 14 */
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -1390,16 +362,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-var _a, _b, _c;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.AuthService = void 0;
-const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
-const jwt_1 = __webpack_require__(/*! @nestjs/jwt */ "@nestjs/jwt");
-const mongoose_1 = __webpack_require__(/*! @nestjs/mongoose */ "@nestjs/mongoose");
-const mongoose_2 = __webpack_require__(/*! mongoose */ "mongoose");
-const bcrypt = __webpack_require__(/*! bcrypt */ "bcrypt");
-const config_1 = __webpack_require__(/*! @nestjs/config */ "@nestjs/config");
-const user_schema_1 = __webpack_require__(/*! ../users/schemas/user.schema */ "./src/modules/users/schemas/user.schema.ts");
+const common_1 = __webpack_require__(2);
+const jwt_1 = __webpack_require__(11);
+const mongoose_1 = __webpack_require__(8);
+const mongoose_2 = __webpack_require__(15);
+const bcrypt = __webpack_require__(16);
+const config_1 = __webpack_require__(4);
+const user_schema_1 = __webpack_require__(17);
 let AuthService = class AuthService {
     constructor(userModel, jwtService, configService) {
         this.userModel = userModel;
@@ -1414,7 +385,7 @@ let AuthService = class AuthService {
         if (existingUser) {
             throw new common_1.ConflictException('User with this email or mobile already exists');
         }
-        const rounds = this.configService.get('BCRYPT_ROUNDS') || 10;
+        const rounds = parseInt(this.configService.get('BCRYPT_ROUNDS') || '10', 10);
         const hashedPassword = await bcrypt.hash(password, rounds);
         const user = await this.userModel.create({
             email,
@@ -1491,7 +462,9 @@ let AuthService = class AuthService {
     }
     async validateUser(email, password) {
         const user = await this.userModel.findOne({ email }).select('+password');
-        if (user && (await bcrypt.compare(password, user.password))) {
+        if (!user || !user.password)
+            return null;
+        if (await bcrypt.compare(password, user.password)) {
             return this.sanitizeUser(user);
         }
         return null;
@@ -1524,32 +497,26 @@ exports.AuthService = AuthService;
 exports.AuthService = AuthService = __decorate([
     (0, common_1.Injectable)(),
     __param(0, (0, mongoose_1.InjectModel)(user_schema_1.User.name)),
-    __metadata("design:paramtypes", [typeof (_a = typeof mongoose_2.Model !== "undefined" && mongoose_2.Model) === "function" ? _a : Object, typeof (_b = typeof jwt_1.JwtService !== "undefined" && jwt_1.JwtService) === "function" ? _b : Object, typeof (_c = typeof config_1.ConfigService !== "undefined" && config_1.ConfigService) === "function" ? _c : Object])
+    __metadata("design:paramtypes", [mongoose_2.Model,
+        jwt_1.JwtService,
+        config_1.ConfigService])
 ], AuthService);
 
 
 /***/ }),
+/* 15 */
+/***/ ((module) => {
 
-/***/ "./src/modules/auth/decorators/roles.decorator.ts":
-/*!********************************************************!*\
-  !*** ./src/modules/auth/decorators/roles.decorator.ts ***!
-  \********************************************************/
-/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
-
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.Roles = void 0;
-const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
-const Roles = (...roles) => (0, common_1.SetMetadata)('roles', roles);
-exports.Roles = Roles;
-
+module.exports = require("mongoose");
 
 /***/ }),
+/* 16 */
+/***/ ((module) => {
 
-/***/ "./src/modules/auth/dto/login.dto.ts":
-/*!*******************************************!*\
-  !*** ./src/modules/auth/dto/login.dto.ts ***!
-  \*******************************************/
+module.exports = require("bcrypt");
+
+/***/ }),
+/* 17 */
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -1563,74 +530,104 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.LoginDto = void 0;
-const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ "@nestjs/swagger");
-const class_validator_1 = __webpack_require__(/*! class-validator */ "class-validator");
-class LoginDto {
-}
-exports.LoginDto = LoginDto;
+exports.UserSchema = exports.User = exports.UserRole = void 0;
+const mongoose_1 = __webpack_require__(8);
+const mongoose_2 = __webpack_require__(15);
+const swagger_1 = __webpack_require__(3);
+var UserRole;
+(function (UserRole) {
+    UserRole["USER"] = "user";
+    UserRole["ADMIN"] = "admin";
+    UserRole["MODERATOR"] = "moderator";
+})(UserRole || (exports.UserRole = UserRole = {}));
+let User = class User extends mongoose_2.Document {
+};
+exports.User = User;
 __decorate([
-    (0, swagger_1.ApiProperty)({
-        example: 'john.doe@example.com',
-        description: 'User email address',
-    }),
-    (0, class_validator_1.IsEmail)({}, { message: 'Please provide a valid email address' }),
-    (0, class_validator_1.IsNotEmpty)({ message: 'Email is required' }),
+    (0, swagger_1.ApiProperty)({ example: 'john.doe@example.com' }),
+    (0, mongoose_1.Prop)({ required: true, unique: true, lowercase: true, trim: true }),
     __metadata("design:type", String)
-], LoginDto.prototype, "email", void 0);
+], User.prototype, "email", void 0);
 __decorate([
-    (0, swagger_1.ApiProperty)({
-        example: 'SecurePass123!',
-        description: 'User password',
-    }),
-    (0, class_validator_1.IsString)(),
-    (0, class_validator_1.IsNotEmpty)({ message: 'Password is required' }),
+    (0, swagger_1.ApiProperty)({ example: '+919876543210' }),
+    (0, mongoose_1.Prop)({ required: true, unique: true, trim: true }),
     __metadata("design:type", String)
-], LoginDto.prototype, "password", void 0);
+], User.prototype, "mobile", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({ example: 'John Doe' }),
+    (0, mongoose_1.Prop)({ required: true, trim: true }),
+    __metadata("design:type", String)
+], User.prototype, "name", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({ required: true, select: false }),
+    __metadata("design:type", String)
+], User.prototype, "password", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({ enum: UserRole, example: UserRole.USER }),
+    (0, mongoose_1.Prop)({ type: String, enum: UserRole, default: UserRole.USER }),
+    __metadata("design:type", String)
+], User.prototype, "role", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({ example: true }),
+    (0, mongoose_1.Prop)({ default: true }),
+    __metadata("design:type", Boolean)
+], User.prototype, "isActive", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({ example: false }),
+    (0, mongoose_1.Prop)({ default: false }),
+    __metadata("design:type", Boolean)
+], User.prototype, "isEmailVerified", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({ example: false }),
+    (0, mongoose_1.Prop)({ default: false }),
+    __metadata("design:type", Boolean)
+], User.prototype, "isMobileVerified", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({ example: 'Mumbai' }),
+    (0, mongoose_1.Prop)({ trim: true }),
+    __metadata("design:type", String)
+], User.prototype, "city", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({ example: 'Maharashtra' }),
+    (0, mongoose_1.Prop)({ trim: true }),
+    __metadata("design:type", String)
+], User.prototype, "state", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({ example: '192.168.1.1' }),
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", String)
+], User.prototype, "lastLoginIp", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)(),
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", Date)
+], User.prototype, "lastLoginAt", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({ type: [String], default: [] }),
+    __metadata("design:type", Array)
+], User.prototype, "refreshTokens", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)(),
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", Date)
+], User.prototype, "createdAt", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)(),
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", Date)
+], User.prototype, "updatedAt", void 0);
+exports.User = User = __decorate([
+    (0, mongoose_1.Schema)({ timestamps: true })
+], User);
+exports.UserSchema = mongoose_1.SchemaFactory.createForClass(User);
+exports.UserSchema.index({ email: 1 });
+exports.UserSchema.index({ mobile: 1 });
+exports.UserSchema.index({ role: 1 });
+exports.UserSchema.index({ city: 1, state: 1 });
 
 
 /***/ }),
-
-/***/ "./src/modules/auth/dto/refresh-token.dto.ts":
-/*!***************************************************!*\
-  !*** ./src/modules/auth/dto/refresh-token.dto.ts ***!
-  \***************************************************/
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.RefreshTokenDto = void 0;
-const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ "@nestjs/swagger");
-const class_validator_1 = __webpack_require__(/*! class-validator */ "class-validator");
-class RefreshTokenDto {
-}
-exports.RefreshTokenDto = RefreshTokenDto;
-__decorate([
-    (0, swagger_1.ApiProperty)({
-        example: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...',
-        description: 'Refresh token received during login',
-    }),
-    (0, class_validator_1.IsString)(),
-    (0, class_validator_1.IsNotEmpty)({ message: 'Refresh token is required' }),
-    __metadata("design:type", String)
-], RefreshTokenDto.prototype, "refreshToken", void 0);
-
-
-/***/ }),
-
-/***/ "./src/modules/auth/dto/register.dto.ts":
-/*!**********************************************!*\
-  !*** ./src/modules/auth/dto/register.dto.ts ***!
-  \**********************************************/
+/* 18 */
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -1645,9 +642,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.RegisterDto = void 0;
-const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ "@nestjs/swagger");
-const class_validator_1 = __webpack_require__(/*! class-validator */ "class-validator");
+const openapi = __webpack_require__(3);
+const swagger_1 = __webpack_require__(3);
+const class_validator_1 = __webpack_require__(19);
 class RegisterDto {
+    static _OPENAPI_METADATA_FACTORY() {
+        return { email: { required: true, type: () => String }, mobile: { required: true, type: () => String, pattern: "/^\\+91[6-9]\\d{9}$/" }, name: { required: true, type: () => String, minLength: 2, maxLength: 100 }, password: { required: true, type: () => String, minLength: 8, pattern: "/^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)/" }, city: { required: false, type: () => String }, state: { required: false, type: () => String } };
+    }
 }
 exports.RegisterDto = RegisterDto;
 __decorate([
@@ -1718,11 +719,94 @@ __decorate([
 
 
 /***/ }),
+/* 19 */
+/***/ ((module) => {
 
-/***/ "./src/modules/auth/guards/jwt-auth.guard.ts":
-/*!***************************************************!*\
-  !*** ./src/modules/auth/guards/jwt-auth.guard.ts ***!
-  \***************************************************/
+module.exports = require("class-validator");
+
+/***/ }),
+/* 20 */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.LoginDto = void 0;
+const openapi = __webpack_require__(3);
+const swagger_1 = __webpack_require__(3);
+const class_validator_1 = __webpack_require__(19);
+class LoginDto {
+    static _OPENAPI_METADATA_FACTORY() {
+        return { email: { required: true, type: () => String }, password: { required: true, type: () => String } };
+    }
+}
+exports.LoginDto = LoginDto;
+__decorate([
+    (0, swagger_1.ApiProperty)({
+        example: 'john.doe@example.com',
+        description: 'User email address',
+    }),
+    (0, class_validator_1.IsEmail)({}, { message: 'Please provide a valid email address' }),
+    (0, class_validator_1.IsNotEmpty)({ message: 'Email is required' }),
+    __metadata("design:type", String)
+], LoginDto.prototype, "email", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({
+        example: 'SecurePass123!',
+        description: 'User password',
+    }),
+    (0, class_validator_1.IsString)(),
+    (0, class_validator_1.IsNotEmpty)({ message: 'Password is required' }),
+    __metadata("design:type", String)
+], LoginDto.prototype, "password", void 0);
+
+
+/***/ }),
+/* 21 */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.RefreshTokenDto = void 0;
+const openapi = __webpack_require__(3);
+const swagger_1 = __webpack_require__(3);
+const class_validator_1 = __webpack_require__(19);
+class RefreshTokenDto {
+    static _OPENAPI_METADATA_FACTORY() {
+        return { refreshToken: { required: true, type: () => String } };
+    }
+}
+exports.RefreshTokenDto = RefreshTokenDto;
+__decorate([
+    (0, swagger_1.ApiProperty)({
+        example: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...',
+        description: 'Refresh token received during login',
+    }),
+    (0, class_validator_1.IsString)(),
+    (0, class_validator_1.IsNotEmpty)({ message: 'Refresh token is required' }),
+    __metadata("design:type", String)
+], RefreshTokenDto.prototype, "refreshToken", void 0);
+
+
+/***/ }),
+/* 22 */
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -1734,8 +818,8 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.JwtAuthGuard = void 0;
-const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
-const passport_1 = __webpack_require__(/*! @nestjs/passport */ "@nestjs/passport");
+const common_1 = __webpack_require__(2);
+const passport_1 = __webpack_require__(12);
 let JwtAuthGuard = class JwtAuthGuard extends (0, passport_1.AuthGuard)('jwt') {
     canActivate(context) {
         return super.canActivate(context);
@@ -1748,11 +832,7 @@ exports.JwtAuthGuard = JwtAuthGuard = __decorate([
 
 
 /***/ }),
-
-/***/ "./src/modules/auth/guards/roles.guard.ts":
-/*!************************************************!*\
-  !*** ./src/modules/auth/guards/roles.guard.ts ***!
-  \************************************************/
+/* 23 */
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -1765,59 +845,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var _a;
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.RolesGuard = void 0;
-const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
-const core_1 = __webpack_require__(/*! @nestjs/core */ "@nestjs/core");
-let RolesGuard = class RolesGuard {
-    constructor(reflector) {
-        this.reflector = reflector;
-    }
-    canActivate(context) {
-        const requiredRoles = this.reflector.getAllAndOverride('roles', [
-            context.getHandler(),
-            context.getClass(),
-        ]);
-        if (!requiredRoles) {
-            return true;
-        }
-        const { user } = context.switchToHttp().getRequest();
-        return requiredRoles.some((role) => user.role === role);
-    }
-};
-exports.RolesGuard = RolesGuard;
-exports.RolesGuard = RolesGuard = __decorate([
-    (0, common_1.Injectable)(),
-    __metadata("design:paramtypes", [typeof (_a = typeof core_1.Reflector !== "undefined" && core_1.Reflector) === "function" ? _a : Object])
-], RolesGuard);
-
-
-/***/ }),
-
-/***/ "./src/modules/auth/strategies/jwt.strategy.ts":
-/*!*****************************************************!*\
-  !*** ./src/modules/auth/strategies/jwt.strategy.ts ***!
-  \*****************************************************/
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var _a;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.JwtStrategy = void 0;
-const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
-const passport_1 = __webpack_require__(/*! @nestjs/passport */ "@nestjs/passport");
-const passport_jwt_1 = __webpack_require__(/*! passport-jwt */ "passport-jwt");
-const config_1 = __webpack_require__(/*! @nestjs/config */ "@nestjs/config");
+const common_1 = __webpack_require__(2);
+const passport_1 = __webpack_require__(12);
+const passport_jwt_1 = __webpack_require__(24);
+const config_1 = __webpack_require__(4);
 let JwtStrategy = class JwtStrategy extends (0, passport_1.PassportStrategy)(passport_jwt_1.Strategy) {
     constructor(configService) {
         super({
@@ -1838,16 +871,18 @@ let JwtStrategy = class JwtStrategy extends (0, passport_1.PassportStrategy)(pas
 exports.JwtStrategy = JwtStrategy;
 exports.JwtStrategy = JwtStrategy = __decorate([
     (0, common_1.Injectable)(),
-    __metadata("design:paramtypes", [typeof (_a = typeof config_1.ConfigService !== "undefined" && config_1.ConfigService) === "function" ? _a : Object])
+    __metadata("design:paramtypes", [config_1.ConfigService])
 ], JwtStrategy);
 
 
 /***/ }),
+/* 24 */
+/***/ ((module) => {
 
-/***/ "./src/modules/auth/strategies/local.strategy.ts":
-/*!*******************************************************!*\
-  !*** ./src/modules/auth/strategies/local.strategy.ts ***!
-  \*******************************************************/
+module.exports = require("passport-jwt");
+
+/***/ }),
+/* 25 */
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -1860,13 +895,12 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var _a;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.LocalStrategy = void 0;
-const passport_local_1 = __webpack_require__(/*! passport-local */ "passport-local");
-const passport_1 = __webpack_require__(/*! @nestjs/passport */ "@nestjs/passport");
-const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
-const auth_service_1 = __webpack_require__(/*! ../auth.service */ "./src/modules/auth/auth.service.ts");
+const passport_local_1 = __webpack_require__(26);
+const passport_1 = __webpack_require__(12);
+const common_1 = __webpack_require__(2);
+const auth_service_1 = __webpack_require__(14);
 let LocalStrategy = class LocalStrategy extends (0, passport_1.PassportStrategy)(passport_local_1.Strategy) {
     constructor(authService) {
         super({ usernameField: 'email' });
@@ -1883,210 +917,18 @@ let LocalStrategy = class LocalStrategy extends (0, passport_1.PassportStrategy)
 exports.LocalStrategy = LocalStrategy;
 exports.LocalStrategy = LocalStrategy = __decorate([
     (0, common_1.Injectable)(),
-    __metadata("design:paramtypes", [typeof (_a = typeof auth_service_1.AuthService !== "undefined" && auth_service_1.AuthService) === "function" ? _a : Object])
+    __metadata("design:paramtypes", [auth_service_1.AuthService])
 ], LocalStrategy);
 
 
 /***/ }),
+/* 26 */
+/***/ ((module) => {
 
-/***/ "./src/modules/scam-entities/scam-entities.controller.ts":
-/*!***************************************************************!*\
-  !*** ./src/modules/scam-entities/scam-entities.controller.ts ***!
-  \***************************************************************/
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
-var _a, _b;
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.ScamEntitiesController = void 0;
-const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
-const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ "@nestjs/swagger");
-const scam_entities_service_1 = __webpack_require__(/*! ./scam-entities.service */ "./src/modules/scam-entities/scam-entities.service.ts");
-const jwt_auth_guard_1 = __webpack_require__(/*! ../auth/guards/jwt-auth.guard */ "./src/modules/auth/guards/jwt-auth.guard.ts");
-const roles_guard_1 = __webpack_require__(/*! ../auth/guards/roles.guard */ "./src/modules/auth/guards/roles.guard.ts");
-const roles_decorator_1 = __webpack_require__(/*! ../auth/decorators/roles.decorator */ "./src/modules/auth/decorators/roles.decorator.ts");
-const user_schema_1 = __webpack_require__(/*! ../users/schemas/user.schema */ "./src/modules/users/schemas/user.schema.ts");
-const scam_entity_schema_1 = __webpack_require__(/*! ./schemas/scam-entity.schema */ "./src/modules/scam-entities/schemas/scam-entity.schema.ts");
-let ScamEntitiesController = class ScamEntitiesController {
-    constructor(scamEntitiesService) {
-        this.scamEntitiesService = scamEntitiesService;
-    }
-    async lookup(entityValue) {
-        return this.scamEntitiesService.lookup(entityValue);
-    }
-    async search(query, entityType, page, limit) {
-        return this.scamEntitiesService.search(query, entityType, page, limit);
-    }
-    async getTopScammers(limit) {
-        return this.scamEntitiesService.getTopScammers(limit);
-    }
-    async getHighRiskEntities(limit) {
-        return this.scamEntitiesService.getHighRiskEntities(limit);
-    }
-    async blockEntity(entityValue) {
-        return this.scamEntitiesService.blockEntity(entityValue);
-    }
-    async unblockEntity(entityValue) {
-        return this.scamEntitiesService.unblockEntity(entityValue);
-    }
-};
-exports.ScamEntitiesController = ScamEntitiesController;
-__decorate([
-    (0, common_1.Get)('check/:entityValue'),
-    (0, swagger_1.ApiOperation)({
-        summary: 'Check if a number/URL is reported as scam',
-        description: '🔍 Instantly check if a phone number, URL, or app has been reported as a scam',
-    }),
-    (0, swagger_1.ApiResponse)({
-        status: 200,
-        description: 'Lookup result',
-        schema: {
-            examples: {
-                found: {
-                    value: {
-                        found: true,
-                        message: '🚨 CRITICAL ALERT: This phone_number has been reported 150 times! DO NOT ENGAGE!',
-                        entity: {
-                            entityType: 'phone_number',
-                            entityValue: '+919876543210',
-                            reportCount: 150,
-                            riskLevel: 'critical',
-                            reputationScore: 5.0,
-                            scamCategories: ['upi_scam', 'whatsapp_fraud'],
-                            totalAmountLost: 500000,
-                        },
-                    },
-                },
-                notFound: {
-                    value: {
-                        found: false,
-                        message: '✅ No reports found for this number/URL. Stay vigilant!',
-                        entityValue: '+919999999999',
-                    },
-                },
-            },
-        },
-    }),
-    __param(0, (0, common_1.Param)('entityValue')),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
-    __metadata("design:returntype", Promise)
-], ScamEntitiesController.prototype, "lookup", null);
-__decorate([
-    (0, common_1.Get)('search'),
-    (0, swagger_1.ApiOperation)({
-        summary: 'Search for scam entities',
-        description: 'Search through reported numbers, URLs, and apps',
-    }),
-    (0, swagger_1.ApiQuery)({ name: 'query', required: true, example: '+9198765' }),
-    (0, swagger_1.ApiQuery)({ name: 'entityType', required: false, enum: scam_entity_schema_1.EntityType }),
-    (0, swagger_1.ApiQuery)({ name: 'page', required: false, example: 1 }),
-    (0, swagger_1.ApiQuery)({ name: 'limit', required: false, example: 20 }),
-    (0, swagger_1.ApiResponse)({
-        status: 200,
-        description: 'Search results',
-    }),
-    __param(0, (0, common_1.Query)('query')),
-    __param(1, (0, common_1.Query)('entityType')),
-    __param(2, (0, common_1.Query)('page')),
-    __param(3, (0, common_1.Query)('limit')),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String, typeof (_b = typeof scam_entity_schema_1.EntityType !== "undefined" && scam_entity_schema_1.EntityType) === "function" ? _b : Object, Number, Number]),
-    __metadata("design:returntype", Promise)
-], ScamEntitiesController.prototype, "search", null);
-__decorate([
-    (0, common_1.Get)('top-scammers'),
-    (0, swagger_1.ApiOperation)({
-        summary: 'Get most reported scammers',
-        description: '📊 View the most frequently reported scam numbers and URLs',
-    }),
-    (0, swagger_1.ApiQuery)({ name: 'limit', required: false, example: 50 }),
-    (0, swagger_1.ApiResponse)({
-        status: 200,
-        description: 'Top scammers list',
-    }),
-    __param(0, (0, common_1.Query)('limit')),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Number]),
-    __metadata("design:returntype", Promise)
-], ScamEntitiesController.prototype, "getTopScammers", null);
-__decorate([
-    (0, common_1.Get)('high-risk'),
-    (0, swagger_1.ApiOperation)({
-        summary: 'Get high-risk entities',
-        description: '🚨 View all critical and high-risk scam entities',
-    }),
-    (0, swagger_1.ApiQuery)({ name: 'limit', required: false, example: 50 }),
-    (0, swagger_1.ApiResponse)({
-        status: 200,
-        description: 'High-risk entities',
-    }),
-    __param(0, (0, common_1.Query)('limit')),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Number]),
-    __metadata("design:returntype", Promise)
-], ScamEntitiesController.prototype, "getHighRiskEntities", null);
-__decorate([
-    (0, common_1.Post)('block/:entityValue'),
-    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard, roles_guard_1.RolesGuard),
-    (0, roles_decorator_1.Roles)(user_schema_1.UserRole.ADMIN, user_schema_1.UserRole.MODERATOR),
-    (0, swagger_1.ApiBearerAuth)('JWT-auth'),
-    (0, swagger_1.ApiOperation)({
-        summary: 'Block a scam entity (Admin only)',
-        description: 'Permanently block a scam number/URL',
-    }),
-    (0, swagger_1.ApiResponse)({
-        status: 200,
-        description: 'Entity blocked successfully',
-    }),
-    __param(0, (0, common_1.Param)('entityValue')),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
-    __metadata("design:returntype", Promise)
-], ScamEntitiesController.prototype, "blockEntity", null);
-__decorate([
-    (0, common_1.Post)('unblock/:entityValue'),
-    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard, roles_guard_1.RolesGuard),
-    (0, roles_decorator_1.Roles)(user_schema_1.UserRole.ADMIN, user_schema_1.UserRole.MODERATOR),
-    (0, swagger_1.ApiBearerAuth)('JWT-auth'),
-    (0, swagger_1.ApiOperation)({
-        summary: 'Unblock a scam entity (Admin only)',
-        description: 'Remove block from a number/URL',
-    }),
-    (0, swagger_1.ApiResponse)({
-        status: 200,
-        description: 'Entity unblocked successfully',
-    }),
-    __param(0, (0, common_1.Param)('entityValue')),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [String]),
-    __metadata("design:returntype", Promise)
-], ScamEntitiesController.prototype, "unblockEntity", null);
-exports.ScamEntitiesController = ScamEntitiesController = __decorate([
-    (0, swagger_1.ApiTags)('Scam Lookup'),
-    (0, common_1.Controller)('scam-lookup'),
-    __metadata("design:paramtypes", [typeof (_a = typeof scam_entities_service_1.ScamEntitiesService !== "undefined" && scam_entities_service_1.ScamEntitiesService) === "function" ? _a : Object])
-], ScamEntitiesController);
-
+module.exports = require("passport-local");
 
 /***/ }),
-
-/***/ "./src/modules/scam-entities/scam-entities.module.ts":
-/*!***********************************************************!*\
-  !*** ./src/modules/scam-entities/scam-entities.module.ts ***!
-  \***********************************************************/
+/* 27 */
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -2097,35 +939,29 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.ScamEntitiesModule = void 0;
-const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
-const mongoose_1 = __webpack_require__(/*! @nestjs/mongoose */ "@nestjs/mongoose");
-const scam_entities_controller_1 = __webpack_require__(/*! ./scam-entities.controller */ "./src/modules/scam-entities/scam-entities.controller.ts");
-const scam_entities_service_1 = __webpack_require__(/*! ./scam-entities.service */ "./src/modules/scam-entities/scam-entities.service.ts");
-const scam_entity_schema_1 = __webpack_require__(/*! ./schemas/scam-entity.schema */ "./src/modules/scam-entities/schemas/scam-entity.schema.ts");
-let ScamEntitiesModule = class ScamEntitiesModule {
+exports.UsersModule = void 0;
+const common_1 = __webpack_require__(2);
+const mongoose_1 = __webpack_require__(8);
+const users_controller_1 = __webpack_require__(28);
+const users_service_1 = __webpack_require__(29);
+const user_schema_1 = __webpack_require__(17);
+let UsersModule = class UsersModule {
 };
-exports.ScamEntitiesModule = ScamEntitiesModule;
-exports.ScamEntitiesModule = ScamEntitiesModule = __decorate([
+exports.UsersModule = UsersModule;
+exports.UsersModule = UsersModule = __decorate([
     (0, common_1.Module)({
         imports: [
-            mongoose_1.MongooseModule.forFeature([
-                { name: scam_entity_schema_1.ScamEntity.name, schema: scam_entity_schema_1.ScamEntitySchema },
-            ]),
+            mongoose_1.MongooseModule.forFeature([{ name: user_schema_1.User.name, schema: user_schema_1.UserSchema }]),
         ],
-        controllers: [scam_entities_controller_1.ScamEntitiesController],
-        providers: [scam_entities_service_1.ScamEntitiesService],
-        exports: [scam_entities_service_1.ScamEntitiesService],
+        controllers: [users_controller_1.UsersController],
+        providers: [users_service_1.UsersService],
+        exports: [users_service_1.UsersService],
     })
-], ScamEntitiesModule);
+], UsersModule);
 
 
 /***/ }),
-
-/***/ "./src/modules/scam-entities/scam-entities.service.ts":
-/*!************************************************************!*\
-  !*** ./src/modules/scam-entities/scam-entities.service.ts ***!
-  \************************************************************/
+/* 28 */
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -2141,171 +977,130 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-var _a;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.ScamEntitiesService = void 0;
-const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
-const mongoose_1 = __webpack_require__(/*! @nestjs/mongoose */ "@nestjs/mongoose");
-const mongoose_2 = __webpack_require__(/*! mongoose */ "mongoose");
-const scam_entity_schema_1 = __webpack_require__(/*! ./schemas/scam-entity.schema */ "./src/modules/scam-entities/schemas/scam-entity.schema.ts");
-let ScamEntitiesService = class ScamEntitiesService {
-    constructor(scamEntityModel) {
-        this.scamEntityModel = scamEntityModel;
+exports.UsersController = void 0;
+const openapi = __webpack_require__(3);
+const common_1 = __webpack_require__(2);
+const swagger_1 = __webpack_require__(3);
+const users_service_1 = __webpack_require__(29);
+const jwt_auth_guard_1 = __webpack_require__(22);
+const update_profile_dto_1 = __webpack_require__(30);
+let UsersController = class UsersController {
+    constructor(usersService) {
+        this.usersService = usersService;
     }
-    async updateOrCreate(entityType, entityValue, scamType, amountLost) {
-        let entity = await this.scamEntityModel.findOne({ entityValue });
-        if (!entity) {
-            entity = await this.scamEntityModel.create({
-                entityType,
-                entityValue,
-                reportCount: 1,
-                scamCategories: [scamType],
-                totalAmountLost: amountLost || 0,
-                firstReportedAt: new Date(),
-                lastReportedAt: new Date(),
-            });
-        }
-        else {
-            entity.reportCount += 1;
-            entity.totalAmountLost += amountLost || 0;
-            entity.lastReportedAt = new Date();
-            if (!entity.scamCategories.includes(scamType)) {
-                entity.scamCategories.push(scamType);
-            }
-        }
-        entity.reputationScore = this.calculateReputationScore(entity);
-        entity.riskLevel = this.calculateRiskLevel(entity);
-        await entity.save();
-        return entity;
+    async getProfile(req) {
+        return this.usersService.getProfile(req.user.userId);
     }
-    async lookup(entityValue) {
-        const entity = await this.scamEntityModel.findOne({ entityValue });
-        if (!entity) {
-            return {
-                found: false,
-                message: '✅ No reports found for this number/URL. Stay vigilant!',
-                entityValue,
-            };
-        }
-        return {
-            found: true,
-            message: this.getWarningMessage(entity),
-            entity,
-        };
-    }
-    async search(query, entityType, page = 1, limit = 20) {
-        const skip = (page - 1) * limit;
-        const filter = {
-            entityValue: new RegExp(query, 'i'),
-        };
-        if (entityType) {
-            filter.entityType = entityType;
-        }
-        const [entities, total] = await Promise.all([
-            this.scamEntityModel
-                .find(filter)
-                .sort({ reportCount: -1 })
-                .skip(skip)
-                .limit(limit)
-                .exec(),
-            this.scamEntityModel.countDocuments(filter),
-        ]);
-        return {
-            entities,
-            pagination: {
-                total,
-                page,
-                limit,
-                pages: Math.ceil(total / limit),
-            },
-        };
-    }
-    async getTopScammers(limit = 50) {
-        return this.scamEntityModel
-            .find()
-            .sort({ reportCount: -1 })
-            .limit(limit)
-            .exec();
-    }
-    async getHighRiskEntities(limit = 50) {
-        return this.scamEntityModel
-            .find({ riskLevel: scam_entity_schema_1.RiskLevel.CRITICAL })
-            .sort({ reportCount: -1 })
-            .limit(limit)
-            .exec();
-    }
-    async blockEntity(entityValue) {
-        const entity = await this.scamEntityModel.findOne({ entityValue });
-        if (!entity) {
-            throw new common_1.NotFoundException('Entity not found');
-        }
-        entity.isBlocked = true;
-        await entity.save();
-        return {
-            message: 'Entity blocked successfully',
-            entity,
-        };
-    }
-    async unblockEntity(entityValue) {
-        const entity = await this.scamEntityModel.findOne({ entityValue });
-        if (!entity) {
-            throw new common_1.NotFoundException('Entity not found');
-        }
-        entity.isBlocked = false;
-        await entity.save();
-        return {
-            message: 'Entity unblocked successfully',
-            entity,
-        };
-    }
-    calculateReputationScore(entity) {
-        const baseScore = 100;
-        const reportPenalty = Math.min(entity.reportCount * 5, 80);
-        const amountPenalty = Math.min((entity.totalAmountLost / 10000) * 2, 15);
-        const score = Math.max(baseScore - reportPenalty - amountPenalty, 0);
-        return Math.round(score * 10) / 10;
-    }
-    calculateRiskLevel(entity) {
-        if (entity.reportCount >= 50 || entity.totalAmountLost >= 500000) {
-            return scam_entity_schema_1.RiskLevel.CRITICAL;
-        }
-        else if (entity.reportCount >= 20 || entity.totalAmountLost >= 100000) {
-            return scam_entity_schema_1.RiskLevel.HIGH;
-        }
-        else if (entity.reportCount >= 5 || entity.totalAmountLost >= 10000) {
-            return scam_entity_schema_1.RiskLevel.MEDIUM;
-        }
-        return scam_entity_schema_1.RiskLevel.LOW;
-    }
-    getWarningMessage(entity) {
-        switch (entity.riskLevel) {
-            case scam_entity_schema_1.RiskLevel.CRITICAL:
-                return `🚨 CRITICAL ALERT: This ${entity.entityType} has been reported ${entity.reportCount} times! DO NOT ENGAGE!`;
-            case scam_entity_schema_1.RiskLevel.HIGH:
-                return `⚠️ HIGH RISK: This ${entity.entityType} has ${entity.reportCount} reports. Be very careful!`;
-            case scam_entity_schema_1.RiskLevel.MEDIUM:
-                return `⚡ CAUTION: This ${entity.entityType} has been reported ${entity.reportCount} times. Verify before proceeding.`;
-            case scam_entity_schema_1.RiskLevel.LOW:
-                return `ℹ️ This ${entity.entityType} has a few reports. Stay alert.`;
-            default:
-                return 'Information found.';
-        }
+    async updateProfile(req, updateProfileDto) {
+        return this.usersService.updateProfile(req.user.userId, updateProfileDto);
     }
 };
-exports.ScamEntitiesService = ScamEntitiesService;
-exports.ScamEntitiesService = ScamEntitiesService = __decorate([
+exports.UsersController = UsersController;
+__decorate([
+    (0, common_1.Get)('profile'),
+    (0, swagger_1.ApiOperation)({
+        summary: 'Get my profile',
+        description: 'View your account information',
+    }),
+    (0, swagger_1.ApiResponse)({
+        status: 200,
+        description: 'User profile',
+    }),
+    openapi.ApiResponse({ status: 200, type: Object }),
+    __param(0, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], UsersController.prototype, "getProfile", null);
+__decorate([
+    (0, common_1.Patch)('profile'),
+    (0, swagger_1.ApiOperation)({
+        summary: 'Update my profile',
+        description: 'Update your account information',
+    }),
+    (0, swagger_1.ApiResponse)({
+        status: 200,
+        description: 'Profile updated successfully',
+    }),
+    openapi.ApiResponse({ status: 200 }),
+    __param(0, (0, common_1.Request)()),
+    __param(1, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object, update_profile_dto_1.UpdateProfileDto]),
+    __metadata("design:returntype", Promise)
+], UsersController.prototype, "updateProfile", null);
+exports.UsersController = UsersController = __decorate([
+    (0, swagger_1.ApiTags)('Users'),
+    (0, common_1.Controller)('users'),
+    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
+    (0, swagger_1.ApiBearerAuth)('JWT-auth'),
+    __metadata("design:paramtypes", [users_service_1.UsersService])
+], UsersController);
+
+
+/***/ }),
+/* 29 */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.UsersService = void 0;
+const common_1 = __webpack_require__(2);
+const mongoose_1 = __webpack_require__(8);
+const mongoose_2 = __webpack_require__(15);
+const user_schema_1 = __webpack_require__(17);
+let UsersService = class UsersService {
+    constructor(userModel) {
+        this.userModel = userModel;
+    }
+    async findById(id) {
+        const user = await this.userModel.findById(id);
+        if (!user) {
+            throw new common_1.NotFoundException('User not found');
+        }
+        return user;
+    }
+    async findByEmail(email) {
+        return this.userModel.findOne({ email });
+    }
+    async updateProfile(userId, updateData) {
+        const user = await this.userModel.findByIdAndUpdate(userId, { $set: updateData }, { new: true });
+        if (!user) {
+            throw new common_1.NotFoundException('User not found');
+        }
+        return {
+            message: 'Profile updated successfully',
+            user,
+        };
+    }
+    async getProfile(userId) {
+        const user = await this.findById(userId);
+        return user;
+    }
+};
+exports.UsersService = UsersService;
+exports.UsersService = UsersService = __decorate([
     (0, common_1.Injectable)(),
-    __param(0, (0, mongoose_1.InjectModel)(scam_entity_schema_1.ScamEntity.name)),
-    __metadata("design:paramtypes", [typeof (_a = typeof mongoose_2.Model !== "undefined" && mongoose_2.Model) === "function" ? _a : Object])
-], ScamEntitiesService);
+    __param(0, (0, mongoose_1.InjectModel)(user_schema_1.User.name)),
+    __metadata("design:paramtypes", [mongoose_2.Model])
+], UsersService);
 
 
 /***/ }),
-
-/***/ "./src/modules/scam-entities/schemas/scam-entity.schema.ts":
-/*!*****************************************************************!*\
-  !*** ./src/modules/scam-entities/schemas/scam-entity.schema.ts ***!
-  \*****************************************************************/
+/* 30 */
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -2318,243 +1113,89 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var _a, _b, _c, _d;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.ScamEntitySchema = exports.ScamEntity = exports.RiskLevel = exports.EntityType = void 0;
-const mongoose_1 = __webpack_require__(/*! @nestjs/mongoose */ "@nestjs/mongoose");
-const mongoose_2 = __webpack_require__(/*! mongoose */ "mongoose");
-const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ "@nestjs/swagger");
-var EntityType;
-(function (EntityType) {
-    EntityType["PHONE_NUMBER"] = "phone_number";
-    EntityType["URL"] = "url";
-    EntityType["APP"] = "app";
-    EntityType["EMAIL"] = "email";
-})(EntityType || (exports.EntityType = EntityType = {}));
-var RiskLevel;
-(function (RiskLevel) {
-    RiskLevel["LOW"] = "low";
-    RiskLevel["MEDIUM"] = "medium";
-    RiskLevel["HIGH"] = "high";
-    RiskLevel["CRITICAL"] = "critical";
-})(RiskLevel || (exports.RiskLevel = RiskLevel = {}));
-let ScamEntity = class ScamEntity extends mongoose_2.Document {
-};
-exports.ScamEntity = ScamEntity;
-__decorate([
-    (0, swagger_1.ApiProperty)({ enum: EntityType }),
-    (0, mongoose_1.Prop)({ type: String, enum: EntityType, required: true }),
-    __metadata("design:type", String)
-], ScamEntity.prototype, "entityType", void 0);
-__decorate([
-    (0, swagger_1.ApiProperty)({ example: '+919876543210' }),
-    (0, mongoose_1.Prop)({ required: true, unique: true, trim: true }),
-    __metadata("design:type", String)
-], ScamEntity.prototype, "entityValue", void 0);
-__decorate([
-    (0, swagger_1.ApiProperty)({ example: 150 }),
-    (0, mongoose_1.Prop)({ default: 0, min: 0 }),
-    __metadata("design:type", Number)
-], ScamEntity.prototype, "reportCount", void 0);
-__decorate([
-    (0, swagger_1.ApiProperty)({ enum: RiskLevel }),
-    (0, mongoose_1.Prop)({ type: String, enum: RiskLevel, default: RiskLevel.LOW }),
-    __metadata("design:type", String)
-], ScamEntity.prototype, "riskLevel", void 0);
-__decorate([
-    (0, swagger_1.ApiProperty)({ example: 75.5 }),
-    (0, mongoose_1.Prop)({ default: 0, min: 0, max: 100 }),
-    __metadata("design:type", Number)
-], ScamEntity.prototype, "reputationScore", void 0);
-__decorate([
-    (0, swagger_1.ApiProperty)({ example: ['upi_scam', 'whatsapp_fraud'] }),
-    (0, mongoose_1.Prop)({ type: [String], default: [] }),
-    __metadata("design:type", Array)
-], ScamEntity.prototype, "scamCategories", void 0);
-__decorate([
-    (0, swagger_1.ApiProperty)({ example: 50000 }),
-    (0, mongoose_1.Prop)({ default: 0, min: 0 }),
-    __metadata("design:type", Number)
-], ScamEntity.prototype, "totalAmountLost", void 0);
-__decorate([
-    (0, swagger_1.ApiProperty)({ example: false }),
-    (0, mongoose_1.Prop)({ default: false }),
-    __metadata("design:type", Boolean)
-], ScamEntity.prototype, "isBlocked", void 0);
-__decorate([
-    (0, swagger_1.ApiProperty)(),
-    (0, mongoose_1.Prop)(),
-    __metadata("design:type", typeof (_a = typeof Date !== "undefined" && Date) === "function" ? _a : Object)
-], ScamEntity.prototype, "firstReportedAt", void 0);
-__decorate([
-    (0, swagger_1.ApiProperty)(),
-    (0, mongoose_1.Prop)(),
-    __metadata("design:type", typeof (_b = typeof Date !== "undefined" && Date) === "function" ? _b : Object)
-], ScamEntity.prototype, "lastReportedAt", void 0);
-__decorate([
-    (0, swagger_1.ApiProperty)(),
-    (0, mongoose_1.Prop)(),
-    __metadata("design:type", typeof (_c = typeof Date !== "undefined" && Date) === "function" ? _c : Object)
-], ScamEntity.prototype, "createdAt", void 0);
-__decorate([
-    (0, swagger_1.ApiProperty)(),
-    (0, mongoose_1.Prop)(),
-    __metadata("design:type", typeof (_d = typeof Date !== "undefined" && Date) === "function" ? _d : Object)
-], ScamEntity.prototype, "updatedAt", void 0);
-exports.ScamEntity = ScamEntity = __decorate([
-    (0, mongoose_1.Schema)({ timestamps: true })
-], ScamEntity);
-exports.ScamEntitySchema = mongoose_1.SchemaFactory.createForClass(ScamEntity);
-exports.ScamEntitySchema.index({ entityValue: 1 }, { unique: true });
-exports.ScamEntitySchema.index({ entityType: 1 });
-exports.ScamEntitySchema.index({ riskLevel: 1 });
-exports.ScamEntitySchema.index({ reportCount: -1 });
-exports.ScamEntitySchema.index({ reputationScore: -1 });
-
-
-/***/ }),
-
-/***/ "./src/modules/scam-reports/dto/create-scam-report.dto.ts":
-/*!****************************************************************!*\
-  !*** ./src/modules/scam-reports/dto/create-scam-report.dto.ts ***!
-  \****************************************************************/
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var _a, _b;
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.CreateScamReportDto = void 0;
-const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ "@nestjs/swagger");
-const class_validator_1 = __webpack_require__(/*! class-validator */ "class-validator");
-const class_transformer_1 = __webpack_require__(/*! class-transformer */ "class-transformer");
-const scam_report_schema_1 = __webpack_require__(/*! ../schemas/scam-report.schema */ "./src/modules/scam-reports/schemas/scam-report.schema.ts");
-class CreateScamReportDto {
+exports.UpdateProfileDto = void 0;
+const openapi = __webpack_require__(3);
+const swagger_1 = __webpack_require__(3);
+const class_validator_1 = __webpack_require__(19);
+class UpdateProfileDto {
+    static _OPENAPI_METADATA_FACTORY() {
+        return { name: { required: false, type: () => String, maxLength: 100 }, city: { required: false, type: () => String }, state: { required: false, type: () => String } };
+    }
 }
-exports.CreateScamReportDto = CreateScamReportDto;
+exports.UpdateProfileDto = UpdateProfileDto;
 __decorate([
     (0, swagger_1.ApiProperty)({
-        enum: scam_report_schema_1.ScamType,
-        example: scam_report_schema_1.ScamType.UPI_SCAM,
-        description: 'Type of scam',
-        required: false,
-    }),
-    (0, class_validator_1.IsOptional)(),
-    (0, class_validator_1.IsEnum)(scam_report_schema_1.ScamType, { message: 'Please select a valid scam type' }),
-    __metadata("design:type", typeof (_a = typeof scam_report_schema_1.ScamType !== "undefined" && scam_report_schema_1.ScamType) === "function" ? _a : Object)
-], CreateScamReportDto.prototype, "scamType", void 0);
-__decorate([
-    (0, swagger_1.ApiProperty)({
-        example: '+919876543210',
-        description: 'Scammer phone number (any format accepted)',
-        required: false,
-    }),
-    (0, class_validator_1.IsOptional)(),
-    (0, class_validator_1.IsString)(),
-    __metadata("design:type", String)
-], CreateScamReportDto.prototype, "phoneNumber", void 0);
-__decorate([
-    (0, swagger_1.ApiProperty)({
-        example: 'https://fake-website.com',
-        description: 'Scam website URL (if applicable)',
-        required: false,
-    }),
-    (0, class_validator_1.IsOptional)(),
-    (0, class_validator_1.IsString)(),
-    __metadata("design:type", String)
-], CreateScamReportDto.prototype, "url", void 0);
-__decorate([
-    (0, swagger_1.ApiProperty)({
-        example: 'Fake Loan App',
-        description: 'Name of scam app (if applicable)',
+        example: 'John Doe',
+        description: 'Full name',
         required: false,
     }),
     (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.MaxLength)(100),
     __metadata("design:type", String)
-], CreateScamReportDto.prototype, "appName", void 0);
-__decorate([
-    (0, swagger_1.ApiProperty)({
-        example: 'They sent a fake UPI payment link and asked for my PIN',
-        description: 'Detailed description of what happened',
-        required: false,
-    }),
-    (0, class_validator_1.IsOptional)(),
-    (0, class_validator_1.IsString)(),
-    (0, class_validator_1.MaxLength)(2000, {
-        message: 'Description cannot exceed 2000 characters',
-    }),
-    __metadata("design:type", String)
-], CreateScamReportDto.prototype, "description", void 0);
-__decorate([
-    (0, swagger_1.ApiProperty)({
-        example: 5000,
-        description: 'Amount of money lost (in INR)',
-        required: false,
-    }),
-    (0, class_validator_1.IsOptional)(),
-    (0, class_validator_1.IsNumber)(),
-    (0, class_validator_1.Min)(0, { message: 'Amount cannot be negative' }),
-    __metadata("design:type", Number)
-], CreateScamReportDto.prototype, "amountLost", void 0);
+], UpdateProfileDto.prototype, "name", void 0);
 __decorate([
     (0, swagger_1.ApiProperty)({
         example: 'Mumbai',
-        description: 'City where the scam occurred',
+        description: 'City',
         required: false,
     }),
     (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsString)(),
     __metadata("design:type", String)
-], CreateScamReportDto.prototype, "city", void 0);
+], UpdateProfileDto.prototype, "city", void 0);
 __decorate([
     (0, swagger_1.ApiProperty)({
         example: 'Maharashtra',
-        description: 'State where the scam occurred',
+        description: 'State',
         required: false,
     }),
     (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsString)(),
     __metadata("design:type", String)
-], CreateScamReportDto.prototype, "state", void 0);
-__decorate([
-    (0, swagger_1.ApiProperty)({
-        example: false,
-        description: 'Report anonymously (your details will be hidden)',
-        required: false,
-    }),
-    (0, class_validator_1.IsOptional)(),
-    (0, class_validator_1.IsBoolean)(),
-    __metadata("design:type", Boolean)
-], CreateScamReportDto.prototype, "isAnonymous", void 0);
-__decorate([
-    (0, swagger_1.ApiProperty)({
-        example: '2024-01-15T10:30:00Z',
-        description: 'When did the scam occur?',
-        required: false,
-    }),
-    (0, class_validator_1.IsOptional)(),
-    (0, class_transformer_1.Type)(() => Date),
-    (0, class_validator_1.IsDate)(),
-    __metadata("design:type", typeof (_b = typeof Date !== "undefined" && Date) === "function" ? _b : Object)
-], CreateScamReportDto.prototype, "incidentDate", void 0);
+], UpdateProfileDto.prototype, "state", void 0);
 
 
 /***/ }),
+/* 31 */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
-/***/ "./src/modules/scam-reports/scam-reports.controller.ts":
-/*!*************************************************************!*\
-  !*** ./src/modules/scam-reports/scam-reports.controller.ts ***!
-  \*************************************************************/
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.ScamReportsModule = void 0;
+const common_1 = __webpack_require__(2);
+const mongoose_1 = __webpack_require__(8);
+const scam_reports_controller_1 = __webpack_require__(32);
+const scam_reports_service_1 = __webpack_require__(33);
+const scam_report_schema_1 = __webpack_require__(34);
+const scam_entities_module_1 = __webpack_require__(39);
+let ScamReportsModule = class ScamReportsModule {
+};
+exports.ScamReportsModule = ScamReportsModule;
+exports.ScamReportsModule = ScamReportsModule = __decorate([
+    (0, common_1.Module)({
+        imports: [
+            mongoose_1.MongooseModule.forFeature([
+                { name: scam_report_schema_1.ScamReport.name, schema: scam_report_schema_1.ScamReportSchema },
+            ]),
+            scam_entities_module_1.ScamEntitiesModule,
+        ],
+        controllers: [scam_reports_controller_1.ScamReportsController],
+        providers: [scam_reports_service_1.ScamReportsService],
+        exports: [scam_reports_service_1.ScamReportsService],
+    })
+], ScamReportsModule);
+
+
+/***/ }),
+/* 32 */
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -2570,15 +1211,15 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-var _a, _b, _c, _d;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.ScamReportsController = void 0;
-const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
-const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ "@nestjs/swagger");
-const scam_reports_service_1 = __webpack_require__(/*! ./scam-reports.service */ "./src/modules/scam-reports/scam-reports.service.ts");
-const create_scam_report_dto_1 = __webpack_require__(/*! ./dto/create-scam-report.dto */ "./src/modules/scam-reports/dto/create-scam-report.dto.ts");
-const jwt_auth_guard_1 = __webpack_require__(/*! ../auth/guards/jwt-auth.guard */ "./src/modules/auth/guards/jwt-auth.guard.ts");
-const scam_report_schema_1 = __webpack_require__(/*! ./schemas/scam-report.schema */ "./src/modules/scam-reports/schemas/scam-report.schema.ts");
+const openapi = __webpack_require__(3);
+const common_1 = __webpack_require__(2);
+const swagger_1 = __webpack_require__(3);
+const scam_reports_service_1 = __webpack_require__(33);
+const create_scam_report_dto_1 = __webpack_require__(37);
+const jwt_auth_guard_1 = __webpack_require__(22);
+const scam_report_schema_1 = __webpack_require__(34);
 let ScamReportsController = class ScamReportsController {
     constructor(scamReportsService) {
         this.scamReportsService = scamReportsService;
@@ -2627,11 +1268,12 @@ __decorate([
             },
         },
     }),
+    openapi.ApiResponse({ status: 201 }),
     __param(0, (0, common_1.Body)()),
     __param(1, (0, common_1.Request)()),
     __param(2, (0, common_1.Ip)()),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [typeof (_b = typeof create_scam_report_dto_1.CreateScamReportDto !== "undefined" && create_scam_report_dto_1.CreateScamReportDto) === "function" ? _b : Object, Object, String]),
+    __metadata("design:paramtypes", [create_scam_report_dto_1.CreateScamReportDto, Object, String]),
     __metadata("design:returntype", Promise)
 ], ScamReportsController.prototype, "create", null);
 __decorate([
@@ -2650,6 +1292,7 @@ __decorate([
         status: 200,
         description: 'List of scam reports',
     }),
+    openapi.ApiResponse({ status: 200 }),
     __param(0, (0, common_1.Query)('page')),
     __param(1, (0, common_1.Query)('limit')),
     __param(2, (0, common_1.Query)('scamType')),
@@ -2657,7 +1300,7 @@ __decorate([
     __param(4, (0, common_1.Query)('city')),
     __param(5, (0, common_1.Query)('state')),
     __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Number, Number, typeof (_c = typeof scam_report_schema_1.ScamType !== "undefined" && scam_report_schema_1.ScamType) === "function" ? _c : Object, typeof (_d = typeof scam_report_schema_1.ReportStatus !== "undefined" && scam_report_schema_1.ReportStatus) === "function" ? _d : Object, String, String]),
+    __metadata("design:paramtypes", [Number, Number, String, String, String, String]),
     __metadata("design:returntype", Promise)
 ], ScamReportsController.prototype, "findAll", null);
 __decorate([
@@ -2674,6 +1317,7 @@ __decorate([
         status: 200,
         description: 'Your scam reports',
     }),
+    openapi.ApiResponse({ status: 200 }),
     __param(0, (0, common_1.Request)()),
     __param(1, (0, common_1.Query)('page')),
     __param(2, (0, common_1.Query)('limit')),
@@ -2702,6 +1346,7 @@ __decorate([
             },
         },
     }),
+    openapi.ApiResponse({ status: 200 }),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
@@ -2717,6 +1362,7 @@ __decorate([
         status: 200,
         description: 'Trending scams from the last 7 days',
     }),
+    openapi.ApiResponse({ status: 200, type: [Object] }),
     __param(0, (0, common_1.Query)('limit')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [Number]),
@@ -2736,6 +1382,7 @@ __decorate([
         status: 404,
         description: 'Report not found',
     }),
+    openapi.ApiResponse({ status: 200, type: Object }),
     __param(0, (0, common_1.Param)('id')),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", [String]),
@@ -2744,57 +1391,12 @@ __decorate([
 exports.ScamReportsController = ScamReportsController = __decorate([
     (0, swagger_1.ApiTags)('Scam Reports'),
     (0, common_1.Controller)('scam-reports'),
-    __metadata("design:paramtypes", [typeof (_a = typeof scam_reports_service_1.ScamReportsService !== "undefined" && scam_reports_service_1.ScamReportsService) === "function" ? _a : Object])
+    __metadata("design:paramtypes", [scam_reports_service_1.ScamReportsService])
 ], ScamReportsController);
 
 
 /***/ }),
-
-/***/ "./src/modules/scam-reports/scam-reports.module.ts":
-/*!*********************************************************!*\
-  !*** ./src/modules/scam-reports/scam-reports.module.ts ***!
-  \*********************************************************/
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.ScamReportsModule = void 0;
-const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
-const mongoose_1 = __webpack_require__(/*! @nestjs/mongoose */ "@nestjs/mongoose");
-const scam_reports_controller_1 = __webpack_require__(/*! ./scam-reports.controller */ "./src/modules/scam-reports/scam-reports.controller.ts");
-const scam_reports_service_1 = __webpack_require__(/*! ./scam-reports.service */ "./src/modules/scam-reports/scam-reports.service.ts");
-const scam_report_schema_1 = __webpack_require__(/*! ./schemas/scam-report.schema */ "./src/modules/scam-reports/schemas/scam-report.schema.ts");
-const scam_entities_module_1 = __webpack_require__(/*! ../scam-entities/scam-entities.module */ "./src/modules/scam-entities/scam-entities.module.ts");
-let ScamReportsModule = class ScamReportsModule {
-};
-exports.ScamReportsModule = ScamReportsModule;
-exports.ScamReportsModule = ScamReportsModule = __decorate([
-    (0, common_1.Module)({
-        imports: [
-            mongoose_1.MongooseModule.forFeature([
-                { name: scam_report_schema_1.ScamReport.name, schema: scam_report_schema_1.ScamReportSchema },
-            ]),
-            scam_entities_module_1.ScamEntitiesModule,
-        ],
-        controllers: [scam_reports_controller_1.ScamReportsController],
-        providers: [scam_reports_service_1.ScamReportsService],
-        exports: [scam_reports_service_1.ScamReportsService],
-    })
-], ScamReportsModule);
-
-
-/***/ }),
-
-/***/ "./src/modules/scam-reports/scam-reports.service.ts":
-/*!**********************************************************!*\
-  !*** ./src/modules/scam-reports/scam-reports.service.ts ***!
-  \**********************************************************/
+/* 33 */
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -2810,14 +1412,13 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var __param = (this && this.__param) || function (paramIndex, decorator) {
     return function (target, key) { decorator(target, key, paramIndex); }
 };
-var _a, _b;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.ScamReportsService = void 0;
-const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
-const mongoose_1 = __webpack_require__(/*! @nestjs/mongoose */ "@nestjs/mongoose");
-const mongoose_2 = __webpack_require__(/*! mongoose */ "mongoose");
-const scam_report_schema_1 = __webpack_require__(/*! ./schemas/scam-report.schema */ "./src/modules/scam-reports/schemas/scam-report.schema.ts");
-const scam_entities_service_1 = __webpack_require__(/*! ../scam-entities/scam-entities.service */ "./src/modules/scam-entities/scam-entities.service.ts");
+const common_1 = __webpack_require__(2);
+const mongoose_1 = __webpack_require__(8);
+const mongoose_2 = __webpack_require__(15);
+const scam_report_schema_1 = __webpack_require__(34);
+const scam_entities_service_1 = __webpack_require__(35);
 let ScamReportsService = class ScamReportsService {
     constructor(scamReportModel, scamEntitiesService) {
         this.scamReportModel = scamReportModel;
@@ -2989,16 +1590,13 @@ exports.ScamReportsService = ScamReportsService;
 exports.ScamReportsService = ScamReportsService = __decorate([
     (0, common_1.Injectable)(),
     __param(0, (0, mongoose_1.InjectModel)(scam_report_schema_1.ScamReport.name)),
-    __metadata("design:paramtypes", [typeof (_a = typeof mongoose_2.Model !== "undefined" && mongoose_2.Model) === "function" ? _a : Object, typeof (_b = typeof scam_entities_service_1.ScamEntitiesService !== "undefined" && scam_entities_service_1.ScamEntitiesService) === "function" ? _b : Object])
+    __metadata("design:paramtypes", [mongoose_2.Model,
+        scam_entities_service_1.ScamEntitiesService])
 ], ScamReportsService);
 
 
 /***/ }),
-
-/***/ "./src/modules/scam-reports/schemas/scam-report.schema.ts":
-/*!****************************************************************!*\
-  !*** ./src/modules/scam-reports/schemas/scam-report.schema.ts ***!
-  \****************************************************************/
+/* 34 */
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -3011,12 +1609,11 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var _a, _b, _c, _d, _e, _f;
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.ScamReportSchema = exports.ScamReport = exports.ReportStatus = exports.ScamType = void 0;
-const mongoose_1 = __webpack_require__(/*! @nestjs/mongoose */ "@nestjs/mongoose");
-const mongoose_2 = __webpack_require__(/*! mongoose */ "mongoose");
-const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ "@nestjs/swagger");
+const mongoose_1 = __webpack_require__(8);
+const mongoose_2 = __webpack_require__(15);
+const swagger_1 = __webpack_require__(3);
 var ScamType;
 (function (ScamType) {
     ScamType["UPI_SCAM"] = "upi_scam";
@@ -3044,7 +1641,7 @@ exports.ScamReport = ScamReport;
 __decorate([
     (0, swagger_1.ApiProperty)({ type: String }),
     (0, mongoose_1.Prop)({ type: mongoose_2.Types.ObjectId, ref: 'User', required: true }),
-    __metadata("design:type", typeof (_a = typeof mongoose_2.Types !== "undefined" && mongoose_2.Types.ObjectId) === "function" ? _a : Object)
+    __metadata("design:type", mongoose_2.Types.ObjectId)
 ], ScamReport.prototype, "reportedBy", void 0);
 __decorate([
     (0, swagger_1.ApiProperty)({ enum: ScamType }),
@@ -3103,15 +1700,15 @@ __decorate([
 __decorate([
     (0, swagger_1.ApiProperty)(),
     (0, mongoose_1.Prop)(),
-    __metadata("design:type", typeof (_b = typeof Date !== "undefined" && Date) === "function" ? _b : Object)
+    __metadata("design:type", Date)
 ], ScamReport.prototype, "incidentDate", void 0);
 __decorate([
     (0, mongoose_1.Prop)(),
-    __metadata("design:type", typeof (_c = typeof mongoose_2.Types !== "undefined" && mongoose_2.Types.ObjectId) === "function" ? _c : Object)
+    __metadata("design:type", mongoose_2.Types.ObjectId)
 ], ScamReport.prototype, "verifiedBy", void 0);
 __decorate([
     (0, mongoose_1.Prop)(),
-    __metadata("design:type", typeof (_d = typeof Date !== "undefined" && Date) === "function" ? _d : Object)
+    __metadata("design:type", Date)
 ], ScamReport.prototype, "verifiedAt", void 0);
 __decorate([
     (0, mongoose_1.Prop)(),
@@ -3125,12 +1722,12 @@ __decorate([
 __decorate([
     (0, swagger_1.ApiProperty)(),
     (0, mongoose_1.Prop)(),
-    __metadata("design:type", typeof (_e = typeof Date !== "undefined" && Date) === "function" ? _e : Object)
+    __metadata("design:type", Date)
 ], ScamReport.prototype, "createdAt", void 0);
 __decorate([
     (0, swagger_1.ApiProperty)(),
     (0, mongoose_1.Prop)(),
-    __metadata("design:type", typeof (_f = typeof Date !== "undefined" && Date) === "function" ? _f : Object)
+    __metadata("design:type", Date)
 ], ScamReport.prototype, "updatedAt", void 0);
 exports.ScamReport = ScamReport = __decorate([
     (0, mongoose_1.Schema)({ timestamps: true })
@@ -3146,11 +1743,182 @@ exports.ScamReportSchema.index({ createdAt: -1 });
 
 
 /***/ }),
+/* 35 */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
-/***/ "./src/modules/users/dto/update-profile.dto.ts":
-/*!*****************************************************!*\
-  !*** ./src/modules/users/dto/update-profile.dto.ts ***!
-  \*****************************************************/
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.ScamEntitiesService = void 0;
+const common_1 = __webpack_require__(2);
+const mongoose_1 = __webpack_require__(8);
+const mongoose_2 = __webpack_require__(15);
+const scam_entity_schema_1 = __webpack_require__(36);
+let ScamEntitiesService = class ScamEntitiesService {
+    constructor(scamEntityModel) {
+        this.scamEntityModel = scamEntityModel;
+    }
+    async updateOrCreate(entityType, entityValue, scamType, amountLost) {
+        let entity = await this.scamEntityModel.findOne({ entityValue });
+        if (!entity) {
+            entity = await this.scamEntityModel.create({
+                entityType,
+                entityValue,
+                reportCount: 1,
+                scamCategories: [scamType],
+                totalAmountLost: amountLost || 0,
+                firstReportedAt: new Date(),
+                lastReportedAt: new Date(),
+            });
+        }
+        else {
+            entity.reportCount += 1;
+            entity.totalAmountLost += amountLost || 0;
+            entity.lastReportedAt = new Date();
+            if (!entity.scamCategories.includes(scamType)) {
+                entity.scamCategories.push(scamType);
+            }
+        }
+        entity.reputationScore = this.calculateReputationScore(entity);
+        entity.riskLevel = this.calculateRiskLevel(entity);
+        await entity.save();
+        return entity;
+    }
+    async lookup(entityValue) {
+        const entity = await this.scamEntityModel.findOne({ entityValue });
+        if (!entity) {
+            return {
+                found: false,
+                message: '✅ No reports found for this number/URL. Stay vigilant!',
+                entityValue,
+            };
+        }
+        return {
+            found: true,
+            message: this.getWarningMessage(entity),
+            entity,
+        };
+    }
+    async search(query, entityType, page = 1, limit = 20) {
+        const skip = (page - 1) * limit;
+        const filter = {
+            entityValue: new RegExp(query, 'i'),
+        };
+        if (entityType) {
+            filter.entityType = entityType;
+        }
+        const [entities, total] = await Promise.all([
+            this.scamEntityModel
+                .find(filter)
+                .sort({ reportCount: -1 })
+                .skip(skip)
+                .limit(limit)
+                .exec(),
+            this.scamEntityModel.countDocuments(filter),
+        ]);
+        return {
+            entities,
+            pagination: {
+                total,
+                page,
+                limit,
+                pages: Math.ceil(total / limit),
+            },
+        };
+    }
+    async getTopScammers(limit = 50) {
+        return this.scamEntityModel
+            .find()
+            .sort({ reportCount: -1 })
+            .limit(limit)
+            .exec();
+    }
+    async getHighRiskEntities(limit = 50) {
+        return this.scamEntityModel
+            .find({ riskLevel: scam_entity_schema_1.RiskLevel.CRITICAL })
+            .sort({ reportCount: -1 })
+            .limit(limit)
+            .exec();
+    }
+    async blockEntity(entityValue) {
+        const entity = await this.scamEntityModel.findOne({ entityValue });
+        if (!entity) {
+            throw new common_1.NotFoundException('Entity not found');
+        }
+        entity.isBlocked = true;
+        await entity.save();
+        return {
+            message: 'Entity blocked successfully',
+            entity,
+        };
+    }
+    async unblockEntity(entityValue) {
+        const entity = await this.scamEntityModel.findOne({ entityValue });
+        if (!entity) {
+            throw new common_1.NotFoundException('Entity not found');
+        }
+        entity.isBlocked = false;
+        await entity.save();
+        return {
+            message: 'Entity unblocked successfully',
+            entity,
+        };
+    }
+    calculateReputationScore(entity) {
+        const baseScore = 100;
+        const reportPenalty = Math.min(entity.reportCount * 5, 80);
+        const amountPenalty = Math.min((entity.totalAmountLost / 10000) * 2, 15);
+        const score = Math.max(baseScore - reportPenalty - amountPenalty, 0);
+        return Math.round(score * 10) / 10;
+    }
+    calculateRiskLevel(entity) {
+        if (entity.reportCount >= 50 || entity.totalAmountLost >= 500000) {
+            return scam_entity_schema_1.RiskLevel.CRITICAL;
+        }
+        else if (entity.reportCount >= 20 || entity.totalAmountLost >= 100000) {
+            return scam_entity_schema_1.RiskLevel.HIGH;
+        }
+        else if (entity.reportCount >= 5 || entity.totalAmountLost >= 10000) {
+            return scam_entity_schema_1.RiskLevel.MEDIUM;
+        }
+        return scam_entity_schema_1.RiskLevel.LOW;
+    }
+    getWarningMessage(entity) {
+        switch (entity.riskLevel) {
+            case scam_entity_schema_1.RiskLevel.CRITICAL:
+                return `🚨 CRITICAL ALERT: This ${entity.entityType} has been reported ${entity.reportCount} times! DO NOT ENGAGE!`;
+            case scam_entity_schema_1.RiskLevel.HIGH:
+                return `⚠️ HIGH RISK: This ${entity.entityType} has ${entity.reportCount} reports. Be very careful!`;
+            case scam_entity_schema_1.RiskLevel.MEDIUM:
+                return `⚡ CAUTION: This ${entity.entityType} has been reported ${entity.reportCount} times. Verify before proceeding.`;
+            case scam_entity_schema_1.RiskLevel.LOW:
+                return `ℹ️ This ${entity.entityType} has a few reports. Stay alert.`;
+            default:
+                return 'Information found.';
+        }
+    }
+};
+exports.ScamEntitiesService = ScamEntitiesService;
+exports.ScamEntitiesService = ScamEntitiesService = __decorate([
+    (0, common_1.Injectable)(),
+    __param(0, (0, mongoose_1.InjectModel)(scam_entity_schema_1.ScamEntity.name)),
+    __metadata("design:paramtypes", [mongoose_2.Model])
+], ScamEntitiesService);
+
+
+/***/ }),
+/* 36 */
 /***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
 
@@ -3164,507 +1932,1579 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.UpdateProfileDto = void 0;
-const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ "@nestjs/swagger");
-const class_validator_1 = __webpack_require__(/*! class-validator */ "class-validator");
-class UpdateProfileDto {
+exports.ScamEntitySchema = exports.ScamEntity = exports.RiskLevel = exports.EntityType = void 0;
+const mongoose_1 = __webpack_require__(8);
+const mongoose_2 = __webpack_require__(15);
+const swagger_1 = __webpack_require__(3);
+var EntityType;
+(function (EntityType) {
+    EntityType["PHONE_NUMBER"] = "phone_number";
+    EntityType["URL"] = "url";
+    EntityType["APP"] = "app";
+    EntityType["EMAIL"] = "email";
+})(EntityType || (exports.EntityType = EntityType = {}));
+var RiskLevel;
+(function (RiskLevel) {
+    RiskLevel["LOW"] = "low";
+    RiskLevel["MEDIUM"] = "medium";
+    RiskLevel["HIGH"] = "high";
+    RiskLevel["CRITICAL"] = "critical";
+})(RiskLevel || (exports.RiskLevel = RiskLevel = {}));
+let ScamEntity = class ScamEntity extends mongoose_2.Document {
+};
+exports.ScamEntity = ScamEntity;
+__decorate([
+    (0, swagger_1.ApiProperty)({ enum: EntityType }),
+    (0, mongoose_1.Prop)({ type: String, enum: EntityType, required: true }),
+    __metadata("design:type", String)
+], ScamEntity.prototype, "entityType", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({ example: '+919876543210' }),
+    (0, mongoose_1.Prop)({ required: true, unique: true, trim: true }),
+    __metadata("design:type", String)
+], ScamEntity.prototype, "entityValue", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({ example: 150 }),
+    (0, mongoose_1.Prop)({ default: 0, min: 0 }),
+    __metadata("design:type", Number)
+], ScamEntity.prototype, "reportCount", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({ enum: RiskLevel }),
+    (0, mongoose_1.Prop)({ type: String, enum: RiskLevel, default: RiskLevel.LOW }),
+    __metadata("design:type", String)
+], ScamEntity.prototype, "riskLevel", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({ example: 75.5 }),
+    (0, mongoose_1.Prop)({ default: 0, min: 0, max: 100 }),
+    __metadata("design:type", Number)
+], ScamEntity.prototype, "reputationScore", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({ example: ['upi_scam', 'whatsapp_fraud'] }),
+    (0, mongoose_1.Prop)({ type: [String], default: [] }),
+    __metadata("design:type", Array)
+], ScamEntity.prototype, "scamCategories", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({ example: 50000 }),
+    (0, mongoose_1.Prop)({ default: 0, min: 0 }),
+    __metadata("design:type", Number)
+], ScamEntity.prototype, "totalAmountLost", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({ example: false }),
+    (0, mongoose_1.Prop)({ default: false }),
+    __metadata("design:type", Boolean)
+], ScamEntity.prototype, "isBlocked", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)(),
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", Date)
+], ScamEntity.prototype, "firstReportedAt", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)(),
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", Date)
+], ScamEntity.prototype, "lastReportedAt", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)(),
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", Date)
+], ScamEntity.prototype, "createdAt", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)(),
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", Date)
+], ScamEntity.prototype, "updatedAt", void 0);
+exports.ScamEntity = ScamEntity = __decorate([
+    (0, mongoose_1.Schema)({ timestamps: true })
+], ScamEntity);
+exports.ScamEntitySchema = mongoose_1.SchemaFactory.createForClass(ScamEntity);
+exports.ScamEntitySchema.index({ entityValue: 1 }, { unique: true });
+exports.ScamEntitySchema.index({ entityType: 1 });
+exports.ScamEntitySchema.index({ riskLevel: 1 });
+exports.ScamEntitySchema.index({ reportCount: -1 });
+exports.ScamEntitySchema.index({ reputationScore: -1 });
+
+
+/***/ }),
+/* 37 */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.CreateScamReportDto = void 0;
+const openapi = __webpack_require__(3);
+const swagger_1 = __webpack_require__(3);
+const class_validator_1 = __webpack_require__(19);
+const class_transformer_1 = __webpack_require__(38);
+const scam_report_schema_1 = __webpack_require__(34);
+class CreateScamReportDto {
+    static _OPENAPI_METADATA_FACTORY() {
+        return { scamType: { required: false, enum: (__webpack_require__(34).ScamType) }, phoneNumber: { required: false, type: () => String }, url: { required: false, type: () => String }, appName: { required: false, type: () => String, maxLength: 100 }, description: { required: false, type: () => String, maxLength: 2000 }, amountLost: { required: false, type: () => Number, minimum: 0 }, city: { required: false, type: () => String }, state: { required: false, type: () => String }, isAnonymous: { required: false, type: () => Boolean }, incidentDate: { required: false, type: () => Date } };
+    }
 }
-exports.UpdateProfileDto = UpdateProfileDto;
+exports.CreateScamReportDto = CreateScamReportDto;
 __decorate([
     (0, swagger_1.ApiProperty)({
-        example: 'John Doe',
-        description: 'Full name',
+        enum: scam_report_schema_1.ScamType,
+        example: scam_report_schema_1.ScamType.UPI_SCAM,
+        description: 'Type of scam',
+        required: false,
+    }),
+    (0, class_validator_1.IsOptional)(),
+    (0, class_validator_1.IsEnum)(scam_report_schema_1.ScamType, { message: 'Please select a valid scam type' }),
+    __metadata("design:type", String)
+], CreateScamReportDto.prototype, "scamType", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({
+        example: '+919876543210',
+        description: 'Scammer phone number (any format accepted)',
+        required: false,
+    }),
+    (0, class_validator_1.IsOptional)(),
+    (0, class_validator_1.IsString)(),
+    __metadata("design:type", String)
+], CreateScamReportDto.prototype, "phoneNumber", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({
+        example: 'https://fake-website.com',
+        description: 'Scam website URL (if applicable)',
+        required: false,
+    }),
+    (0, class_validator_1.IsOptional)(),
+    (0, class_validator_1.IsString)(),
+    __metadata("design:type", String)
+], CreateScamReportDto.prototype, "url", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({
+        example: 'Fake Loan App',
+        description: 'Name of scam app (if applicable)',
         required: false,
     }),
     (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsString)(),
     (0, class_validator_1.MaxLength)(100),
     __metadata("design:type", String)
-], UpdateProfileDto.prototype, "name", void 0);
+], CreateScamReportDto.prototype, "appName", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({
+        example: 'They sent a fake UPI payment link and asked for my PIN',
+        description: 'Detailed description of what happened',
+        required: false,
+    }),
+    (0, class_validator_1.IsOptional)(),
+    (0, class_validator_1.IsString)(),
+    (0, class_validator_1.MaxLength)(2000, {
+        message: 'Description cannot exceed 2000 characters',
+    }),
+    __metadata("design:type", String)
+], CreateScamReportDto.prototype, "description", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({
+        example: 5000,
+        description: 'Amount of money lost (in INR)',
+        required: false,
+    }),
+    (0, class_validator_1.IsOptional)(),
+    (0, class_validator_1.IsNumber)(),
+    (0, class_validator_1.Min)(0, { message: 'Amount cannot be negative' }),
+    __metadata("design:type", Number)
+], CreateScamReportDto.prototype, "amountLost", void 0);
 __decorate([
     (0, swagger_1.ApiProperty)({
         example: 'Mumbai',
-        description: 'City',
+        description: 'City where the scam occurred',
         required: false,
     }),
     (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsString)(),
     __metadata("design:type", String)
-], UpdateProfileDto.prototype, "city", void 0);
+], CreateScamReportDto.prototype, "city", void 0);
 __decorate([
     (0, swagger_1.ApiProperty)({
         example: 'Maharashtra',
-        description: 'State',
+        description: 'State where the scam occurred',
         required: false,
     }),
     (0, class_validator_1.IsOptional)(),
     (0, class_validator_1.IsString)(),
     __metadata("design:type", String)
-], UpdateProfileDto.prototype, "state", void 0);
-
-
-/***/ }),
-
-/***/ "./src/modules/users/schemas/user.schema.ts":
-/*!**************************************************!*\
-  !*** ./src/modules/users/schemas/user.schema.ts ***!
-  \**************************************************/
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var _a, _b, _c;
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.UserSchema = exports.User = exports.UserRole = void 0;
-const mongoose_1 = __webpack_require__(/*! @nestjs/mongoose */ "@nestjs/mongoose");
-const mongoose_2 = __webpack_require__(/*! mongoose */ "mongoose");
-const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ "@nestjs/swagger");
-var UserRole;
-(function (UserRole) {
-    UserRole["USER"] = "user";
-    UserRole["ADMIN"] = "admin";
-    UserRole["MODERATOR"] = "moderator";
-})(UserRole || (exports.UserRole = UserRole = {}));
-let User = class User extends mongoose_2.Document {
-};
-exports.User = User;
+], CreateScamReportDto.prototype, "state", void 0);
 __decorate([
-    (0, swagger_1.ApiProperty)({ example: 'john.doe@example.com' }),
-    (0, mongoose_1.Prop)({ required: true, unique: true, lowercase: true, trim: true }),
-    __metadata("design:type", String)
-], User.prototype, "email", void 0);
-__decorate([
-    (0, swagger_1.ApiProperty)({ example: '+919876543210' }),
-    (0, mongoose_1.Prop)({ required: true, unique: true, trim: true }),
-    __metadata("design:type", String)
-], User.prototype, "mobile", void 0);
-__decorate([
-    (0, swagger_1.ApiProperty)({ example: 'John Doe' }),
-    (0, mongoose_1.Prop)({ required: true, trim: true }),
-    __metadata("design:type", String)
-], User.prototype, "name", void 0);
-__decorate([
-    (0, mongoose_1.Prop)({ required: true, select: false }),
-    __metadata("design:type", String)
-], User.prototype, "password", void 0);
-__decorate([
-    (0, swagger_1.ApiProperty)({ enum: UserRole, example: UserRole.USER }),
-    (0, mongoose_1.Prop)({ type: String, enum: UserRole, default: UserRole.USER }),
-    __metadata("design:type", String)
-], User.prototype, "role", void 0);
-__decorate([
-    (0, swagger_1.ApiProperty)({ example: true }),
-    (0, mongoose_1.Prop)({ default: true }),
+    (0, swagger_1.ApiProperty)({
+        example: false,
+        description: 'Report anonymously (your details will be hidden)',
+        required: false,
+    }),
+    (0, class_validator_1.IsOptional)(),
+    (0, class_validator_1.IsBoolean)(),
     __metadata("design:type", Boolean)
-], User.prototype, "isActive", void 0);
+], CreateScamReportDto.prototype, "isAnonymous", void 0);
 __decorate([
-    (0, swagger_1.ApiProperty)({ example: false }),
-    (0, mongoose_1.Prop)({ default: false }),
-    __metadata("design:type", Boolean)
-], User.prototype, "isEmailVerified", void 0);
-__decorate([
-    (0, swagger_1.ApiProperty)({ example: false }),
-    (0, mongoose_1.Prop)({ default: false }),
-    __metadata("design:type", Boolean)
-], User.prototype, "isMobileVerified", void 0);
-__decorate([
-    (0, swagger_1.ApiProperty)({ example: 'Mumbai' }),
-    (0, mongoose_1.Prop)({ trim: true }),
-    __metadata("design:type", String)
-], User.prototype, "city", void 0);
-__decorate([
-    (0, swagger_1.ApiProperty)({ example: 'Maharashtra' }),
-    (0, mongoose_1.Prop)({ trim: true }),
-    __metadata("design:type", String)
-], User.prototype, "state", void 0);
-__decorate([
-    (0, swagger_1.ApiProperty)({ example: '192.168.1.1' }),
-    (0, mongoose_1.Prop)(),
-    __metadata("design:type", String)
-], User.prototype, "lastLoginIp", void 0);
-__decorate([
-    (0, swagger_1.ApiProperty)(),
-    (0, mongoose_1.Prop)(),
-    __metadata("design:type", typeof (_a = typeof Date !== "undefined" && Date) === "function" ? _a : Object)
-], User.prototype, "lastLoginAt", void 0);
-__decorate([
-    (0, mongoose_1.Prop)({ type: [String], default: [] }),
-    __metadata("design:type", Array)
-], User.prototype, "refreshTokens", void 0);
-__decorate([
-    (0, swagger_1.ApiProperty)(),
-    (0, mongoose_1.Prop)(),
-    __metadata("design:type", typeof (_b = typeof Date !== "undefined" && Date) === "function" ? _b : Object)
-], User.prototype, "createdAt", void 0);
-__decorate([
-    (0, swagger_1.ApiProperty)(),
-    (0, mongoose_1.Prop)(),
-    __metadata("design:type", typeof (_c = typeof Date !== "undefined" && Date) === "function" ? _c : Object)
-], User.prototype, "updatedAt", void 0);
-exports.User = User = __decorate([
-    (0, mongoose_1.Schema)({ timestamps: true })
-], User);
-exports.UserSchema = mongoose_1.SchemaFactory.createForClass(User);
-exports.UserSchema.index({ email: 1 });
-exports.UserSchema.index({ mobile: 1 });
-exports.UserSchema.index({ role: 1 });
-exports.UserSchema.index({ city: 1, state: 1 });
-
-
-/***/ }),
-
-/***/ "./src/modules/users/users.controller.ts":
-/*!***********************************************!*\
-  !*** ./src/modules/users/users.controller.ts ***!
-  \***********************************************/
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
-var _a, _b;
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.UsersController = void 0;
-const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
-const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ "@nestjs/swagger");
-const users_service_1 = __webpack_require__(/*! ./users.service */ "./src/modules/users/users.service.ts");
-const jwt_auth_guard_1 = __webpack_require__(/*! ../auth/guards/jwt-auth.guard */ "./src/modules/auth/guards/jwt-auth.guard.ts");
-const update_profile_dto_1 = __webpack_require__(/*! ./dto/update-profile.dto */ "./src/modules/users/dto/update-profile.dto.ts");
-let UsersController = class UsersController {
-    constructor(usersService) {
-        this.usersService = usersService;
-    }
-    async getProfile(req) {
-        return this.usersService.getProfile(req.user.userId);
-    }
-    async updateProfile(req, updateProfileDto) {
-        return this.usersService.updateProfile(req.user.userId, updateProfileDto);
-    }
-};
-exports.UsersController = UsersController;
-__decorate([
-    (0, common_1.Get)('profile'),
-    (0, swagger_1.ApiOperation)({
-        summary: 'Get my profile',
-        description: 'View your account information',
+    (0, swagger_1.ApiProperty)({
+        example: '2024-01-15T10:30:00Z',
+        description: 'When did the scam occur?',
+        required: false,
     }),
-    (0, swagger_1.ApiResponse)({
-        status: 200,
-        description: 'User profile',
-    }),
-    __param(0, (0, common_1.Request)()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object]),
-    __metadata("design:returntype", Promise)
-], UsersController.prototype, "getProfile", null);
-__decorate([
-    (0, common_1.Patch)('profile'),
-    (0, swagger_1.ApiOperation)({
-        summary: 'Update my profile',
-        description: 'Update your account information',
-    }),
-    (0, swagger_1.ApiResponse)({
-        status: 200,
-        description: 'Profile updated successfully',
-    }),
-    __param(0, (0, common_1.Request)()),
-    __param(1, (0, common_1.Body)()),
-    __metadata("design:type", Function),
-    __metadata("design:paramtypes", [Object, typeof (_b = typeof update_profile_dto_1.UpdateProfileDto !== "undefined" && update_profile_dto_1.UpdateProfileDto) === "function" ? _b : Object]),
-    __metadata("design:returntype", Promise)
-], UsersController.prototype, "updateProfile", null);
-exports.UsersController = UsersController = __decorate([
-    (0, swagger_1.ApiTags)('Users'),
-    (0, common_1.Controller)('users'),
-    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard),
-    (0, swagger_1.ApiBearerAuth)('JWT-auth'),
-    __metadata("design:paramtypes", [typeof (_a = typeof users_service_1.UsersService !== "undefined" && users_service_1.UsersService) === "function" ? _a : Object])
-], UsersController);
+    (0, class_validator_1.IsOptional)(),
+    (0, class_transformer_1.Type)(() => Date),
+    (0, class_validator_1.IsDate)(),
+    __metadata("design:type", Date)
+], CreateScamReportDto.prototype, "incidentDate", void 0);
 
 
 /***/ }),
-
-/***/ "./src/modules/users/users.module.ts":
-/*!*******************************************!*\
-  !*** ./src/modules/users/users.module.ts ***!
-  \*******************************************/
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.UsersModule = void 0;
-const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
-const mongoose_1 = __webpack_require__(/*! @nestjs/mongoose */ "@nestjs/mongoose");
-const users_controller_1 = __webpack_require__(/*! ./users.controller */ "./src/modules/users/users.controller.ts");
-const users_service_1 = __webpack_require__(/*! ./users.service */ "./src/modules/users/users.service.ts");
-const user_schema_1 = __webpack_require__(/*! ./schemas/user.schema */ "./src/modules/users/schemas/user.schema.ts");
-let UsersModule = class UsersModule {
-};
-exports.UsersModule = UsersModule;
-exports.UsersModule = UsersModule = __decorate([
-    (0, common_1.Module)({
-        imports: [
-            mongoose_1.MongooseModule.forFeature([{ name: user_schema_1.User.name, schema: user_schema_1.UserSchema }]),
-        ],
-        controllers: [users_controller_1.UsersController],
-        providers: [users_service_1.UsersService],
-        exports: [users_service_1.UsersService],
-    })
-], UsersModule);
-
-
-/***/ }),
-
-/***/ "./src/modules/users/users.service.ts":
-/*!********************************************!*\
-  !*** ./src/modules/users/users.service.ts ***!
-  \********************************************/
-/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
-
-
-var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
-    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
-    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
-    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
-    return c > 3 && r && Object.defineProperty(target, key, r), r;
-};
-var __metadata = (this && this.__metadata) || function (k, v) {
-    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
-};
-var __param = (this && this.__param) || function (paramIndex, decorator) {
-    return function (target, key) { decorator(target, key, paramIndex); }
-};
-var _a;
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.UsersService = void 0;
-const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
-const mongoose_1 = __webpack_require__(/*! @nestjs/mongoose */ "@nestjs/mongoose");
-const mongoose_2 = __webpack_require__(/*! mongoose */ "mongoose");
-const user_schema_1 = __webpack_require__(/*! ./schemas/user.schema */ "./src/modules/users/schemas/user.schema.ts");
-let UsersService = class UsersService {
-    constructor(userModel) {
-        this.userModel = userModel;
-    }
-    async findById(id) {
-        const user = await this.userModel.findById(id);
-        if (!user) {
-            throw new common_1.NotFoundException('User not found');
-        }
-        return user;
-    }
-    async findByEmail(email) {
-        return this.userModel.findOne({ email });
-    }
-    async updateProfile(userId, updateData) {
-        const user = await this.userModel.findByIdAndUpdate(userId, { $set: updateData }, { new: true });
-        if (!user) {
-            throw new common_1.NotFoundException('User not found');
-        }
-        return {
-            message: 'Profile updated successfully',
-            user,
-        };
-    }
-    async getProfile(userId) {
-        const user = await this.findById(userId);
-        return user;
-    }
-};
-exports.UsersService = UsersService;
-exports.UsersService = UsersService = __decorate([
-    (0, common_1.Injectable)(),
-    __param(0, (0, mongoose_1.InjectModel)(user_schema_1.User.name)),
-    __metadata("design:paramtypes", [typeof (_a = typeof mongoose_2.Model !== "undefined" && mongoose_2.Model) === "function" ? _a : Object])
-], UsersService);
-
-
-/***/ }),
-
-/***/ "@nestjs/common":
-/*!*********************************!*\
-  !*** external "@nestjs/common" ***!
-  \*********************************/
-/***/ ((module) => {
-
-module.exports = require("@nestjs/common");
-
-/***/ }),
-
-/***/ "@nestjs/config":
-/*!*********************************!*\
-  !*** external "@nestjs/config" ***!
-  \*********************************/
-/***/ ((module) => {
-
-module.exports = require("@nestjs/config");
-
-/***/ }),
-
-/***/ "@nestjs/core":
-/*!*******************************!*\
-  !*** external "@nestjs/core" ***!
-  \*******************************/
-/***/ ((module) => {
-
-module.exports = require("@nestjs/core");
-
-/***/ }),
-
-/***/ "@nestjs/jwt":
-/*!******************************!*\
-  !*** external "@nestjs/jwt" ***!
-  \******************************/
-/***/ ((module) => {
-
-module.exports = require("@nestjs/jwt");
-
-/***/ }),
-
-/***/ "@nestjs/mongoose":
-/*!***********************************!*\
-  !*** external "@nestjs/mongoose" ***!
-  \***********************************/
-/***/ ((module) => {
-
-module.exports = require("@nestjs/mongoose");
-
-/***/ }),
-
-/***/ "@nestjs/passport":
-/*!***********************************!*\
-  !*** external "@nestjs/passport" ***!
-  \***********************************/
-/***/ ((module) => {
-
-module.exports = require("@nestjs/passport");
-
-/***/ }),
-
-/***/ "@nestjs/swagger":
-/*!**********************************!*\
-  !*** external "@nestjs/swagger" ***!
-  \**********************************/
-/***/ ((module) => {
-
-module.exports = require("@nestjs/swagger");
-
-/***/ }),
-
-/***/ "@nestjs/throttler":
-/*!************************************!*\
-  !*** external "@nestjs/throttler" ***!
-  \************************************/
-/***/ ((module) => {
-
-module.exports = require("@nestjs/throttler");
-
-/***/ }),
-
-/***/ "bcrypt":
-/*!*************************!*\
-  !*** external "bcrypt" ***!
-  \*************************/
-/***/ ((module) => {
-
-module.exports = require("bcrypt");
-
-/***/ }),
-
-/***/ "class-transformer":
-/*!************************************!*\
-  !*** external "class-transformer" ***!
-  \************************************/
+/* 38 */
 /***/ ((module) => {
 
 module.exports = require("class-transformer");
 
 /***/ }),
+/* 39 */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
-/***/ "class-validator":
-/*!**********************************!*\
-  !*** external "class-validator" ***!
-  \**********************************/
-/***/ ((module) => {
 
-module.exports = require("class-validator");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.ScamEntitiesModule = void 0;
+const common_1 = __webpack_require__(2);
+const mongoose_1 = __webpack_require__(8);
+const scam_entities_controller_1 = __webpack_require__(40);
+const scam_entities_service_1 = __webpack_require__(35);
+const scam_entity_schema_1 = __webpack_require__(36);
+let ScamEntitiesModule = class ScamEntitiesModule {
+};
+exports.ScamEntitiesModule = ScamEntitiesModule;
+exports.ScamEntitiesModule = ScamEntitiesModule = __decorate([
+    (0, common_1.Module)({
+        imports: [
+            mongoose_1.MongooseModule.forFeature([
+                { name: scam_entity_schema_1.ScamEntity.name, schema: scam_entity_schema_1.ScamEntitySchema },
+            ]),
+        ],
+        controllers: [scam_entities_controller_1.ScamEntitiesController],
+        providers: [scam_entities_service_1.ScamEntitiesService],
+        exports: [scam_entities_service_1.ScamEntitiesService],
+    })
+], ScamEntitiesModule);
 
-/***/ }),
-
-/***/ "compression":
-/*!******************************!*\
-  !*** external "compression" ***!
-  \******************************/
-/***/ ((module) => {
-
-module.exports = require("compression");
-
-/***/ }),
-
-/***/ "helmet":
-/*!*************************!*\
-  !*** external "helmet" ***!
-  \*************************/
-/***/ ((module) => {
-
-module.exports = require("helmet");
-
-/***/ }),
-
-/***/ "mongoose":
-/*!***************************!*\
-  !*** external "mongoose" ***!
-  \***************************/
-/***/ ((module) => {
-
-module.exports = require("mongoose");
 
 /***/ }),
+/* 40 */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
-/***/ "passport-jwt":
-/*!*******************************!*\
-  !*** external "passport-jwt" ***!
-  \*******************************/
-/***/ ((module) => {
 
-module.exports = require("passport-jwt");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.ScamEntitiesController = void 0;
+const openapi = __webpack_require__(3);
+const common_1 = __webpack_require__(2);
+const swagger_1 = __webpack_require__(3);
+const scam_entities_service_1 = __webpack_require__(35);
+const jwt_auth_guard_1 = __webpack_require__(22);
+const roles_guard_1 = __webpack_require__(41);
+const roles_decorator_1 = __webpack_require__(42);
+const user_schema_1 = __webpack_require__(17);
+const scam_entity_schema_1 = __webpack_require__(36);
+let ScamEntitiesController = class ScamEntitiesController {
+    constructor(scamEntitiesService) {
+        this.scamEntitiesService = scamEntitiesService;
+    }
+    async lookup(entityValue) {
+        return this.scamEntitiesService.lookup(entityValue);
+    }
+    async search(query, entityType, page, limit) {
+        return this.scamEntitiesService.search(query, entityType, page, limit);
+    }
+    async getTopScammers(limit) {
+        return this.scamEntitiesService.getTopScammers(limit);
+    }
+    async getHighRiskEntities(limit) {
+        return this.scamEntitiesService.getHighRiskEntities(limit);
+    }
+    async blockEntity(entityValue) {
+        return this.scamEntitiesService.blockEntity(entityValue);
+    }
+    async unblockEntity(entityValue) {
+        return this.scamEntitiesService.unblockEntity(entityValue);
+    }
+};
+exports.ScamEntitiesController = ScamEntitiesController;
+__decorate([
+    (0, common_1.Get)('check/:entityValue'),
+    (0, swagger_1.ApiOperation)({
+        summary: 'Check if a number/URL is reported as scam',
+        description: '🔍 Instantly check if a phone number, URL, or app has been reported as a scam',
+    }),
+    (0, swagger_1.ApiResponse)({
+        status: 200,
+        description: 'Lookup result',
+        schema: {
+            examples: {
+                found: {
+                    value: {
+                        found: true,
+                        message: '🚨 CRITICAL ALERT: This phone_number has been reported 150 times! DO NOT ENGAGE!',
+                        entity: {
+                            entityType: 'phone_number',
+                            entityValue: '+919876543210',
+                            reportCount: 150,
+                            riskLevel: 'critical',
+                            reputationScore: 5.0,
+                            scamCategories: ['upi_scam', 'whatsapp_fraud'],
+                            totalAmountLost: 500000,
+                        },
+                    },
+                },
+                notFound: {
+                    value: {
+                        found: false,
+                        message: '✅ No reports found for this number/URL. Stay vigilant!',
+                        entityValue: '+919999999999',
+                    },
+                },
+            },
+        },
+    }),
+    openapi.ApiResponse({ status: 200, type: Object }),
+    __param(0, (0, common_1.Param)('entityValue')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], ScamEntitiesController.prototype, "lookup", null);
+__decorate([
+    (0, common_1.Get)('search'),
+    (0, swagger_1.ApiOperation)({
+        summary: 'Search for scam entities',
+        description: 'Search through reported numbers, URLs, and apps',
+    }),
+    (0, swagger_1.ApiQuery)({ name: 'query', required: true, example: '+9198765' }),
+    (0, swagger_1.ApiQuery)({ name: 'entityType', required: false, enum: scam_entity_schema_1.EntityType }),
+    (0, swagger_1.ApiQuery)({ name: 'page', required: false, example: 1 }),
+    (0, swagger_1.ApiQuery)({ name: 'limit', required: false, example: 20 }),
+    (0, swagger_1.ApiResponse)({
+        status: 200,
+        description: 'Search results',
+    }),
+    openapi.ApiResponse({ status: 200 }),
+    __param(0, (0, common_1.Query)('query')),
+    __param(1, (0, common_1.Query)('entityType')),
+    __param(2, (0, common_1.Query)('page')),
+    __param(3, (0, common_1.Query)('limit')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, String, Number, Number]),
+    __metadata("design:returntype", Promise)
+], ScamEntitiesController.prototype, "search", null);
+__decorate([
+    (0, common_1.Get)('top-scammers'),
+    (0, swagger_1.ApiOperation)({
+        summary: 'Get most reported scammers',
+        description: '📊 View the most frequently reported scam numbers and URLs',
+    }),
+    (0, swagger_1.ApiQuery)({ name: 'limit', required: false, example: 50 }),
+    (0, swagger_1.ApiResponse)({
+        status: 200,
+        description: 'Top scammers list',
+    }),
+    openapi.ApiResponse({ status: 200, type: [Object] }),
+    __param(0, (0, common_1.Query)('limit')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", Promise)
+], ScamEntitiesController.prototype, "getTopScammers", null);
+__decorate([
+    (0, common_1.Get)('high-risk'),
+    (0, swagger_1.ApiOperation)({
+        summary: 'Get high-risk entities',
+        description: '🚨 View all critical and high-risk scam entities',
+    }),
+    (0, swagger_1.ApiQuery)({ name: 'limit', required: false, example: 50 }),
+    (0, swagger_1.ApiResponse)({
+        status: 200,
+        description: 'High-risk entities',
+    }),
+    openapi.ApiResponse({ status: 200, type: [Object] }),
+    __param(0, (0, common_1.Query)('limit')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", Promise)
+], ScamEntitiesController.prototype, "getHighRiskEntities", null);
+__decorate([
+    (0, common_1.Post)('block/:entityValue'),
+    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard, roles_guard_1.RolesGuard),
+    (0, roles_decorator_1.Roles)(user_schema_1.UserRole.ADMIN, user_schema_1.UserRole.MODERATOR),
+    (0, swagger_1.ApiBearerAuth)('JWT-auth'),
+    (0, swagger_1.ApiOperation)({
+        summary: 'Block a scam entity (Admin only)',
+        description: 'Permanently block a scam number/URL',
+    }),
+    (0, swagger_1.ApiResponse)({
+        status: 200,
+        description: 'Entity blocked successfully',
+    }),
+    openapi.ApiResponse({ status: 201 }),
+    __param(0, (0, common_1.Param)('entityValue')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], ScamEntitiesController.prototype, "blockEntity", null);
+__decorate([
+    (0, common_1.Post)('unblock/:entityValue'),
+    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard, roles_guard_1.RolesGuard),
+    (0, roles_decorator_1.Roles)(user_schema_1.UserRole.ADMIN, user_schema_1.UserRole.MODERATOR),
+    (0, swagger_1.ApiBearerAuth)('JWT-auth'),
+    (0, swagger_1.ApiOperation)({
+        summary: 'Unblock a scam entity (Admin only)',
+        description: 'Remove block from a number/URL',
+    }),
+    (0, swagger_1.ApiResponse)({
+        status: 200,
+        description: 'Entity unblocked successfully',
+    }),
+    openapi.ApiResponse({ status: 201 }),
+    __param(0, (0, common_1.Param)('entityValue')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], ScamEntitiesController.prototype, "unblockEntity", null);
+exports.ScamEntitiesController = ScamEntitiesController = __decorate([
+    (0, swagger_1.ApiTags)('Scam Lookup'),
+    (0, common_1.Controller)('scam-lookup'),
+    __metadata("design:paramtypes", [scam_entities_service_1.ScamEntitiesService])
+], ScamEntitiesController);
+
 
 /***/ }),
+/* 41 */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
 
-/***/ "passport-local":
-/*!*********************************!*\
-  !*** external "passport-local" ***!
-  \*********************************/
-/***/ ((module) => {
 
-module.exports = require("passport-local");
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.RolesGuard = void 0;
+const common_1 = __webpack_require__(2);
+const core_1 = __webpack_require__(1);
+let RolesGuard = class RolesGuard {
+    constructor(reflector) {
+        this.reflector = reflector;
+    }
+    canActivate(context) {
+        const requiredRoles = this.reflector.getAllAndOverride('roles', [
+            context.getHandler(),
+            context.getClass(),
+        ]);
+        if (!requiredRoles) {
+            return true;
+        }
+        const { user } = context.switchToHttp().getRequest();
+        return requiredRoles.some((role) => user.role === role);
+    }
+};
+exports.RolesGuard = RolesGuard;
+exports.RolesGuard = RolesGuard = __decorate([
+    (0, common_1.Injectable)(),
+    __metadata("design:paramtypes", [core_1.Reflector])
+], RolesGuard);
+
+
+/***/ }),
+/* 42 */
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.Roles = void 0;
+const common_1 = __webpack_require__(2);
+const Roles = (...roles) => (0, common_1.SetMetadata)('roles', roles);
+exports.Roles = Roles;
+
+
+/***/ }),
+/* 43 */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.AlertsModule = void 0;
+const common_1 = __webpack_require__(2);
+const mongoose_1 = __webpack_require__(8);
+const alerts_controller_1 = __webpack_require__(44);
+const alerts_service_1 = __webpack_require__(45);
+const alert_schema_1 = __webpack_require__(46);
+let AlertsModule = class AlertsModule {
+};
+exports.AlertsModule = AlertsModule;
+exports.AlertsModule = AlertsModule = __decorate([
+    (0, common_1.Module)({
+        imports: [
+            mongoose_1.MongooseModule.forFeature([{ name: alert_schema_1.Alert.name, schema: alert_schema_1.AlertSchema }]),
+        ],
+        controllers: [alerts_controller_1.AlertsController],
+        providers: [alerts_service_1.AlertsService],
+        exports: [alerts_service_1.AlertsService],
+    })
+], AlertsModule);
+
+
+/***/ }),
+/* 44 */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.AlertsController = void 0;
+const openapi = __webpack_require__(3);
+const common_1 = __webpack_require__(2);
+const swagger_1 = __webpack_require__(3);
+const alerts_service_1 = __webpack_require__(45);
+const create_alert_dto_1 = __webpack_require__(47);
+const jwt_auth_guard_1 = __webpack_require__(22);
+const roles_guard_1 = __webpack_require__(41);
+const roles_decorator_1 = __webpack_require__(42);
+const user_schema_1 = __webpack_require__(17);
+const alert_schema_1 = __webpack_require__(46);
+let AlertsController = class AlertsController {
+    constructor(alertsService) {
+        this.alertsService = alertsService;
+    }
+    async findAll(page, limit, city, state, alertType, severity) {
+        const filters = { city, state, alertType, severity };
+        return this.alertsService.findAll(filters, page, limit);
+    }
+    async getActiveAlerts(city, state) {
+        return this.alertsService.getActiveAlerts(city, state);
+    }
+    async findOne(id) {
+        return this.alertsService.findOne(id);
+    }
+    async create(createAlertDto, req) {
+        return this.alertsService.create(createAlertDto, req.user.userId);
+    }
+    async deactivate(id) {
+        return this.alertsService.deactivateAlert(id);
+    }
+};
+exports.AlertsController = AlertsController;
+__decorate([
+    (0, common_1.Get)(),
+    (0, swagger_1.ApiOperation)({
+        summary: 'Get all alerts',
+        description: '📢 View all fraud alerts in your area',
+    }),
+    (0, swagger_1.ApiQuery)({ name: 'page', required: false, example: 1 }),
+    (0, swagger_1.ApiQuery)({ name: 'limit', required: false, example: 20 }),
+    (0, swagger_1.ApiQuery)({ name: 'city', required: false }),
+    (0, swagger_1.ApiQuery)({ name: 'state', required: false }),
+    (0, swagger_1.ApiQuery)({ name: 'alertType', required: false, enum: alert_schema_1.AlertType }),
+    (0, swagger_1.ApiQuery)({ name: 'severity', required: false, enum: alert_schema_1.AlertSeverity }),
+    (0, swagger_1.ApiResponse)({
+        status: 200,
+        description: 'List of alerts',
+    }),
+    openapi.ApiResponse({ status: 200 }),
+    __param(0, (0, common_1.Query)('page')),
+    __param(1, (0, common_1.Query)('limit')),
+    __param(2, (0, common_1.Query)('city')),
+    __param(3, (0, common_1.Query)('state')),
+    __param(4, (0, common_1.Query)('alertType')),
+    __param(5, (0, common_1.Query)('severity')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number, Number, String, String, String, String]),
+    __metadata("design:returntype", Promise)
+], AlertsController.prototype, "findAll", null);
+__decorate([
+    (0, common_1.Get)('active'),
+    (0, swagger_1.ApiOperation)({
+        summary: 'Get active alerts',
+        description: '🚨 Get currently active fraud alerts for your location',
+    }),
+    (0, swagger_1.ApiQuery)({ name: 'city', required: false }),
+    (0, swagger_1.ApiQuery)({ name: 'state', required: false }),
+    (0, swagger_1.ApiResponse)({
+        status: 200,
+        description: 'Active alerts',
+    }),
+    openapi.ApiResponse({ status: 200, type: [Object] }),
+    __param(0, (0, common_1.Query)('city')),
+    __param(1, (0, common_1.Query)('state')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, String]),
+    __metadata("design:returntype", Promise)
+], AlertsController.prototype, "getActiveAlerts", null);
+__decorate([
+    (0, common_1.Get)(':id'),
+    (0, swagger_1.ApiOperation)({
+        summary: 'Get alert details',
+        description: 'View detailed information about a specific alert',
+    }),
+    (0, swagger_1.ApiResponse)({
+        status: 200,
+        description: 'Alert details',
+    }),
+    openapi.ApiResponse({ status: 200, type: Object }),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], AlertsController.prototype, "findOne", null);
+__decorate([
+    (0, common_1.Post)(),
+    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard, roles_guard_1.RolesGuard),
+    (0, roles_decorator_1.Roles)(user_schema_1.UserRole.ADMIN, user_schema_1.UserRole.MODERATOR),
+    (0, swagger_1.ApiBearerAuth)('JWT-auth'),
+    (0, swagger_1.ApiOperation)({
+        summary: 'Create a new alert (Admin only)',
+        description: 'Create a fraud alert to warn the community',
+    }),
+    (0, swagger_1.ApiResponse)({
+        status: 201,
+        description: 'Alert created successfully',
+    }),
+    openapi.ApiResponse({ status: 201 }),
+    __param(0, (0, common_1.Body)()),
+    __param(1, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [create_alert_dto_1.CreateAlertDto, Object]),
+    __metadata("design:returntype", Promise)
+], AlertsController.prototype, "create", null);
+__decorate([
+    (0, common_1.Patch)(':id/deactivate'),
+    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard, roles_guard_1.RolesGuard),
+    (0, roles_decorator_1.Roles)(user_schema_1.UserRole.ADMIN, user_schema_1.UserRole.MODERATOR),
+    (0, swagger_1.ApiBearerAuth)('JWT-auth'),
+    (0, swagger_1.ApiOperation)({
+        summary: 'Deactivate an alert (Admin only)',
+        description: 'Deactivate an alert when it is no longer relevant',
+    }),
+    (0, swagger_1.ApiResponse)({
+        status: 200,
+        description: 'Alert deactivated successfully',
+    }),
+    openapi.ApiResponse({ status: 200 }),
+    __param(0, (0, common_1.Param)('id')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], AlertsController.prototype, "deactivate", null);
+exports.AlertsController = AlertsController = __decorate([
+    (0, swagger_1.ApiTags)('Alerts'),
+    (0, common_1.Controller)('alerts'),
+    __metadata("design:paramtypes", [alerts_service_1.AlertsService])
+], AlertsController);
+
+
+/***/ }),
+/* 45 */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.AlertsService = void 0;
+const common_1 = __webpack_require__(2);
+const mongoose_1 = __webpack_require__(8);
+const mongoose_2 = __webpack_require__(15);
+const alert_schema_1 = __webpack_require__(46);
+let AlertsService = class AlertsService {
+    constructor(alertModel) {
+        this.alertModel = alertModel;
+    }
+    async create(createAlertDto, adminId) {
+        const alert = await this.alertModel.create({
+            ...createAlertDto,
+            createdBy: new mongoose_2.Types.ObjectId(adminId),
+        });
+        return {
+            message: 'Alert created successfully',
+            alert,
+        };
+    }
+    async findAll(filters = {}, page = 1, limit = 20) {
+        const skip = (page - 1) * limit;
+        const query = { isActive: true };
+        if (filters.city) {
+            query.city = new RegExp(filters.city, 'i');
+        }
+        if (filters.state) {
+            query.state = new RegExp(filters.state, 'i');
+        }
+        if (filters.alertType) {
+            query.alertType = filters.alertType;
+        }
+        if (filters.severity) {
+            query.severity = filters.severity;
+        }
+        const [alerts, total] = await Promise.all([
+            this.alertModel
+                .find(query)
+                .populate('createdBy', 'name')
+                .sort({ createdAt: -1 })
+                .skip(skip)
+                .limit(limit)
+                .exec(),
+            this.alertModel.countDocuments(query),
+        ]);
+        return {
+            alerts,
+            pagination: {
+                total,
+                page,
+                limit,
+                pages: Math.ceil(total / limit),
+            },
+        };
+    }
+    async findOne(id) {
+        const alert = await this.alertModel
+            .findById(id)
+            .populate('createdBy', 'name email');
+        if (!alert) {
+            throw new common_1.NotFoundException('Alert not found');
+        }
+        return alert;
+    }
+    async getActiveAlerts(city, state) {
+        const query = {
+            isActive: true,
+            $or: [{ expiresAt: { $exists: false } }, { expiresAt: { $gte: new Date() } }],
+        };
+        if (city) {
+            query.city = new RegExp(city, 'i');
+        }
+        if (state) {
+            query.state = new RegExp(state, 'i');
+        }
+        return this.alertModel
+            .find(query)
+            .populate('createdBy', 'name')
+            .sort({ severity: -1, createdAt: -1 })
+            .exec();
+    }
+    async deactivateAlert(id) {
+        const alert = await this.alertModel.findByIdAndUpdate(id, { isActive: false }, { new: true });
+        if (!alert) {
+            throw new common_1.NotFoundException('Alert not found');
+        }
+        return {
+            message: 'Alert deactivated successfully',
+            alert,
+        };
+    }
+    async deleteExpiredAlerts() {
+        const result = await this.alertModel.deleteMany({
+            expiresAt: { $lt: new Date() },
+        });
+        return {
+            message: `Deleted ${result.deletedCount} expired alerts`,
+            deletedCount: result.deletedCount,
+        };
+    }
+};
+exports.AlertsService = AlertsService;
+exports.AlertsService = AlertsService = __decorate([
+    (0, common_1.Injectable)(),
+    __param(0, (0, mongoose_1.InjectModel)(alert_schema_1.Alert.name)),
+    __metadata("design:paramtypes", [mongoose_2.Model])
+], AlertsService);
+
+
+/***/ }),
+/* 46 */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.AlertSchema = exports.Alert = exports.AlertSeverity = exports.AlertType = void 0;
+const mongoose_1 = __webpack_require__(8);
+const mongoose_2 = __webpack_require__(15);
+const swagger_1 = __webpack_require__(3);
+var AlertType;
+(function (AlertType) {
+    AlertType["TRENDING_SCAM"] = "trending_scam";
+    AlertType["NEW_SCAM_PATTERN"] = "new_scam_pattern";
+    AlertType["AREA_ALERT"] = "area_alert";
+    AlertType["CRITICAL_THREAT"] = "critical_threat";
+})(AlertType || (exports.AlertType = AlertType = {}));
+var AlertSeverity;
+(function (AlertSeverity) {
+    AlertSeverity["INFO"] = "info";
+    AlertSeverity["WARNING"] = "warning";
+    AlertSeverity["CRITICAL"] = "critical";
+})(AlertSeverity || (exports.AlertSeverity = AlertSeverity = {}));
+let Alert = class Alert extends mongoose_2.Document {
+};
+exports.Alert = Alert;
+__decorate([
+    (0, swagger_1.ApiProperty)({ example: 'New UPI Scam Alert in Mumbai' }),
+    (0, mongoose_1.Prop)({ required: true }),
+    __metadata("design:type", String)
+], Alert.prototype, "title", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({ example: 'Multiple reports of fake payment links in Mumbai area' }),
+    (0, mongoose_1.Prop)({ required: true }),
+    __metadata("design:type", String)
+], Alert.prototype, "message", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({ enum: AlertType }),
+    (0, mongoose_1.Prop)({ type: String, enum: AlertType, required: true }),
+    __metadata("design:type", String)
+], Alert.prototype, "alertType", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({ enum: AlertSeverity }),
+    (0, mongoose_1.Prop)({ type: String, enum: AlertSeverity, default: AlertSeverity.INFO }),
+    __metadata("design:type", String)
+], Alert.prototype, "severity", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({ example: 'Mumbai' }),
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", String)
+], Alert.prototype, "city", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({ example: 'Maharashtra' }),
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", String)
+], Alert.prototype, "state", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({ example: ['upi_scam'] }),
+    (0, mongoose_1.Prop)({ type: [String], default: [] }),
+    __metadata("design:type", Array)
+], Alert.prototype, "relatedScamTypes", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({ example: true }),
+    (0, mongoose_1.Prop)({ default: true }),
+    __metadata("design:type", Boolean)
+], Alert.prototype, "isActive", void 0);
+__decorate([
+    (0, mongoose_1.Prop)({ type: mongoose_2.Types.ObjectId, ref: 'User', required: true }),
+    __metadata("design:type", mongoose_2.Types.ObjectId)
+], Alert.prototype, "createdBy", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)(),
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", Date)
+], Alert.prototype, "expiresAt", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)(),
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", Date)
+], Alert.prototype, "createdAt", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)(),
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", Date)
+], Alert.prototype, "updatedAt", void 0);
+exports.Alert = Alert = __decorate([
+    (0, mongoose_1.Schema)({ timestamps: true })
+], Alert);
+exports.AlertSchema = mongoose_1.SchemaFactory.createForClass(Alert);
+exports.AlertSchema.index({ isActive: 1 });
+exports.AlertSchema.index({ alertType: 1 });
+exports.AlertSchema.index({ severity: 1 });
+exports.AlertSchema.index({ city: 1, state: 1 });
+exports.AlertSchema.index({ createdAt: -1 });
+exports.AlertSchema.index({ expiresAt: 1 });
+
+
+/***/ }),
+/* 47 */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.CreateAlertDto = void 0;
+const openapi = __webpack_require__(3);
+const swagger_1 = __webpack_require__(3);
+const class_validator_1 = __webpack_require__(19);
+const class_transformer_1 = __webpack_require__(38);
+const alert_schema_1 = __webpack_require__(46);
+class CreateAlertDto {
+    static _OPENAPI_METADATA_FACTORY() {
+        return { title: { required: true, type: () => String, maxLength: 200 }, message: { required: true, type: () => String, maxLength: 1000 }, alertType: { required: true, enum: (__webpack_require__(46).AlertType) }, severity: { required: true, enum: (__webpack_require__(46).AlertSeverity) }, city: { required: false, type: () => String }, state: { required: false, type: () => String }, relatedScamTypes: { required: false, type: () => [String] }, expiresAt: { required: false, type: () => Date } };
+    }
+}
+exports.CreateAlertDto = CreateAlertDto;
+__decorate([
+    (0, swagger_1.ApiProperty)({
+        example: 'New UPI Scam Alert in Mumbai',
+        description: 'Alert title',
+    }),
+    (0, class_validator_1.IsString)(),
+    (0, class_validator_1.IsNotEmpty)(),
+    (0, class_validator_1.MaxLength)(200),
+    __metadata("design:type", String)
+], CreateAlertDto.prototype, "title", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({
+        example: 'Multiple reports of fake payment links targeting senior citizens',
+        description: 'Alert message',
+    }),
+    (0, class_validator_1.IsString)(),
+    (0, class_validator_1.IsNotEmpty)(),
+    (0, class_validator_1.MaxLength)(1000),
+    __metadata("design:type", String)
+], CreateAlertDto.prototype, "message", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({
+        enum: alert_schema_1.AlertType,
+        example: alert_schema_1.AlertType.AREA_ALERT,
+        description: 'Type of alert',
+    }),
+    (0, class_validator_1.IsEnum)(alert_schema_1.AlertType),
+    (0, class_validator_1.IsNotEmpty)(),
+    __metadata("design:type", String)
+], CreateAlertDto.prototype, "alertType", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({
+        enum: alert_schema_1.AlertSeverity,
+        example: alert_schema_1.AlertSeverity.WARNING,
+        description: 'Severity level',
+    }),
+    (0, class_validator_1.IsEnum)(alert_schema_1.AlertSeverity),
+    (0, class_validator_1.IsNotEmpty)(),
+    __metadata("design:type", String)
+], CreateAlertDto.prototype, "severity", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({
+        example: 'Mumbai',
+        description: 'City (optional)',
+        required: false,
+    }),
+    (0, class_validator_1.IsOptional)(),
+    (0, class_validator_1.IsString)(),
+    __metadata("design:type", String)
+], CreateAlertDto.prototype, "city", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({
+        example: 'Maharashtra',
+        description: 'State (optional)',
+        required: false,
+    }),
+    (0, class_validator_1.IsOptional)(),
+    (0, class_validator_1.IsString)(),
+    __metadata("design:type", String)
+], CreateAlertDto.prototype, "state", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({
+        example: ['upi_scam'],
+        description: 'Related scam types',
+        required: false,
+    }),
+    (0, class_validator_1.IsOptional)(),
+    __metadata("design:type", Array)
+], CreateAlertDto.prototype, "relatedScamTypes", void 0);
+__decorate([
+    (0, swagger_1.ApiProperty)({
+        example: '2024-12-31T23:59:59Z',
+        description: 'Alert expiration date (optional)',
+        required: false,
+    }),
+    (0, class_validator_1.IsOptional)(),
+    (0, class_transformer_1.Type)(() => Date),
+    (0, class_validator_1.IsDate)(),
+    __metadata("design:type", Date)
+], CreateAlertDto.prototype, "expiresAt", void 0);
+
+
+/***/ }),
+/* 48 */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.AdminModule = void 0;
+const common_1 = __webpack_require__(2);
+const mongoose_1 = __webpack_require__(8);
+const admin_controller_1 = __webpack_require__(49);
+const admin_service_1 = __webpack_require__(50);
+const scam_reports_module_1 = __webpack_require__(31);
+const scam_entities_module_1 = __webpack_require__(39);
+const alerts_module_1 = __webpack_require__(43);
+const user_schema_1 = __webpack_require__(17);
+const scam_report_schema_1 = __webpack_require__(34);
+let AdminModule = class AdminModule {
+};
+exports.AdminModule = AdminModule;
+exports.AdminModule = AdminModule = __decorate([
+    (0, common_1.Module)({
+        imports: [
+            mongoose_1.MongooseModule.forFeature([
+                { name: user_schema_1.User.name, schema: user_schema_1.UserSchema },
+                { name: scam_report_schema_1.ScamReport.name, schema: scam_report_schema_1.ScamReportSchema },
+            ]),
+            scam_reports_module_1.ScamReportsModule,
+            scam_entities_module_1.ScamEntitiesModule,
+            alerts_module_1.AlertsModule,
+        ],
+        controllers: [admin_controller_1.AdminController],
+        providers: [admin_service_1.AdminService],
+    })
+], AdminModule);
+
+
+/***/ }),
+/* 49 */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.AdminController = void 0;
+const openapi = __webpack_require__(3);
+const common_1 = __webpack_require__(2);
+const swagger_1 = __webpack_require__(3);
+const admin_service_1 = __webpack_require__(50);
+const scam_reports_service_1 = __webpack_require__(33);
+const jwt_auth_guard_1 = __webpack_require__(22);
+const roles_guard_1 = __webpack_require__(41);
+const roles_decorator_1 = __webpack_require__(42);
+const user_schema_1 = __webpack_require__(17);
+let AdminController = class AdminController {
+    constructor(adminService, scamReportsService) {
+        this.adminService = adminService;
+        this.scamReportsService = scamReportsService;
+    }
+    async getDashboard() {
+        return this.adminService.getDashboardStats();
+    }
+    async getPendingReports(page, limit) {
+        return this.adminService.getPendingReports(page, limit);
+    }
+    async verifyReport(id, req) {
+        return this.scamReportsService.verifyReport(id, req.user.userId);
+    }
+    async rejectReport(id, reason, req) {
+        return this.scamReportsService.rejectReport(id, req.user.userId, reason);
+    }
+    async getReportsByLocation() {
+        return this.adminService.getReportsByLocation();
+    }
+    async getScamTrends(days) {
+        return this.adminService.getScamTrends(days);
+    }
+    async getAllUsers(page, limit) {
+        return this.adminService.getAllUsers(page, limit);
+    }
+};
+exports.AdminController = AdminController;
+__decorate([
+    (0, common_1.Get)('dashboard'),
+    (0, swagger_1.ApiOperation)({
+        summary: 'Get dashboard statistics',
+        description: 'View comprehensive platform statistics',
+    }),
+    (0, swagger_1.ApiResponse)({
+        status: 200,
+        description: 'Dashboard statistics',
+        schema: {
+            example: {
+                users: {
+                    total: 5000,
+                    today: 45,
+                },
+                reports: {
+                    total: 1250,
+                    pending: 120,
+                    verified: 980,
+                    rejected: 150,
+                    today: 32,
+                },
+            },
+        },
+    }),
+    openapi.ApiResponse({ status: 200 }),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], AdminController.prototype, "getDashboard", null);
+__decorate([
+    (0, common_1.Get)('reports/pending'),
+    (0, swagger_1.ApiOperation)({
+        summary: 'Get pending reports',
+        description: 'View all reports awaiting moderation',
+    }),
+    (0, swagger_1.ApiQuery)({ name: 'page', required: false, example: 1 }),
+    (0, swagger_1.ApiQuery)({ name: 'limit', required: false, example: 20 }),
+    (0, swagger_1.ApiResponse)({
+        status: 200,
+        description: 'Pending reports',
+    }),
+    openapi.ApiResponse({ status: 200 }),
+    __param(0, (0, common_1.Query)('page')),
+    __param(1, (0, common_1.Query)('limit')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number, Number]),
+    __metadata("design:returntype", Promise)
+], AdminController.prototype, "getPendingReports", null);
+__decorate([
+    (0, common_1.Post)('reports/:id/verify'),
+    (0, swagger_1.ApiOperation)({
+        summary: 'Verify a scam report',
+        description: 'Mark a report as verified',
+    }),
+    (0, swagger_1.ApiResponse)({
+        status: 200,
+        description: 'Report verified successfully',
+    }),
+    openapi.ApiResponse({ status: 201 }),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, Object]),
+    __metadata("design:returntype", Promise)
+], AdminController.prototype, "verifyReport", null);
+__decorate([
+    (0, common_1.Post)('reports/:id/reject'),
+    (0, swagger_1.ApiOperation)({
+        summary: 'Reject a scam report',
+        description: 'Mark a report as rejected with reason',
+    }),
+    (0, swagger_1.ApiResponse)({
+        status: 200,
+        description: 'Report rejected',
+    }),
+    openapi.ApiResponse({ status: 201 }),
+    __param(0, (0, common_1.Param)('id')),
+    __param(1, (0, common_1.Body)('reason')),
+    __param(2, (0, common_1.Request)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String, String, Object]),
+    __metadata("design:returntype", Promise)
+], AdminController.prototype, "rejectReport", null);
+__decorate([
+    (0, common_1.Get)('analytics/location'),
+    (0, swagger_1.ApiOperation)({
+        summary: 'Get reports by location',
+        description: 'View scam reports grouped by location',
+    }),
+    (0, swagger_1.ApiResponse)({
+        status: 200,
+        description: 'Location-based analytics',
+    }),
+    openapi.ApiResponse({ status: 200, type: [Object] }),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", Promise)
+], AdminController.prototype, "getReportsByLocation", null);
+__decorate([
+    (0, common_1.Get)('analytics/trends'),
+    (0, swagger_1.ApiOperation)({
+        summary: 'Get scam trends',
+        description: 'View scam trends over time',
+    }),
+    (0, swagger_1.ApiQuery)({ name: 'days', required: false, example: 30 }),
+    (0, swagger_1.ApiResponse)({
+        status: 200,
+        description: 'Scam trends',
+    }),
+    openapi.ApiResponse({ status: 200, type: [Object] }),
+    __param(0, (0, common_1.Query)('days')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", Promise)
+], AdminController.prototype, "getScamTrends", null);
+__decorate([
+    (0, common_1.Get)('users'),
+    (0, swagger_1.ApiOperation)({
+        summary: 'Get all users',
+        description: 'View all registered users',
+    }),
+    (0, swagger_1.ApiQuery)({ name: 'page', required: false, example: 1 }),
+    (0, swagger_1.ApiQuery)({ name: 'limit', required: false, example: 20 }),
+    (0, swagger_1.ApiResponse)({
+        status: 200,
+        description: 'List of users',
+    }),
+    openapi.ApiResponse({ status: 200 }),
+    __param(0, (0, common_1.Query)('page')),
+    __param(1, (0, common_1.Query)('limit')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number, Number]),
+    __metadata("design:returntype", Promise)
+], AdminController.prototype, "getAllUsers", null);
+exports.AdminController = AdminController = __decorate([
+    (0, swagger_1.ApiTags)('Admin'),
+    (0, common_1.Controller)('admin'),
+    (0, common_1.UseGuards)(jwt_auth_guard_1.JwtAuthGuard, roles_guard_1.RolesGuard),
+    (0, roles_decorator_1.Roles)(user_schema_1.UserRole.ADMIN, user_schema_1.UserRole.MODERATOR),
+    (0, swagger_1.ApiBearerAuth)('JWT-auth'),
+    __metadata("design:paramtypes", [admin_service_1.AdminService,
+        scam_reports_service_1.ScamReportsService])
+], AdminController);
+
+
+/***/ }),
+/* 50 */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+var __param = (this && this.__param) || function (paramIndex, decorator) {
+    return function (target, key) { decorator(target, key, paramIndex); }
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.AdminService = void 0;
+const common_1 = __webpack_require__(2);
+const mongoose_1 = __webpack_require__(8);
+const mongoose_2 = __webpack_require__(15);
+const user_schema_1 = __webpack_require__(17);
+const scam_report_schema_1 = __webpack_require__(34);
+let AdminService = class AdminService {
+    constructor(userModel, scamReportModel) {
+        this.userModel = userModel;
+        this.scamReportModel = scamReportModel;
+    }
+    async getDashboardStats() {
+        const [totalUsers, totalReports, pendingReports, verifiedReports, rejectedReports, reportsToday, usersToday,] = await Promise.all([
+            this.userModel.countDocuments(),
+            this.scamReportModel.countDocuments(),
+            this.scamReportModel.countDocuments({ status: scam_report_schema_1.ReportStatus.PENDING }),
+            this.scamReportModel.countDocuments({ status: scam_report_schema_1.ReportStatus.VERIFIED }),
+            this.scamReportModel.countDocuments({ status: scam_report_schema_1.ReportStatus.REJECTED }),
+            this.scamReportModel.countDocuments({
+                createdAt: { $gte: new Date(new Date().setHours(0, 0, 0, 0)) },
+            }),
+            this.userModel.countDocuments({
+                createdAt: { $gte: new Date(new Date().setHours(0, 0, 0, 0)) },
+            }),
+        ]);
+        return {
+            users: {
+                total: totalUsers,
+                today: usersToday,
+            },
+            reports: {
+                total: totalReports,
+                pending: pendingReports,
+                verified: verifiedReports,
+                rejected: rejectedReports,
+                today: reportsToday,
+            },
+        };
+    }
+    async getReportsByLocation() {
+        return this.scamReportModel.aggregate([
+            {
+                $match: {
+                    state: { $exists: true, $ne: null },
+                },
+            },
+            {
+                $group: {
+                    _id: { state: '$state', city: '$city' },
+                    count: { $sum: 1 },
+                    totalLoss: { $sum: '$amountLost' },
+                },
+            },
+            {
+                $sort: { count: -1 },
+            },
+            {
+                $limit: 50,
+            },
+        ]);
+    }
+    async getScamTrends(days = 30) {
+        const startDate = new Date();
+        startDate.setDate(startDate.getDate() - days);
+        return this.scamReportModel.aggregate([
+            {
+                $match: {
+                    createdAt: { $gte: startDate },
+                },
+            },
+            {
+                $group: {
+                    _id: {
+                        date: { $dateToString: { format: '%Y-%m-%d', date: '$createdAt' } },
+                        scamType: '$scamType',
+                    },
+                    count: { $sum: 1 },
+                },
+            },
+            {
+                $sort: { '_id.date': 1 },
+            },
+        ]);
+    }
+    async getPendingReports(page = 1, limit = 20) {
+        const skip = (page - 1) * limit;
+        const [reports, total] = await Promise.all([
+            this.scamReportModel
+                .find({ status: scam_report_schema_1.ReportStatus.PENDING })
+                .populate('reportedBy', 'name email city state')
+                .sort({ createdAt: -1 })
+                .skip(skip)
+                .limit(limit)
+                .exec(),
+            this.scamReportModel.countDocuments({ status: scam_report_schema_1.ReportStatus.PENDING }),
+        ]);
+        return {
+            reports,
+            pagination: {
+                total,
+                page,
+                limit,
+                pages: Math.ceil(total / limit),
+            },
+        };
+    }
+    async getAllUsers(page = 1, limit = 20) {
+        const skip = (page - 1) * limit;
+        const [users, total] = await Promise.all([
+            this.userModel
+                .find()
+                .select('-password -refreshTokens')
+                .sort({ createdAt: -1 })
+                .skip(skip)
+                .limit(limit)
+                .exec(),
+            this.userModel.countDocuments(),
+        ]);
+        return {
+            users,
+            pagination: {
+                total,
+                page,
+                limit,
+                pages: Math.ceil(total / limit),
+            },
+        };
+    }
+};
+exports.AdminService = AdminService;
+exports.AdminService = AdminService = __decorate([
+    (0, common_1.Injectable)(),
+    __param(0, (0, mongoose_1.InjectModel)(user_schema_1.User.name)),
+    __param(1, (0, mongoose_1.InjectModel)(scam_report_schema_1.ScamReport.name)),
+    __metadata("design:paramtypes", [mongoose_2.Model,
+        mongoose_2.Model])
+], AdminService);
+
+
+/***/ }),
+/* 51 */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (this && this.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.AppController = void 0;
+const openapi = __webpack_require__(3);
+const common_1 = __webpack_require__(2);
+const swagger_1 = __webpack_require__(3);
+const app_service_1 = __webpack_require__(52);
+let AppController = class AppController {
+    constructor(appService) {
+        this.appService = appService;
+    }
+    getHealth() {
+        return this.appService.getHealth();
+    }
+    getStats() {
+        return this.appService.getStats();
+    }
+};
+exports.AppController = AppController;
+__decorate([
+    (0, common_1.Get)(),
+    (0, swagger_1.ApiOperation)({ summary: 'Health check endpoint' }),
+    (0, swagger_1.ApiResponse)({
+        status: 200,
+        description: 'API is healthy and running',
+        schema: {
+            example: {
+                status: 'success',
+                message: '🛡️ IndiaRaksha API is running',
+                version: '1.0.0',
+                timestamp: '2024-01-01T00:00:00.000Z',
+            },
+        },
+    }),
+    openapi.ApiResponse({ status: 200 }),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], AppController.prototype, "getHealth", null);
+__decorate([
+    (0, common_1.Get)('stats'),
+    (0, swagger_1.ApiOperation)({ summary: 'Get platform statistics' }),
+    (0, swagger_1.ApiResponse)({
+        status: 200,
+        description: 'Platform statistics',
+        schema: {
+            example: {
+                totalReports: 1250,
+                totalUsers: 5000,
+                reportsToday: 45,
+                activeAlerts: 3,
+            },
+        },
+    }),
+    openapi.ApiResponse({ status: 200 }),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", void 0)
+], AppController.prototype, "getStats", null);
+exports.AppController = AppController = __decorate([
+    (0, swagger_1.ApiTags)('Health'),
+    (0, common_1.Controller)(),
+    __metadata("design:paramtypes", [app_service_1.AppService])
+], AppController);
+
+
+/***/ }),
+/* 52 */
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+exports.AppService = void 0;
+const common_1 = __webpack_require__(2);
+let AppService = class AppService {
+    getHealth() {
+        return {
+            status: 'success',
+            message: '🛡️ IndiaRaksha API is running',
+            version: '1.0.0',
+            timestamp: new Date().toISOString(),
+            mission: 'Protecting citizens from digital fraud',
+        };
+    }
+    getStats() {
+        return {
+            totalReports: 0,
+            totalUsers: 0,
+            reportsToday: 0,
+            activeAlerts: 0,
+            message: 'Platform statistics will be available once data is populated',
+        };
+    }
+};
+exports.AppService = AppService;
+exports.AppService = AppService = __decorate([
+    (0, common_1.Injectable)()
+], AppService);
+
 
 /***/ })
-
-/******/ 	});
+/******/ 	]);
 /************************************************************************/
 /******/ 	// The module cache
 /******/ 	var __webpack_module_cache__ = {};
@@ -3695,18 +3535,15 @@ var __webpack_exports__ = {};
 // This entry needs to be wrapped in an IIFE because it needs to be isolated against other modules in the chunk.
 (() => {
 var exports = __webpack_exports__;
-/*!*********************!*\
-  !*** ./src/main.ts ***!
-  \*********************/
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const core_1 = __webpack_require__(/*! @nestjs/core */ "@nestjs/core");
-const common_1 = __webpack_require__(/*! @nestjs/common */ "@nestjs/common");
-const swagger_1 = __webpack_require__(/*! @nestjs/swagger */ "@nestjs/swagger");
-const config_1 = __webpack_require__(/*! @nestjs/config */ "@nestjs/config");
-const helmet_1 = __webpack_require__(/*! helmet */ "helmet");
-const compression = __webpack_require__(/*! compression */ "compression");
-const app_module_1 = __webpack_require__(/*! ./app.module */ "./src/app.module.ts");
+const core_1 = __webpack_require__(1);
+const common_1 = __webpack_require__(2);
+const swagger_1 = __webpack_require__(3);
+const config_1 = __webpack_require__(4);
+const helmet_1 = __webpack_require__(5);
+const compression = __webpack_require__(6);
+const app_module_1 = __webpack_require__(7);
 async function bootstrap() {
     const app = await core_1.NestFactory.create(app_module_1.AppModule, {
         logger: ['error', 'warn', 'log', 'debug', 'verbose'],
@@ -3739,12 +3576,14 @@ async function bootstrap() {
         .addTag('Alerts', 'Real-time fraud alerts and notifications')
         .addTag('Admin', 'Administrative and moderation operations')
         .addTag('Users', 'User profile and account management')
+        .setContact('IndiaRaksha Team', 'https://indiaraksha.org', 'contact@indiaraksha.org')
+        .setLicense('MIT', 'https://opensource.org/licenses/MIT')
         .addBearerAuth({
         type: 'http',
         scheme: 'bearer',
         bearerFormat: 'JWT',
         name: 'JWT',
-        description: 'Enter JWT token',
+        description: 'Enter your JWT token to access protected routes',
         in: 'header',
     }, 'JWT-auth')
         .build();
