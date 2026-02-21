@@ -53,13 +53,15 @@ async function bootstrap() {
         .addTag('Alerts', 'Real-time fraud alerts and notifications')
         .addTag('Admin', 'Administrative and moderation operations')
         .addTag('Users', 'User profile and account management')
+        .setContact('IndiaRaksha Team', 'https://indiaraksha.org', 'contact@indiaraksha.org')
+        .setLicense('MIT', 'https://opensource.org/licenses/MIT')
         .addBearerAuth(
             {
                 type: 'http',
                 scheme: 'bearer',
                 bearerFormat: 'JWT',
                 name: 'JWT',
-                description: 'Enter JWT token',
+                description: 'Enter your JWT token to access protected routes',
                 in: 'header',
             },
             'JWT-auth',
