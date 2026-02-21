@@ -1,0 +1,315 @@
+@import "tailwindcss";
+
+:root {
+  /* Brand Colors - Professional & Trustworthy */
+  --primary: 217 91% 60%;
+  /* #3b82f6 - Standard Blue */
+  --primary-dark: 217 91% 50%;
+  /* #2563eb */
+  --primary-light: 217 91% 95%;
+  /* #eff6ff */
+
+  --secondary: 262 83% 58%;
+  /* #8b5cf6 - Modern Purple */
+  --secondary-dark: 262 83% 48%;
+  /* #7c3aed */
+
+  /* State Colors */
+  --success: 142 71% 45%;
+  /* #22c55e - Green */
+  --warning: 24 94% 50%;
+  /* #f97316 - Orange */
+  --danger: 0 84% 60%;
+  /* #ef4444 - Red */
+  --info: 199 89% 48%;
+  /* #0ea5e9 - Light Blue */
+
+  /* Neutrals - High Contrast */
+  --background: 210 40% 98%;
+  /* #f8fafc - Very light gray/blue tint */
+  --surface: 0 0% 100%;
+  /* #ffffff - Pure white */
+  --foreground: 222 47% 11%;
+  /* #0f172a - Dark Slate */
+  --muted: 215 16% 47%;
+  /* #64748b - Slate Gray */
+  --border: 214 32% 91%;
+  /* #e2e8f0 - Light Border */
+
+  /* Shadows - Soft & Modern */
+  --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
+}
+
+.dark {
+  --background: 222 47% 11%;
+  --surface: 217 33% 17%;
+  --foreground: 210 40% 98%;
+  --muted: 215 20% 65%;
+  --border: 217 33% 17%;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Container */
+.container-custom {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Typography */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: hsl(var(--foreground));
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+h1 {
+  font-size: 3rem;
+  letter-spacing: -0.025em;
+}
+
+h2 {
+  font-size: 2.25rem;
+  letter-spacing: -0.025em;
+}
+
+h3 {
+  font-size: 1.5rem;
+  letter-spacing: -0.025em;
+}
+
+p {
+  color: hsl(var(--muted));
+  line-height: 1.6;
+}
+
+/* Modern Cards - Clean & Standard */
+.card {
+  background-color: hsl(var(--surface));
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: var(--shadow-md);
+  border: 1px solid hsl(var(--border));
+  transition: all 0.2s ease-in-out;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+  border-color: hsl(var(--primary) / 0.3);
+}
+
+.card-dark {
+  background: linear-gradient(135deg, hsl(222 47% 11%) 0%, hsl(217 33% 17%) 100%);
+  color: white;
+  border-radius: 1rem;
+  padding: 2rem;
+  box-shadow: var(--shadow-xl);
+}
+
+.glass {
+  /* Reusing glass class but making it a clean white header */
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid hsl(var(--border));
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  box-shadow: var(--shadow-sm);
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  transition: all 0.2s;
+  cursor: pointer;
+  border: none;
+  outline: none;
+}
+
+.btn-primary {
+  background-color: hsl(var(--primary));
+  color: white;
+  box-shadow: 0 4px 6px -1px hsl(var(--primary) / 0.3);
+}
+
+.btn-primary:hover {
+  background-color: hsl(var(--primary-dark));
+  box-shadow: 0 10px 15px -3px hsl(var(--primary) / 0.4);
+  transform: translateY(-1px);
+}
+
+.btn-danger {
+  background-color: hsl(var(--danger));
+  color: white;
+  box-shadow: 0 4px 6px -1px hsl(var(--danger) / 0.3);
+}
+
+.btn-danger:hover {
+  background-color: hsl(0 84% 50%);
+  /* Darker red */
+  transform: translateY(-1px);
+}
+
+/* Form Elements */
+.input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid hsl(var(--border));
+  background-color: hsl(var(--surface));
+  color: hsl(var(--foreground));
+  transition: all 0.2s;
+}
+
+.input:focus {
+  outline: none;
+  border-color: hsl(var(--primary));
+  box-shadow: 0 0 0 3px hsl(var(--primary) / 0.2);
+}
+
+/* Badges */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.badge-success {
+  background-color: hsl(142 71% 95%);
+  color: hsl(142 71% 35%);
+}
+
+.badge-warning {
+  background-color: hsl(24 94% 95%);
+  color: hsl(24 94% 40%);
+}
+
+.badge-danger {
+  background-color: hsl(0 84% 95%);
+  color: hsl(0 84% 45%);
+}
+
+.badge-info {
+  background-color: hsl(199 89% 95%);
+  color: hsl(199 89% 40%);
+}
+
+/* Grid Layouts */
+.grid-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+/* Utility Classes */
+.text-gradient {
+  background: linear-gradient(to right, hsl(var(--primary)), hsl(var(--secondary)));
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.bg-gradient {
+  background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.5s ease-out forwards;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-up {
+  animation: slideUp 0.6s ease-out forwards;
+}
+
+/* Loading Spinner */
+.spinner {
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top: 3px solid white;
+  width: 1.5rem;
+  height: 1.5rem;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--background));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted) / 0.5);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--muted));
+}
