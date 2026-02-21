@@ -4,12 +4,36 @@ import { alertsAPI } from '@/lib/api';
 export default function Alerts() {
     const [alerts, setAlerts] = useState<any[]>([]);
     const [loading, setLoading] = useState(true);
+    const [apiError, setApiError] = useState('');
 
     useEffect(() => {
-        alertsAPI.getAll()
-            .then(data => setAlerts(Array.isArray(data) ? data : []))
-            .catch(() => { })
-            .finally(() => setLoading(false));
+        const fetchAlerts = async () => {
+            try {
+                // Backend getAll() returns  { alerts: Alert[], pagination: {...} }
+                // getActive() returns a plain Alert[]
+                // Handle both shapes gracefully
+                const data = await alertsAPI.getAll({ limit: 50 });
+                const list = Array.isArray(data)
+                    ? data
+                    : Array.isArray(data?.alerts)
+                        ? data.alerts
+                        : [];
+                setAlerts(list);
+            } catch (err: any) {
+                console.error('Alerts fetch error:', err);
+                // Fallback to /alerts/active which returns a plain array
+                try {
+                    const active = await alertsAPI.getActive();
+                    setAlerts(Array.isArray(active) ? active : []);
+                } catch (err2: any) {
+                    setApiError(err2?.message || 'Could not connect to the server');
+                    setAlerts([]);
+                }
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchAlerts();
     }, []);
 
     const severityClass = (s: string) => {
@@ -83,6 +107,13 @@ export default function Alerts() {
                                 )}
                             </div>
                         ))
+                    ) : apiError ? (
+                        <div className="alerts-empty">
+                            <div className="alerts-empty__icon">🔌</div>
+                            <h3 className="alerts-empty__title">Cannot Connect to Server</h3>
+                            <p className="alerts-empty__sub">Make sure the backend is running, then refresh.</p>
+                            <p style={{ fontSize: '0.78rem', color: '#94a3b8', marginTop: '0.5rem' }}>{apiError}</p>
+                        </div>
                     ) : (
                         <div className="alerts-empty">
                             <div className="alerts-empty__icon">✅</div>
