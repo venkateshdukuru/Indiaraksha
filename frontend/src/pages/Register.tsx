@@ -28,7 +28,7 @@ export default function Register() {
         <div className="auth-page">
             {/* Left panel */}
             <div className="auth-panel auth-panel--left">
-                <div className="auth-panel__logo">🛡️</div>
+                <img src="/logo.svg" alt="IndiaRaksha" className="auth-panel__logo" width="64" height="64" />
                 <h2 className="auth-panel__title">Join IndiaRaksha</h2>
                 <p className="auth-panel__sub">Be part of India's largest community fighting digital fraud</p>
                 <ul className="auth-panel__perks">

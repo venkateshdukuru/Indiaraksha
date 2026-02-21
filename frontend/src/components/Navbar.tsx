@@ -27,7 +27,7 @@ export default function Navbar() {
 
                 {/* ── Logo ── */}
                 <Link to="/" className="navbar__logo">
-                    <div className="navbar__logo-icon">🛡️</div>
+                    <img src="/logo.svg" alt="IndiaRaksha" className="navbar__logo-icon" width="38" height="38" />
                     <div className="navbar__logo-text">
                         <span className="navbar__logo-name">IndiaRaksha</span>
                         <span className="navbar__logo-tagline">Fraud Protection</span>

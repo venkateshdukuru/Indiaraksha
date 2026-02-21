@@ -124,7 +124,7 @@ export default function Admin() {
             {/* ── Sidebar ── */}
             <aside className="admin-sidebar">
                 <div className="admin-sidebar__brand">
-                    <span className="admin-sidebar__logo">🛡️</span>
+                    <img src="/logo.svg" alt="IndiaRaksha" className="admin-sidebar__logo" width="40" height="40" />
                     <div>
                         <div className="admin-sidebar__title">IndiaRaksha</div>
                         <div className="admin-sidebar__sub">Admin Panel</div>
