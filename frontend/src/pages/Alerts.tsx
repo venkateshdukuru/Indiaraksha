@@ -6,130 +6,92 @@ export default function Alerts() {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        const fetchAlerts = async () => {
-            try {
-                const data = await alertsAPI.getAll();
-                setAlerts(data);
-            } catch (err) {
-                console.error('Failed to fetch alerts', err);
-            } finally {
-                setLoading(false);
-            }
-        };
-        fetchAlerts();
+        alertsAPI.getAll()
+            .then(data => setAlerts(Array.isArray(data) ? data : []))
+            .catch(() => { })
+            .finally(() => setLoading(false));
     }, []);
 
-    const getSeverityColor = (severity: string) => {
-        switch (severity) {
-            case 'critical': return 'bg-red-100 text-red-800 border-red-200';
-            case 'warning': return 'bg-orange-100 text-orange-800 border-orange-200';
-            case 'info': return 'bg-blue-100 text-blue-800 border-blue-200';
-            default: return 'bg-gray-100 text-gray-800 border-gray-200';
+    const severityClass = (s: string) => {
+        switch (s) {
+            case 'critical': return 'alert-card alert-card--critical';
+            case 'warning': return 'alert-card alert-card--warning';
+            default: return 'alert-card alert-card--info';
+        }
+    };
+
+    const severityBadge = (s: string) => {
+        switch (s) {
+            case 'critical': return 'severity-badge severity-badge--critical';
+            case 'warning': return 'severity-badge severity-badge--warning';
+            default: return 'severity-badge severity-badge--info';
         }
     };
 
     return (
         <>
-            {/* Enhanced Hero Section */}
-            <div className="relative bg-gradient-to-br from-orange-600 via-red-600 to-pink-600 text-white py-20 overflow-hidden">
-                {/* Background Pattern */}
-                <div className="absolute inset-0 opacity-10">
-                    <div className="absolute inset-0" style={{
-                        backgroundImage: 'radial-gradient(circle at 2px 2px, white 1px, transparent 0)',
-                        backgroundSize: '40px 40px'
-                    }}></div>
-                </div>
-
-                <div className="container-custom relative z-10">
-                    <div className="max-w-3xl mx-auto text-center">
-                        {/* Icon */}
-                        <div className="inline-flex items-center justify-center w-20 h-20 bg-white/20 backdrop-blur-sm rounded-2xl mb-6 shadow-lg">
-                            <span className="text-5xl">⚠️</span>
+            {/* ── Hero ── */}
+            <section className="page-hero page-hero--orange">
+                <div className="page-hero__dots" />
+                <div className="container-custom page-hero__inner">
+                    <div className="page-hero__icon">⚠️</div>
+                    <h1 className="page-hero__title">Fraud Alerts</h1>
+                    <p className="page-hero__sub">Stay informed about the latest scam alerts and fraud warnings across India</p>
+                    <div className="page-hero__stats">
+                        <div className="page-hero__stat">
+                            <span className="page-hero__stat-num">{alerts.length}</span>
+                            <span className="page-hero__stat-label">Active Alerts</span>
                         </div>
-
-                        {/* Title */}
-                        <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
-                            Fraud Alerts
-                        </h1>
-
-                        {/* Subtitle */}
-                        <p className="text-xl md:text-2xl text-orange-100 mb-8 leading-relaxed">
-                            Stay informed about the latest scam alerts and fraud warnings in your area
-                        </p>
-
-                        {/* Stats */}
-                        <div className="flex flex-wrap justify-center gap-6">
-                            <div className="bg-white/10 backdrop-blur-sm rounded-xl px-6 py-3 border border-white/20">
-                                <div className="text-2xl font-bold">{alerts.length}</div>
-                                <div className="text-orange-100 text-sm">Active Alerts</div>
-                            </div>
-                            <div className="bg-white/10 backdrop-blur-sm rounded-xl px-6 py-3 border border-white/20">
-                                <div className="text-2xl font-bold">24/7</div>
-                                <div className="text-orange-100 text-sm">Monitoring</div>
-                            </div>
-                            <div className="bg-white/10 backdrop-blur-sm rounded-xl px-6 py-3 border border-white/20">
-                                <div className="text-2xl font-bold">Real-time</div>
-                                <div className="text-orange-100 text-sm">Updates</div>
-                            </div>
+                        <div className="page-hero__stat">
+                            <span className="page-hero__stat-num">24/7</span>
+                            <span className="page-hero__stat-label">Monitoring</span>
+                        </div>
+                        <div className="page-hero__stat">
+                            <span className="page-hero__stat-num">Real-time</span>
+                            <span className="page-hero__stat-label">Updates</span>
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
 
-            {/* Main Content */}
-            <div className="container-custom py-12">
-
-                {loading ? (
-                    <div className="grid gap-6 max-w-4xl mx-auto">
-                        {[1, 2, 3].map((i) => (
-                            <div key={i} className="bg-white p-6 rounded-xl border border-gray-100 shadow-sm animate-pulse">
-                                <div className="h-6 bg-gray-200 rounded w-3/4 mb-4"></div>
-                                <div className="h-4 bg-gray-200 rounded w-1/2 mb-2"></div>
-                                <div className="h-20 bg-gray-200 rounded w-full"></div>
-                            </div>
-                        ))}
-                    </div>
-                ) : alerts.length > 0 ? (
-                    <div className="grid gap-6 max-w-4xl mx-auto">
-                        {alerts.map((alert) => (
-                            <div key={alert._id} className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow animate-slide-up">
-                                <div className="flex justify-between items-start mb-4">
-                                    <div>
-                                        <div className="flex items-center gap-3 mb-2">
-                                            <span className={`px-3 py-1 rounded-full text-xs font-bold border ${getSeverityColor(alert.severity)} uppercase tracking-wide`}>
-                                                {alert.severity}
-                                            </span>
-                                            <span className="text-sm text-gray-500">
-                                                {new Date(alert.createdAt).toLocaleDateString()}
-                                            </span>
-                                        </div>
-                                        <h3 className="text-xl font-bold text-gray-900">{alert.title}</h3>
-                                    </div>
+            {/* ── Alerts List ── */}
+            <section className="alerts-section">
+                <div className="container-custom alerts-inner">
+                    {loading ? (
+                        <>
+                            {[1, 2, 3].map(i => (
+                                <div key={i} className="alert-card alert-card--skeleton">
+                                    <div className="skeleton-line skeleton-line--wide" />
+                                    <div className="skeleton-line skeleton-line--mid" />
+                                    <div className="skeleton-line skeleton-line--full" />
                                 </div>
-
-                                <p className="text-gray-600 leading-relaxed mb-4">
-                                    {alert.message}
-                                </p>
-
+                            ))}
+                        </>
+                    ) : alerts.length > 0 ? (
+                        alerts.map(alert => (
+                            <div key={alert._id} className={severityClass(alert.severity) + ' animate-slide-up'}>
+                                <div className="alert-card__head">
+                                    <span className={severityBadge(alert.severity)}>{alert.severity?.toUpperCase()}</span>
+                                    <span className="alert-card__date">{new Date(alert.createdAt).toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' })}</span>
+                                </div>
+                                <h3 className="alert-card__title">{alert.title}</h3>
+                                <p className="alert-card__msg">{alert.message}</p>
                                 {(alert.city || alert.state) && (
-                                    <div className="flex items-center text-sm text-gray-500 bg-gray-50 p-2 rounded-lg inline-block">
-                                        <span className="mr-1">📍</span>
-                                        {alert.city && <span className="mr-1">{alert.city},</span>}
-                                        {alert.state && <span>{alert.state}</span>}
+                                    <div className="alert-card__location">
+                                        📍 {[alert.city, alert.state].filter(Boolean).join(', ')}
                                     </div>
                                 )}
                             </div>
-                        ))}
-                    </div>
-                ) : (
-                    <div className="text-center py-20 bg-white rounded-xl border border-gray-200 shadow-sm max-w-3xl mx-auto">
-                        <div className="text-6xl mb-4">✅</div>
-                        <h3 className="text-2xl font-bold text-gray-900 mb-2">No Active Alerts</h3>
-                        <p className="text-gray-500">There are currently no active fraud alerts for your region.</p>
-                    </div>
-                )}
-            </div>
-
+                        ))
+                    ) : (
+                        <div className="alerts-empty">
+                            <div className="alerts-empty__icon">✅</div>
+                            <h3 className="alerts-empty__title">No Active Alerts</h3>
+                            <p className="alerts-empty__sub">There are currently no active fraud alerts. Stay safe!</p>
+                        </div>
+                    )}
+                </div>
+            </section>
         </>
     );
 }

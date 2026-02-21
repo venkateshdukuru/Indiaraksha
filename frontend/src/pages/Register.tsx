@@ -4,202 +4,92 @@ import { authAPI } from '@/lib/api';
 
 export default function Register() {
     const navigate = useNavigate();
-    const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        mobile: '',
-        password: '',
-        confirmPassword: '',
-    });
+    const [formData, setFormData] = useState({ name: '', email: '', mobile: '', password: '', confirmPassword: '' });
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [error, setError] = useState('');
 
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setFormData(prev => ({
-            ...prev,
-            [e.target.name]: e.target.value
-        }));
-    };
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) =>
+        setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        setIsSubmitting(true);
-        setError('');
-
-        // Validation
-        if (formData.password !== formData.confirmPassword) {
-            setError('Passwords do not match');
-            setIsSubmitting(false);
-            return;
-        }
-
-        if (formData.password.length < 6) {
-            setError('Password must be at least 6 characters long');
-            setIsSubmitting(false);
-            return;
-        }
-
+        setIsSubmitting(true); setError('');
+        if (formData.password !== formData.confirmPassword) { setError('Passwords do not match'); setIsSubmitting(false); return; }
+        if (formData.password.length < 6) { setError('Password must be at least 6 characters'); setIsSubmitting(false); return; }
         try {
-            await authAPI.register({
-                name: formData.name,
-                email: formData.email,
-                mobile: formData.mobile,
-                password: formData.password,
-            });
-            // After successful registration, redirect to login
+            await authAPI.register({ name: formData.name, email: formData.email, mobile: formData.mobile, password: formData.password });
             navigate('/login');
         } catch (err: any) {
             setError(err.message || 'Registration failed. Please try again.');
-        } finally {
-            setIsSubmitting(false);
-        }
+        } finally { setIsSubmitting(false); }
     };
 
     return (
-        <div className="bg-gray-50 min-h-screen flex items-center justify-center py-12">
-            <div className="max-w-md w-full mx-auto px-4">
-                {/* Logo */}
-                <div className="text-center mb-8">
-                    <Link to="/" className="inline-flex items-center justify-center group">
-                        <div className="w-16 h-16 bg-blue-600 rounded-2xl flex items-center justify-center text-white shadow-lg group-hover:bg-blue-700 transition-colors">
-                            <span className="text-4xl">🛡️</span>
-                        </div>
-                    </Link>
-                    <h1 className="text-3xl font-bold text-gray-900 mt-6 mb-2">Create Account</h1>
-                    <p className="text-gray-600">Join IndiaRaksha to report and track scams</p>
-                </div>
+        <div className="auth-page">
+            {/* Left panel */}
+            <div className="auth-panel auth-panel--left">
+                <div className="auth-panel__logo">🛡️</div>
+                <h2 className="auth-panel__title">Join IndiaRaksha</h2>
+                <p className="auth-panel__sub">Be part of India's largest community fighting digital fraud</p>
+                <ul className="auth-panel__perks">
+                    <li>🚨 Report scams to protect others</li>
+                    <li>📊 Track your reported cases</li>
+                    <li>🔔 Get personalised alerts</li>
+                    <li>🏆 Earn community trust points</li>
+                </ul>
+            </div>
 
-                {/* Register Form */}
-                <div className="card bg-white shadow-lg">
-                    {error && (
-                        <div className="bg-red-50 border border-red-200 p-4 rounded-lg mb-6 text-red-700 text-sm">
-                            {error}
-                        </div>
-                    )}
+            {/* Right panel – form */}
+            <div className="auth-panel auth-panel--right">
+                <div className="auth-form-wrap">
+                    <div className="auth-form__header">
+                        <h1 className="auth-form__title">Create Account</h1>
+                        <p className="auth-form__sub">It's free — always will be</p>
+                    </div>
 
-                    <form onSubmit={handleSubmit}>
-                        <div className="mb-6">
-                            <label className="block text-gray-700 font-medium mb-2">
-                                Full Name
-                            </label>
-                            <input
-                                type="text"
-                                name="name"
-                                value={formData.name}
-                                onChange={handleChange}
-                                placeholder="John Doe"
-                                className="input h-12"
-                                required
-                            />
-                        </div>
+                    {error && <div className="form-alert form-alert--error">⚠️ {error}</div>}
 
-                        <div className="mb-6">
-                            <label className="block text-gray-700 font-medium mb-2">
-                                Email Address
-                            </label>
-                            <input
-                                type="email"
-                                name="email"
-                                value={formData.email}
-                                onChange={handleChange}
-                                placeholder="you@example.com"
-                                className="input h-12"
-                                required
-                            />
+                    <form onSubmit={handleSubmit} className="auth-form">
+                        <div className="form-group">
+                            <label className="form-label">Full Name</label>
+                            <input type="text" name="name" value={formData.name} onChange={handleChange}
+                                placeholder="Ravi Kumar" className="form-input" required />
                         </div>
-
-                        <div className="mb-6">
-                            <label className="block text-gray-700 font-medium mb-2">
-                                Mobile Number
-                            </label>
-                            <input
-                                type="tel"
-                                name="mobile"
-                                value={formData.mobile}
-                                onChange={handleChange}
-                                placeholder="+91 98765 43210"
-                                className="input h-12"
-                                required
-                            />
+                        <div className="form-group">
+                            <label className="form-label">Email Address</label>
+                            <input type="email" name="email" value={formData.email} onChange={handleChange}
+                                placeholder="you@example.com" className="form-input" required />
+                        </div>
+                        <div className="form-group">
+                            <label className="form-label">Mobile Number</label>
+                            <input type="tel" name="mobile" value={formData.mobile} onChange={handleChange}
+                                placeholder="+91 98765 43210" className="form-input" required />
+                        </div>
+                        <div className="form-group">
+                            <label className="form-label">Password</label>
+                            <input type="password" name="password" value={formData.password} onChange={handleChange}
+                                placeholder="Min. 6 characters" className="form-input" required minLength={6} />
+                        </div>
+                        <div className="form-group">
+                            <label className="form-label">Confirm Password</label>
+                            <input type="password" name="confirmPassword" value={formData.confirmPassword} onChange={handleChange}
+                                placeholder="••••••••" className="form-input" required minLength={6} />
                         </div>
 
-                        <div className="mb-6">
-                            <label className="block text-gray-700 font-medium mb-2">
-                                Password
-                            </label>
-                            <input
-                                type="password"
-                                name="password"
-                                value={formData.password}
-                                onChange={handleChange}
-                                placeholder="••••••••"
-                                className="input h-12"
-                                required
-                                minLength={6}
-                            />
-                            <p className="text-xs text-gray-500 mt-1">Must be at least 6 characters</p>
-                        </div>
+                        <label className="form-check" style={{ marginBottom: '1rem' }}>
+                            <input type="checkbox" required />
+                            <span>I agree to the <a href="#" className="form-link">Terms</a> and <a href="#" className="form-link">Privacy Policy</a></span>
+                        </label>
 
-                        <div className="mb-6">
-                            <label className="block text-gray-700 font-medium mb-2">
-                                Confirm Password
-                            </label>
-                            <input
-                                type="password"
-                                name="confirmPassword"
-                                value={formData.confirmPassword}
-                                onChange={handleChange}
-                                placeholder="••••••••"
-                                className="input h-12"
-                                required
-                                minLength={6}
-                            />
-                        </div>
-
-                        <div className="mb-6">
-                            <label className="flex items-start">
-                                <input
-                                    type="checkbox"
-                                    className="w-4 h-4 text-blue-600 rounded border-gray-300 focus:ring-blue-500 mt-1"
-                                    required
-                                />
-                                <span className="ml-2 text-sm text-gray-600">
-                                    I agree to the{' '}
-                                    <a href="#" className="text-blue-600 hover:text-blue-700 font-medium">
-                                        Terms of Service
-                                    </a>{' '}
-                                    and{' '}
-                                    <a href="#" className="text-blue-600 hover:text-blue-700 font-medium">
-                                        Privacy Policy
-                                    </a>
-                                </span>
-                            </label>
-                        </div>
-
-                        <button
-                            type="submit"
-                            disabled={isSubmitting}
-                            className="btn btn-primary w-full text-lg py-3 rounded-xl shadow-lg hover:shadow-xl transition-all font-bold"
-                        >
-                            {isSubmitting ? 'Creating Account...' : 'Create Account'}
+                        <button type="submit" disabled={isSubmitting} className="form-submit">
+                            {isSubmitting ? '⏳ Creating Account…' : 'Create Account →'}
                         </button>
                     </form>
 
-                    <div className="mt-6 text-center">
-                        <p className="text-gray-600">
-                            Already have an account?{' '}
-                            <Link to="/login" className="text-blue-600 hover:text-blue-700 font-semibold">
-                                Sign in
-                            </Link>
-                        </p>
-                    </div>
-                </div>
-
-                {/* Back to Home */}
-                <div className="text-center mt-6">
-                    <Link to="/" className="text-gray-600 hover:text-gray-900 text-sm">
-                        ← Back to Home
-                    </Link>
+                    <p className="auth-form__switch">
+                        Already have an account? <Link to="/login" className="form-link">Sign in</Link>
+                    </p>
+                    <Link to="/" className="auth-form__back">← Back to Home</Link>
                 </div>
             </div>
         </div>
