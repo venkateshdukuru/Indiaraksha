@@ -12,16 +12,23 @@ async function seed() {
 
     console.log('🌱 Starting database seeding...\n');
 
+    // Read admin credentials from environment (never hardcode in source!)
+    const adminEmail = process.env.ADMIN_EMAIL || 'admin@indiaraksha.org';
+    const adminPassword = process.env.ADMIN_PASSWORD || 'Admin@123';
+    const adminMobile = process.env.ADMIN_MOBILE || '+919999999999';
+
+    console.log(`📧 Admin email   : ${adminEmail}`);
+    console.log(`📱 Admin mobile  : ${adminMobile}`);
+    console.log(`🔑 Admin password: [from env]\n`);
+
     // Create admin user
-    const adminExists = await userModel.findOne({
-        email: 'admin@indiaraksha.org',
-    });
+    const adminExists = await userModel.findOne({ email: adminEmail });
 
     if (!adminExists) {
-        const hashedPassword = await bcrypt.hash('Admin@123', 10);
+        const hashedPassword = await bcrypt.hash(adminPassword, 10);
         await userModel.create({
-            email: 'admin@indiaraksha.org',
-            mobile: '+919999999999',
+            email: adminEmail,
+            mobile: adminMobile,
             name: 'Admin User',
             password: hashedPassword,
             role: UserRole.ADMIN,
@@ -32,11 +39,20 @@ async function seed() {
             state: 'Maharashtra',
         });
         console.log('✅ Admin user created');
-        console.log('   Email: admin@indiaraksha.org');
-        console.log('   Password: Admin@123');
+        console.log(`   Email   : ${adminEmail}`);
+        console.log('   Password: [as set in ADMIN_PASSWORD env var]');
         console.log('   ⚠️  CHANGE THIS PASSWORD IMMEDIATELY!\n');
     } else {
-        console.log('ℹ️  Admin user already exists\n');
+        // User exists — update password so env changes take effect on re-seed
+        const hashedPassword = await bcrypt.hash(adminPassword, 10);
+        await userModel.findByIdAndUpdate(adminExists._id, {
+            password: hashedPassword,
+            role: UserRole.ADMIN,      // ensure role is still admin
+            isActive: true,            // ensure account is active
+            isEmailVerified: true,
+            isMobileVerified: true,
+        });
+        console.log('🔄 Admin user already exists — password synced from env.\n');
     }
 
     // Create sample users
