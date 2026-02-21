@@ -32,7 +32,7 @@ export default function Login() {
         <div className="auth-page">
             {/* Left panel */}
             <div className="auth-panel auth-panel--left">
-                <div className="auth-panel__logo">🛡️</div>
+                <img src="/logo.svg" alt="IndiaRaksha" className="auth-panel__logo" width="64" height="64" />
                 <h2 className="auth-panel__title">IndiaRaksha</h2>
                 <p className="auth-panel__sub">Protecting citizens from digital fraud since 2024</p>
                 <ul className="auth-panel__perks">
