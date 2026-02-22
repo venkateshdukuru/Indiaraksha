@@ -26,6 +26,7 @@ export default function Footer() {
                             <li><Link to="/report" className="footer__link">Report Scam</Link></li>
                             <li><Link to="/lookup" className="footer__link">Check Number</Link></li>
                             <li><Link to="/alerts" className="footer__link">Fraud Alerts</Link></li>
+                            <li><a href="https://github.com/venkateshdukuru/Indiaraksha" target="_blank" rel="noopener noreferrer" className="footer__link">Developers / Contribute</a></li>
                         </ul>
                     </div>
 
@@ -42,9 +43,14 @@ export default function Footer() {
 
                 {/* Bottom Bar */}
                 <div className="footer__bottom">
-                    <p className="footer__copy">
-                        &copy; {new Date().getFullYear()} IndiaRaksha. Secure Bharat, Shared Responsibility.
-                    </p>
+                    <div className="footer__bottom-left">
+                        <p className="footer__copy">
+                            &copy; {new Date().getFullYear()} IndiaRaksha. Secure Bharat, Shared Responsibility.
+                        </p>
+                        <p className="footer__credit">
+                            make love with <span className="footer__credit-name">dukuru venkatesh</span>
+                        </p>
+                    </div>
                     <div className="footer__legal">
                         <Link to="/privacy" className="footer__legal-link">Privacy Policy</Link>
                         <Link to="/terms" className="footer__legal-link">Terms of Service</Link>
