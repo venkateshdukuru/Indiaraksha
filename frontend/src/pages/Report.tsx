@@ -79,145 +79,150 @@ export default function Report() {
                 </div>
             </section>
 
-            {/* ── Form ── */}
+            {/* ── Form or Success ── */}
             <div className="report-wrap">
                 <div className="container-custom">
-                    <div className="report-form-outer">
-
-                        {success && (
-                            <div className="form-alert form-alert--success animate-fade-in">
-                                <span>✅</span>
-                                <div>
-                                    <strong>Report Submitted!</strong><br />
-                                    Thank you for helping protect the community. Redirecting…
+                    {success ? (
+                        <div className="report-success-view animate-fade-in">
+                            <div className="report-success-view__icon">✅</div>
+                            <h2 className="report-success-view__title">Report Submitted Successfully!</h2>
+                            <p className="report-success-view__msg">
+                                Thank you for your contribution. Your report helps protect thousands of Indians from falling victim to this scam.
+                            </p>
+                            <div className="report-success-view__actions">
+                                <button onClick={() => setSuccess(false)} className="cta-btn cta-btn--ghost">Report Another</button>
+                                <button onClick={() => navigate('/')} className="cta-btn cta-btn--primary">Back to Home</button>
+                            </div>
+                            <p className="report-success-view__auto">Redirecting to home in 10 seconds...</p>
+                        </div>
+                    ) : (
+                        <div className="report-form-outer">
+                            {error && (
+                                <div className="form-alert form-alert--error animate-fade-in">
+                                    <span>❌</span><div>{error}</div>
                                 </div>
-                            </div>
-                        )}
-                        {error && (
-                            <div className="form-alert form-alert--error animate-fade-in">
-                                <span>❌</span><div>{error}</div>
-                            </div>
-                        )}
+                            )}
 
-                        <form onSubmit={handleSubmit} className="report-form">
+                            <form onSubmit={handleSubmit} className="report-form">
 
-                            {/* Scam Type */}
-                            <div className="report-section">
-                                <h2 className="report-section__title">1. Select Scam Type</h2>
-                                <div className="form-group">
-                                    <select
-                                        name="scamType"
-                                        value={formData.scamType}
-                                        onChange={handleChange}
-                                        className="form-input"
-                                        required
-                                    >
-                                        <option value="">-- Choose Scam Category --</option>
-                                        {SCAM_TYPES.map(t => (
-                                            <option key={t.value} value={t.value}>
-                                                {t.label}
-                                            </option>
-                                        ))}
-                                    </select>
-
-                                    {formData.scamType && (
-                                        <div className="scam-type-feedback animate-fade-in">
-                                            <strong>Info:</strong> {SCAM_TYPES.find(t => t.value === formData.scamType)?.description}
-                                        </div>
-                                    )}
-                                </div>
-                            </div>
-
-                            {/* Scammer Details */}
-                            <div className="report-section report-section--shaded">
-                                <h2 className="report-section__title">2. Scammer Details</h2>
-                                <p className="report-section__hint">Provide at least one identifier so we can warn others.</p>
-                                <div className="report-grid-2">
+                                {/* Scam Type */}
+                                <div className="report-section">
+                                    <h2 className="report-section__title">1. Select Scam Type</h2>
                                     <div className="form-group">
-                                        <label className="form-label">Phone Number</label>
-                                        <input type="tel" name="phoneNumber" value={formData.phoneNumber}
-                                            onChange={handleChange} placeholder="+91 98765 43210" className="form-input" />
-                                    </div>
-                                    <div className="form-group">
-                                        <label className="form-label">Website URL (optional)</label>
-                                        <input type="url" name="url" value={formData.url}
-                                            onChange={handleChange} placeholder="https://suspicious-site.com" className="form-input" />
-                                    </div>
-                                    <div className="form-group" style={{ gridColumn: '1 / -1' }}>
-                                        <label className="form-label">App Name / UPI ID</label>
-                                        <input type="text" name="appName" value={formData.appName}
-                                            onChange={handleChange} placeholder="e.g. QuickLoan App or scammer@upi" className="form-input" />
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Description */}
-                            <div className="report-section">
-                                <h2 className="report-section__title">3. What Happened?</h2>
-                                <p className="report-section__hint">Describe the incident — the more detail, the better we can warn others.</p>
-                                <textarea name="description" value={formData.description} onChange={handleChange}
-                                    rows={5} placeholder="I received a call claiming to be from…"
-                                    className="form-input form-textarea" />
-                            </div>
-
-                            {/* Amount & Date */}
-                            <div className="report-section report-section--shaded">
-                                <h2 className="report-section__title">4. Amount &amp; Date</h2>
-                                <div className="report-grid-2">
-                                    <div className="form-group">
-                                        <label className="form-label">Amount Lost (₹) — optional</label>
-                                        <div style={{ position: 'relative' }}>
-                                            <span className="input-prefix">₹</span>
-                                            <input type="number" name="amountLost" value={formData.amountLost}
-                                                onChange={handleChange} placeholder="0" min="0"
-                                                className="form-input" style={{ paddingLeft: '2rem' }} />
-                                        </div>
-                                    </div>
-                                    <div className="form-group">
-                                        <label className="form-label">Incident Date — optional</label>
-                                        <input type="date" name="incidentDate" value={formData.incidentDate}
-                                            onChange={handleChange} max={new Date().toISOString().split('T')[0]}
-                                            className="form-input" />
-                                    </div>
-                                </div>
-                            </div>
-
-                            {/* Location */}
-                            <div className="report-section">
-                                <h2 className="report-section__title">5. Location — optional</h2>
-                                <div className="report-grid-2">
-                                    <div className="form-group">
-                                        <label className="form-label">City</label>
-                                        <input type="text" name="city" value={formData.city}
-                                            onChange={handleChange} placeholder="e.g. Mumbai" className="form-input" />
-                                    </div>
-                                    <div className="form-group">
-                                        <label className="form-label">State</label>
-                                        <select name="state" value={formData.state} onChange={handleChange} className="form-input">
-                                            <option value="">Select State</option>
-                                            {INDIAN_STATES.map(s => <option key={s} value={s}>{s}</option>)}
+                                        <select
+                                            name="scamType"
+                                            value={formData.scamType}
+                                            onChange={handleChange}
+                                            className="form-input"
+                                            required
+                                        >
+                                            <option value="">-- Choose Scam Category --</option>
+                                            {SCAM_TYPES.map(t => (
+                                                <option key={t.value} value={t.value}>
+                                                    {t.label}
+                                                </option>
+                                            ))}
                                         </select>
+
+                                        {formData.scamType && (
+                                            <div className="scam-type-feedback animate-fade-in">
+                                                <strong>Info:</strong> {SCAM_TYPES.find(t => t.value === formData.scamType)?.description}
+                                            </div>
+                                        )}
                                     </div>
                                 </div>
-                            </div>
 
-                            {/* Anonymous toggle */}
-                            <div className="anon-toggle">
-                                <label className="form-check">
-                                    <input type="checkbox" name="isAnonymous" checked={formData.isAnonymous} onChange={handleChange} />
-                                    <span>
-                                        <strong>Report Anonymously</strong>
-                                        <span className="anon-toggle__note"> — Your name will not appear publicly</span>
-                                    </span>
-                                </label>
-                            </div>
+                                {/* Scammer Details */}
+                                <div className="report-section report-section--shaded">
+                                    <h2 className="report-section__title">2. Scammer Details</h2>
+                                    <p className="report-section__hint">Provide at least one identifier so we can warn others.</p>
+                                    <div className="report-grid-2">
+                                        <div className="form-group">
+                                            <label className="form-label">Phone Number</label>
+                                            <input type="tel" name="phoneNumber" value={formData.phoneNumber}
+                                                onChange={handleChange} placeholder="+91 98765 43210" className="form-input" />
+                                        </div>
+                                        <div className="form-group">
+                                            <label className="form-label">Website URL (optional)</label>
+                                            <input type="url" name="url" value={formData.url}
+                                                onChange={handleChange} placeholder="https://suspicious-site.com" className="form-input" />
+                                        </div>
+                                        <div className="form-group" style={{ gridColumn: '1 / -1' }}>
+                                            <label className="form-label">App Name / UPI ID</label>
+                                            <input type="text" name="appName" value={formData.appName}
+                                                onChange={handleChange} placeholder="e.g. QuickLoan App or scammer@upi" className="form-input" />
+                                        </div>
+                                    </div>
+                                </div>
 
-                            <button type="submit" disabled={isSubmitting} className="report-submit">
-                                {isSubmitting ? '⏳ Submitting…' : '🚨 Submit Report'}
-                            </button>
-                            <p className="report-disclaimer">By submitting, you confirm the information is accurate to the best of your knowledge.</p>
-                        </form>
-                    </div>
+                                {/* Description */}
+                                <div className="report-section">
+                                    <h2 className="report-section__title">3. What Happened?</h2>
+                                    <p className="report-section__hint">Describe the incident — the more detail, the better we can warn others.</p>
+                                    <textarea name="description" value={formData.description} onChange={handleChange}
+                                        rows={5} placeholder="I received a call claiming to be from…"
+                                        className="form-input form-textarea" />
+                                </div>
+
+                                {/* Amount & Date */}
+                                <div className="report-section report-section--shaded">
+                                    <h2 className="report-section__title">4. Amount &amp; Date</h2>
+                                    <div className="report-grid-2">
+                                        <div className="form-group">
+                                            <label className="form-label">Amount Lost (₹) — optional</label>
+                                            <div style={{ position: 'relative' }}>
+                                                <span className="input-prefix">₹</span>
+                                                <input type="number" name="amountLost" value={formData.amountLost}
+                                                    onChange={handleChange} placeholder="0" min="0"
+                                                    className="form-input" style={{ paddingLeft: '2rem' }} />
+                                            </div>
+                                        </div>
+                                        <div className="form-group">
+                                            <label className="form-label">Incident Date — optional</label>
+                                            <input type="date" name="incidentDate" value={formData.incidentDate}
+                                                onChange={handleChange} max={new Date().toISOString().split('T')[0]}
+                                                className="form-input" />
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Location */}
+                                <div className="report-section">
+                                    <h2 className="report-section__title">5. Location — optional</h2>
+                                    <div className="report-grid-2">
+                                        <div className="form-group">
+                                            <label className="form-label">City</label>
+                                            <input type="text" name="city" value={formData.city}
+                                                onChange={handleChange} placeholder="e.g. Mumbai" className="form-input" />
+                                        </div>
+                                        <div className="form-group">
+                                            <label className="form-label">State</label>
+                                            <select name="state" value={formData.state} onChange={handleChange} className="form-input">
+                                                <option value="">Select State</option>
+                                                {INDIAN_STATES.map(s => <option key={s} value={s}>{s}</option>)}
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Anonymous toggle */}
+                                <div className="anon-toggle">
+                                    <label className="form-check">
+                                        <input type="checkbox" name="isAnonymous" checked={formData.isAnonymous} onChange={handleChange} />
+                                        <span>
+                                            <strong>Report Anonymously</strong>
+                                            <span className="anon-toggle__note"> — Your name will not appear publicly</span>
+                                        </span>
+                                    </label>
+                                </div>
+
+                                <button type="submit" disabled={isSubmitting} className="report-submit">
+                                    {isSubmitting ? '⏳ Submitting…' : '🚨 Submit Report'}
+                                </button>
+                                <p className="report-disclaimer">By submitting, you confirm the information is accurate to the best of your knowledge.</p>
+                            </form>
+                        </div>
+                    )}
                 </div>
             </div>
         </>

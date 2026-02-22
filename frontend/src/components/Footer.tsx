@@ -46,9 +46,8 @@ export default function Footer() {
                         &copy; {new Date().getFullYear()} IndiaRaksha. Secure Bharat, Shared Responsibility.
                     </p>
                     <div className="footer__legal">
-                        <a href="/privacy" className="footer__legal-link">Privacy Policy</a>
-                        <a href="/terms" className="footer__legal-link">Terms of Service</a>
-                        <a href="/contact" className="footer__legal-link">Contact Support</a>
+                        <Link to="/privacy" className="footer__legal-link">Privacy Policy</Link>
+                        <Link to="/terms" className="footer__legal-link">Terms of Service</Link>
                     </div>
                 </div>
             </div>
