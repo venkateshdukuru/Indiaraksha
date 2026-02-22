@@ -3036,10 +3036,13 @@ let ScamReportsService = class ScamReportsService {
         return this.findAll({ userId }, page, limit);
     }
     async getStatistics() {
-        const [totalReports, verifiedReports, pendingReports, scamTypeStats, recentReports,] = await Promise.all([
+        const [totalReports, verifiedReports, pendingReports, totalAmountLostData, scamTypeStats, recentReports,] = await Promise.all([
             this.scamReportModel.countDocuments(),
             this.scamReportModel.countDocuments({ status: scam_report_schema_1.ReportStatus.VERIFIED }),
             this.scamReportModel.countDocuments({ status: scam_report_schema_1.ReportStatus.PENDING }),
+            this.scamReportModel.aggregate([
+                { $group: { _id: null, total: { $sum: '$amountLost' } } }
+            ]),
             this.scamReportModel.aggregate([
                 {
                     $group: {
@@ -3060,28 +3063,39 @@ let ScamReportsService = class ScamReportsService {
             totalReports,
             verifiedReports,
             pendingReports,
+            totalAmountLost: totalAmountLostData[0]?.total || 0,
             scamTypeStats,
             recentReports,
         };
     }
     async getTrendingScams(limit = 10) {
-        const sevenDaysAgo = new Date();
-        sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
+        const thirtyDaysAgo = new Date();
+        thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30);
         const trending = await this.scamReportModel.aggregate([
             {
                 $match: {
-                    createdAt: { $gte: sevenDaysAgo },
-                    status: scam_report_schema_1.ReportStatus.VERIFIED,
+                    createdAt: { $gte: thirtyDaysAgo },
                 },
             },
+            { $sort: { createdAt: -1 } },
             {
                 $group: {
                     _id: '$scamType',
-                    count: { $sum: 1 },
-                    totalLoss: { $sum: '$amountLost' },
+                    reportCount: { $sum: 1 },
+                    description: { $first: '$description' },
+                    state: { $first: '$state' },
                 },
             },
-            { $sort: { count: -1 } },
+            {
+                $project: {
+                    _id: 0,
+                    scamType: '$_id',
+                    reportCount: 1,
+                    description: 1,
+                    state: 1,
+                },
+            },
+            { $sort: { reportCount: -1 } },
             { $limit: limit },
         ]);
         return trending;
