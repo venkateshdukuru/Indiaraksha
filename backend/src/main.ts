@@ -71,7 +71,7 @@ async function bootstrap() {
     const document = SwaggerModule.createDocument(app, config);
     SwaggerModule.setup('api/docs', app, document, {
         customSiteTitle: 'IndiaRaksha API Documentation',
-        customfavIcon: 'https://indiaraksha.org/favicon.ico',
+        customfavIcon: 'https://indiaraksha.vercel.app/favicon.ico',
         customCss: '.swagger-ui .topbar { display: none }',
     });
 

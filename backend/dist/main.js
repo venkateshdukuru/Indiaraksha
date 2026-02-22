@@ -3882,7 +3882,7 @@ async function bootstrap() {
     const document = swagger_1.SwaggerModule.createDocument(app, config);
     swagger_1.SwaggerModule.setup('api/docs', app, document, {
         customSiteTitle: 'IndiaRaksha API Documentation',
-        customfavIcon: 'https://indiaraksha.org/favicon.ico',
+        customfavIcon: 'https://indiaraksha.vercel.app/favicon.ico',
         customCss: '.swagger-ui .topbar { display: none }',
     });
     const port = configService.get('PORT') || 3000;
