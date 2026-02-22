@@ -104,16 +104,27 @@ export default function Report() {
                             {/* Scam Type */}
                             <div className="report-section">
                                 <h2 className="report-section__title">1. Select Scam Type</h2>
-                                <div className="scam-type-grid">
-                                    {SCAM_TYPES.map(t => (
-                                        <label key={t.value} className={`scam-type-card ${formData.scamType === t.value ? 'scam-type-card--active' : ''}`}>
-                                            <input type="radio" name="scamType" value={t.value}
-                                                checked={formData.scamType === t.value} onChange={handleChange}
-                                                className="sr-only" />
-                                            <div className="scam-type-card__label">{t.label}</div>
-                                            <div className="scam-type-card__desc">{t.description}</div>
-                                        </label>
-                                    ))}
+                                <div className="form-group">
+                                    <select
+                                        name="scamType"
+                                        value={formData.scamType}
+                                        onChange={handleChange}
+                                        className="form-input"
+                                        required
+                                    >
+                                        <option value="">-- Choose Scam Category --</option>
+                                        {SCAM_TYPES.map(t => (
+                                            <option key={t.value} value={t.value}>
+                                                {t.label}
+                                            </option>
+                                        ))}
+                                    </select>
+
+                                    {formData.scamType && (
+                                        <div className="scam-type-feedback animate-fade-in">
+                                            <strong>Info:</strong> {SCAM_TYPES.find(t => t.value === formData.scamType)?.description}
+                                        </div>
+                                    )}
                                 </div>
                             </div>
 
@@ -128,7 +139,7 @@ export default function Report() {
                                             onChange={handleChange} placeholder="+91 98765 43210" className="form-input" />
                                     </div>
                                     <div className="form-group">
-                                        <label className="form-label">Website URL</label>
+                                        <label className="form-label">Website URL (optional)</label>
                                         <input type="url" name="url" value={formData.url}
                                             onChange={handleChange} placeholder="https://suspicious-site.com" className="form-input" />
                                     </div>
