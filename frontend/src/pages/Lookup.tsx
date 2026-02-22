@@ -65,7 +65,7 @@ export default function Lookup() {
 
                     <div className="lookup-examples">
                         <span>Try:</span>
-                        <span className="lookup-pill" onClick={() => setSearchValue('+91 98765 43210')}>+91 98765 43210</span>
+                        <span className="lookup-pill" onClick={() => setSearchValue('+91 9000000000')}>+91 9000000000</span>
                         <span className="lookup-pill" onClick={() => setSearchValue('example@upi')}>example@upi</span>
                         <span className="lookup-pill" onClick={() => setSearchValue('scam-site.com')}>scam-site.com</span>
                     </div>

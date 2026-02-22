@@ -63,7 +63,7 @@ export default function Register() {
                         <div className="form-group">
                             <label className="form-label">Mobile Number</label>
                             <input type="tel" name="mobile" value={formData.mobile} onChange={handleChange}
-                                placeholder="+91 98765 43210" className="form-input" required />
+                                placeholder="+91 9000000000" className="form-input" required />
                         </div>
                         <div className="form-group">
                             <label className="form-label">Password</label>
