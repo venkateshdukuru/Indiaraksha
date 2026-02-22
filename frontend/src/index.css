@@ -2653,6 +2653,80 @@ p {
   }
 }
 
+/* ── Report Success View ── */
+.report-success-view {
+  text-align: center;
+  padding: 4rem 2rem;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.report-success-view__icon {
+  font-size: 5rem;
+  margin-bottom: 1.5rem;
+  display: block;
+  animation: scale-up 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.report-success-view__title {
+  font-size: 2rem;
+  font-weight: 900;
+  color: #0f172a;
+  margin-bottom: 1rem;
+}
+
+.report-success-view__msg {
+  color: #64748b;
+  font-size: 1.15rem;
+  line-height: 1.6;
+  margin-bottom: 2.5rem;
+}
+
+.report-success-view__actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.report-success-view__auto {
+  font-size: 0.875rem;
+  color: #94a3b8;
+  font-style: italic;
+}
+
+@keyframes scale-up {
+  from {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 640px) {
+  .report-success-view {
+    padding: 3rem 1.5rem;
+    border-radius: 0;
+    box-shadow: none;
+    background: transparent;
+  }
+
+  .report-success-view__title {
+    font-size: 1.5rem;
+  }
+
+  .report-success-view__actions {
+    flex-direction: column;
+  }
+}
+
 /* ═══════════════════════════════════════════════════
    FOOTER
 ═══════════════════════════════════════════════════ */
