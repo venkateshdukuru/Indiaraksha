@@ -164,12 +164,16 @@ export class ScamReportsService {
             totalReports,
             verifiedReports,
             pendingReports,
+            totalAmountLostData,
             scamTypeStats,
             recentReports,
         ] = await Promise.all([
             this.scamReportModel.countDocuments(),
             this.scamReportModel.countDocuments({ status: ReportStatus.VERIFIED }),
             this.scamReportModel.countDocuments({ status: ReportStatus.PENDING }),
+            this.scamReportModel.aggregate([
+                { $group: { _id: null, total: { $sum: '$amountLost' } } }
+            ]),
             this.scamReportModel.aggregate([
                 {
                     $group: {
@@ -191,30 +195,41 @@ export class ScamReportsService {
             totalReports,
             verifiedReports,
             pendingReports,
+            totalAmountLost: totalAmountLostData[0]?.total || 0,
             scamTypeStats,
             recentReports,
         };
     }
 
     async getTrendingScams(limit = 10) {
-        const sevenDaysAgo = new Date();
-        sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
+        const thirtyDaysAgo = new Date();
+        thirtyDaysAgo.setDate(thirtyDaysAgo.getDate() - 30); // Use 30 days to ensure we see data
 
         const trending = await this.scamReportModel.aggregate([
             {
                 $match: {
-                    createdAt: { $gte: sevenDaysAgo },
-                    status: ReportStatus.VERIFIED,
+                    createdAt: { $gte: thirtyDaysAgo },
                 },
             },
+            { $sort: { createdAt: -1 } },
             {
                 $group: {
                     _id: '$scamType',
-                    count: { $sum: 1 },
-                    totalLoss: { $sum: '$amountLost' },
+                    reportCount: { $sum: 1 },
+                    description: { $first: '$description' },
+                    state: { $first: '$state' },
                 },
             },
-            { $sort: { count: -1 } },
+            {
+                $project: {
+                    _id: 0,
+                    scamType: '$_id',
+                    reportCount: 1,
+                    description: 1,
+                    state: 1,
+                },
+            },
+            { $sort: { reportCount: -1 } },
             { $limit: limit },
         ]);
 
