@@ -2852,6 +2852,24 @@ p {
   color: #475569;
 }
 
+.footer__bottom-left {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.footer__credit {
+  font-size: 0.85rem;
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+.footer__credit-name {
+  color: #2563eb;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+
 @media (max-width: 768px) {
   .footer {
     padding: 4rem 0 2rem;
